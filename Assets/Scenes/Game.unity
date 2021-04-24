@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanSpeed: 0.5
+  PostProcessVolume: {fileID: 1217165787}
 --- !u!1 &1060283064
 GameObject:
   m_ObjectHideFlags: 0
