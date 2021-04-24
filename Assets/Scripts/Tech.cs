@@ -32,6 +32,11 @@ public class Building
 
     public Resources ExploitResources(Upgrades upgrades)
     {
+        if (Exploitation == null)
+        {
+            return new Resources();
+        }
+
         return upgrades.Apply(Exploitation.Invoke());
     }
  

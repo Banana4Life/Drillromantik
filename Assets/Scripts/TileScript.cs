@@ -8,8 +8,9 @@ public class TileScript : MonoBehaviour
 {
     public Building Structure;
     public Upgrades Upgrades = new Upgrades();
-    
-    
+    public GameObject Building;
+
+    public GameObject[] buildingPrefabs;
     
     // Start is called before the first frame update
     void Start()
@@ -21,40 +22,54 @@ public class TileScript : MonoBehaviour
     {
         public override void OnInspectorGUI()
         {
+            DrawDefaultInspector();
             if (GUILayout.Button("CLICK"))
             {
                 Tech.Resources.Add(new Resources{Stone = 1});
                 Debug.Log(Tech.Resources);
             }
+
+            var tileScript = (TileScript) target;
+            GameObject buildingPrefab = null;
             if (GUILayout.Button("WOOD_CUTTER"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.WOOD_CUTTER;
+                buildingPrefab = tileScript.buildingPrefabs[2];
+                tileScript.Structure = Tech.WOOD_CUTTER;
             }
             if (GUILayout.Button("CHARCOAL_BURNER"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.CHARCOAL_BURNER;
+                tileScript.Structure = Tech.CHARCOAL_BURNER;
+                buildingPrefab = tileScript.buildingPrefabs[3];
             }
             if (GUILayout.Button("SMITH"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.SMITH;
+                tileScript.Structure = Tech.SMITH;
+                buildingPrefab = tileScript.buildingPrefabs[4];
             }
             if (GUILayout.Button("MARKET"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.MARKET;
+                tileScript.Structure = Tech.MARKET;
+                buildingPrefab = tileScript.buildingPrefabs[5];
             }
             if (GUILayout.Button("LOOKOUT_TOWER"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.LOOKOUT_TOWER;
+                tileScript.Structure = Tech.LOOKOUT_TOWER;
+                // buildingPrefab = tileScript.buildingPrefabs[6];
             }
             if (GUILayout.Button("RESEARCH_FACILITY"))
             {
-                TileScript tile = (TileScript) target;
-                tile.Structure = Tech.RESEARCH_FACILITY;
+                tileScript.Structure = Tech.RESEARCH_FACILITY;
+                // buildingPrefab = tileScript.buildingPrefabs[7];
+            }
+           
+            if (buildingPrefab)
+            {
+                if (tileScript.Building)
+                {
+                    Destroy(tileScript.Building);
+                    tileScript.Building = null;
+                }
+                tileScript.Building = Instantiate(buildingPrefab, tileScript.gameObject.transform);
             }
         }
     }

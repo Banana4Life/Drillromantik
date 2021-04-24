@@ -44,6 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ca905a883102c448ca7f6d651748de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingPrefabs:
+  - {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+  - {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
+  - {fileID: 7588520534324842638, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
+  - {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
+  - {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
+  - {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
 --- !u!1001 &2894626176514703376
 PrefabInstance:
   m_ObjectHideFlags: 0
