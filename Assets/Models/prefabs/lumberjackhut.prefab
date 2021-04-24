@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6491469711193961584}
   - component: {fileID: 6506639505913630948}
+  - component: {fileID: 3610374044835129072}
   - component: {fileID: 1244743580125952737}
   m_Layer: 0
   m_Name: lumberjackhut
@@ -48,20 +49,22 @@ MonoBehaviour:
   click: 0
   tick: 1
   baseExploitation:
-    Wood: 1
-    Stone: 0
-    Charcoal: 0
-    Coal: 0
-    Copper: 0
-    CopperTools: 0
-    Iron: 0
-    IronTools: 0
-    SteelTools: 0
-    Gold: 0
-    Diamond: 0
     items:
-    - name: 0
+    - type: 0
       quantity: 1
+--- !u!114 &3610374044835129072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588520534324842638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f0fd418ee0f2fdd96c6fe4a4418e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forestPrefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
 --- !u!114 &1244743580125952737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,18 +78,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costs:
-    Wood: 10
-    Stone: 10
-    Charcoal: 0
-    Coal: 0
-    Copper: 0
-    CopperTools: 0
-    Iron: 0
-    IronTools: 0
-    SteelTools: 0
-    Gold: 0
-    Diamond: 0
-    items: []
+    items:
+    - type: 0
+      quantity: -10
+    - type: 1
+      quantity: -10
 --- !u!1001 &2043154269391687982
 PrefabInstance:
   m_ObjectHideFlags: 0

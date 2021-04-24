@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;using UnityEditor;
+using System.Collections.Generic;
+using TileGrid;
+using UnityEditor;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,11 +14,14 @@ public class TileScript : MonoBehaviour
     public GameObject currentStructure;
 
     public TechTree TechTree;
-    
+    private TileGridController _controller;
+    public CubeCoord pos;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("TileTick", 1f, 1f);
+        _controller = GetComponentInParent<TileGridController>();
     }
     
     [CustomEditor(typeof(TileScript))]
@@ -25,10 +30,10 @@ public class TileScript : MonoBehaviour
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-            
+
             if (GUILayout.Button("CLICK"))
             {
-                Tech.Resources.Add(new Resources{Stone = 1});
+                Tech.Resources.Add(new Resources(ItemType.STONE.of(1), ItemType.WOOD.of(1)));
                 Debug.Log(Tech.Resources);
             }
 
@@ -38,16 +43,19 @@ public class TileScript : MonoBehaviour
             {
                 if (GUILayout.Button(techTreeStructure.name))
                 {
-                    tileScript._structure = techTreeStructure;
-                    if (tileScript.currentStructure)
+                    if (techTreeStructure.CanBuild(tileScript._controller.GetNeighborTiles(tileScript.pos)))
                     {
-                        DestroyImmediate(tileScript.currentStructure);
-                        tileScript.currentStructure = null;
-                    }
+                        tileScript._structure = techTreeStructure;
+                        if (tileScript.currentStructure)
+                        {
+                            DestroyImmediate(tileScript.currentStructure);
+                            tileScript.currentStructure = null;
+                        }
 
-                    if (tileScript._structure.prefab)
-                    {
-                        tileScript.currentStructure = Instantiate(tileScript._structure.prefab, tileScript.gameObject.transform);
+                        if (tileScript._structure.prefab)
+                        {
+                            tileScript.currentStructure = Instantiate(tileScript._structure.prefab, tileScript.gameObject.transform);
+                        }
                     }
                 }
             }
@@ -70,6 +78,12 @@ public class TileScript : MonoBehaviour
         {
             _structure.TickTile(_upgrades);
         }
+    }
+
+    public Structure Structure
+    {
+        get => _structure;
+        set => _structure = value;
     }
 
     // Update is called once per frame

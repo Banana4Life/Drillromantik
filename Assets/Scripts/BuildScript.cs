@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using UnityEngine;
+using UnityEngine.Networking.PlayerConnection;
 
 public class BuildScript : MonoBehaviour
 {
@@ -17,9 +20,8 @@ public class BuildScript : MonoBehaviour
     {
         
     }
-
-    public bool canBuild()
+    public bool canBuild(List<GameObject> neighborTiles)
     {
-        return Tech.Resources.Add(this.costs);
+        return Tech.Resources.Add(costs);
     }
 }

@@ -58,6 +58,9 @@ MonoBehaviour:
     SteelTools: 0
     Gold: 0
     Diamond: 0
+    items:
+    - type: 0
+      quantity: 1
 --- !u!1001 &6945132516729725446
 PrefabInstance:
   m_ObjectHideFlags: 0

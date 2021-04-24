@@ -47,21 +47,10 @@ MonoBehaviour:
   click: 0
   tick: 1
   baseExploitation:
-    Wood: -5
-    Stone: 0
-    Charcoal: 1
-    Coal: 0
-    Copper: 0
-    CopperTools: 0
-    Iron: 0
-    IronTools: 0
-    SteelTools: 0
-    Gold: 0
-    Diamond: 0
     items:
     - type: 0
       quantity: -5
-    - type: 0
+    - type: 2
       quantity: 1
 --- !u!1001 &6399849412553484928
 PrefabInstance:

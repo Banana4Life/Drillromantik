@@ -24,12 +24,15 @@ namespace TileGrid
         {
             var structure = Util.chooseWeighted(_weights, techTree.Structures);
             
+            var tileScript = tileObject.GetComponent<TileScript>();
             if (structure.prefab)
             {
                 GameObject go = Instantiate(structure.prefab, tileObject.transform, false);
                 go.name = $"{structure.name}";
-                tileObject.GetComponent<TileScript>().currentStructure = go;
+                tileScript.currentStructure = go;
             }
+            tileScript.Structure = structure;
+            tileScript.pos = coord;
         }
     }
 

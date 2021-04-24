@@ -23,7 +23,7 @@ namespace TileGrid
         public static CubeCoord WEST       = new CubeCoord(-1,  0);
         public static CubeCoord NORTH_WEST = new CubeCoord( 0, -1);
 
-        public static CubeCoord[] Neighbors = { NORTH_EAST, EAST, SOUTH_EAST, SOUTH_WEST, SOUTH_WEST, WEST, NORTH_WEST };
+        public static CubeCoord[] Neighbors = { NORTH_EAST, EAST, SOUTH_EAST, SOUTH_WEST, WEST, NORTH_WEST };
         
         public int Q { get; }
         public int R { get; }

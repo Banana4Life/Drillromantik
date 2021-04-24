@@ -6,16 +6,11 @@ using UnityEngine;
 
 public static class Tech
 {
-    
     public static Resources Resources = new Resources();
 
     public static Upgrade SHARP_AXES = new Upgrade
     {
-        Func = r =>
-        {
-            r.Wood *= 2;
-            return r;
-        }
+        Func = r => { return r; }
     };
 }
 
@@ -26,11 +21,12 @@ public class Structure
     public String name;
     public GameObject prefab;
     private ExploitationScript _exploitation;
-    public Resources costs;
-    private bool _init = false;
+    private LimitScript _limit;
+    private BuildScript _build;
+    private bool _init2 = false;
 
     public float spawnWeight = 0;
- 
+
     public void TickTile(Upgrades upgrades)
     {
         Init();
@@ -43,11 +39,32 @@ public class Structure
 
     public void Init()
     {
-        if (!_init && prefab)
+        if (!_init2 && prefab)
         {
-            _init = true;
+            _init2 = true;
             _exploitation = prefab.GetComponent<ExploitationScript>();
+            _build = prefab.GetComponent<BuildScript>();
+            _limit = prefab.GetComponent<LimitScript>();
         }
+    }
+
+    public bool CanBuild(List<GameObject> neighborTiles)
+    {
+        Init();
+        if (_limit)
+        {
+            if (_limit.BuildLimited(neighborTiles))
+            {
+                return false;
+            }
+        }
+        if (_build)
+        {
+            return _build.canBuild(neighborTiles);
+        }
+
+        Debug.Log("Build deny bypassed for " + name);
+        return true; // TODO prevent building?
     }
 }
 
@@ -92,64 +109,38 @@ public class Item
 {
     public ItemType type;
     public int quantity;
+
+    public Item(ItemType type, int quantity)
+    {
+        this.type = type;
+        this.quantity = quantity;
+    }
+
+    public override string ToString()
+    {
+        return $"{nameof(type)}: {type}, {nameof(quantity)}: {quantity}";
+    }
+}
+
+public static class Helper
+{
+    public static Item of(this ItemType type, int quantity)
+    {
+        return new Item(type, quantity);
+    }
 }
 
 public enum ItemType
 {
-    WOOD, STONE, CHARCOAL, COAL, COPPER, COPPER_TOOLS, IRON, IRON_TOOLS, STEEL_TOOLS, GOLD, DIAMOND
-}
-
-[System.Serializable]
-public class Resources
-{ 
-    public int Wood;
-    public int Stone;
-    public int Charcoal;
-    public int Coal;
-    public int Copper;
-    public int CopperTools;
-    public int Iron;
-    public int IronTools;
-    public int SteelTools;
-    public int Gold;
-    public int Diamond;
-
-    public Item[] items;
-
-    public override string ToString()
-    {
-        return $"{nameof(Wood)}: {Wood}, {nameof(Stone)}: {Stone}, {nameof(Charcoal)}: {Charcoal}, {nameof(Coal)}: {Coal}, {nameof(Copper)}: {Copper}, {nameof(CopperTools)}: {CopperTools}, {nameof(Iron)}: {Iron}, {nameof(IronTools)}: {IronTools}, {nameof(SteelTools)}: {SteelTools}, {nameof(Gold)}: {Gold}, {nameof(Diamond)}: {Diamond}";
-    }
-
-    public bool Add(Resources resources)
-    {
-        foreach (var toAdd in resources.items)
-        {
-            if (toAdd.quantity < 0)
-            {
-                foreach (var item in items)
-                {
-                    if (item.quantity + toAdd.quantity < 0)
-                    {
-                        return false;
-                    }
-                }
-                
-            }    
-        }
-        
-        foreach (var toAdd in resources.items)
-        {
-            foreach (var item in items)
-            {
-                if (item.type == toAdd.type)
-                {
-                    item.quantity += toAdd.quantity;
-                    break;
-                }
-            }
-        }
-
-        return true;
-    }
+    WOOD,
+    STONE,
+    CHARCOAL,
+    COAL,
+    COPPER,
+    COPPER_TOOLS,
+    IRON,
+    IRON_TOOLS,
+    STEEL_TOOLS,
+    GOLD,
+    DIAMOND
 }

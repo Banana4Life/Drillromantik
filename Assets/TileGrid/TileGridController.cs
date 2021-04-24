@@ -38,6 +38,11 @@ namespace TileGrid
             _edgeSet.Add(CubeCoord.ORIGIN);
         }
 
+        public List<GameObject> GetNeighborTiles(CubeCoord coord)
+        {
+            return CubeCoord.Neighbors.Select(c => _knownTiles[c + coord]).ToList();
+        }
+
         private List<GameObject> spawnTilesAroundEdge()
         {
             var tiles = new List<GameObject>();
