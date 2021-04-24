@@ -15,6 +15,7 @@ public class TileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("TileUpdate", 1f, 1f);
     }
     
     [CustomEditor(typeof(TileScript))]
@@ -74,18 +75,19 @@ public class TileScript : MonoBehaviour
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    void TileUpdate()
     {
         if (Structure != null)
         {
             var resources = Structure.ExploitResources(Upgrades);
             Tech.Resources.Add(resources);
             Debug.Log(Tech.Resources);
-
-            // TODO add to global state    
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+      
     }
 }
