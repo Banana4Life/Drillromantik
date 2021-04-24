@@ -6,13 +6,7 @@ using UnityEngine;
 
 public static class Tech
 {
-    public static Structure WOOD_CUTTER = new Structure{Costs = new Resources{Wood = 10, Stone = 10}, Exploitation = () => new Resources{Wood = 1}};
-    public static Structure CHARCOAL_BURNER = new Structure{Costs = new Resources{Wood = 20}, Exploitation = () => new Resources{Wood = -1, Charcoal = 1}};
-    public static Structure SMITH = new Structure{Costs = new Resources{Stone = 20}, Exploitation = () => new Resources{Charcoal = -1, Copper = -1, CopperTools = 1}};
-    public static Structure MARKET = new Structure{Costs = new Resources{Wood = 500, Stone = 500}};
-    public static Structure LOOKOUT_TOWER = new Structure{Costs = new Resources{Wood = 100, Stone = 20}};
-    public static Structure RESEARCH_FACILITY = new Structure{Costs = new Resources{Wood = 500, Stone = 500, Charcoal = 500, CopperTools = 10, Gold = 100}};
-
+    
     public static Resources Resources = new Resources();
 
     public static Upgrade SHARP_AXES = new Upgrade
@@ -25,19 +19,23 @@ public static class Tech
     };
 }
 
+[System.Serializable]
 public class Structure
 {
-    public Resources Costs{get;set;}
-    public Func<Resources> Exploitation{get;set;}
+    public String name;
+    public GameObject prefab;
+    public Resources costs;
+    public Resources exploitation;
+    public Resources clickExploitation;
 
     public Resources ExploitResources(Upgrades upgrades)
     {
-        if (Exploitation == null)
+        if (exploitation == null)
         {
             return new Resources();
         }
 
-        return upgrades.Apply(Exploitation.Invoke());
+        return upgrades.Apply(exploitation);
     }
  
 }
@@ -77,20 +75,20 @@ public class Research
         this.costs = costs;
     }
 }
-
+[System.Serializable]
 public class Resources
 { 
-    public int Wood{ get;set;}
-    public int Stone{ get;set;}
-    public int Charcoal{ get;set;}
-    public int Coal{ get;set;}
-    public int Copper{ get;set;}
-    public int CopperTools{ get;set;}
-    public int Iron{ get;set;}
-    public int IronTools{ get;set;}
-    public int SteelTools{ get;set;}
-    public int Gold{ get;set;}
-    public int Diamond{ get;set;}
+    public int Wood;
+    public int Stone;
+    public int Charcoal;
+    public int Coal;
+    public int Copper;
+    public int CopperTools;
+    public int Iron;
+    public int IronTools;
+    public int SteelTools;
+    public int Gold;
+    public int Diamond;
 
 
     public override string ToString()

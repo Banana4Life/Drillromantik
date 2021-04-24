@@ -52,6 +52,8 @@ MonoBehaviour:
   - {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
   - {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
   - {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
+  TechTree: {fileID: -1334303844850417330, guid: 167826a4775f57e5bb3022d4ddb80c4e, type: 3}
+  Structures: []
 --- !u!1001 &2894626176514703376
 PrefabInstance:
   m_ObjectHideFlags: 0
