@@ -16,7 +16,7 @@ public class TileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("TileUpdate", 1f, 1f);
+        InvokeRepeating("TileTick", 1f, 1f);
     }
     
     [CustomEditor(typeof(TileScript))]
@@ -44,7 +44,11 @@ public class TileScript : MonoBehaviour
                         DestroyImmediate(tileScript.currentStructure);
                         tileScript.currentStructure = null;
                     }
-                    tileScript.currentStructure = Instantiate(tileScript._structure.prefab, tileScript.gameObject.transform);
+
+                    if (tileScript._structure.prefab)
+                    {
+                        tileScript.currentStructure = Instantiate(tileScript._structure.prefab, tileScript.gameObject.transform);
+                    }
                 }
             }
           
@@ -60,13 +64,11 @@ public class TileScript : MonoBehaviour
         }
     }
 
-    void TileUpdate()
+    void TileTick()
     {
         if (_structure != null)
         {
-            var resources = _structure.ExploitResources(_upgrades);
-            Tech.Resources.Add(resources);
-            Debug.Log(Tech.Resources);
+            _structure.TickTile(_upgrades);
         }
     }
 

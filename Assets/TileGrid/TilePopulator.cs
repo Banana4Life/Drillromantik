@@ -28,7 +28,7 @@ namespace TileGrid
             {
                 GameObject go = Instantiate(structure.prefab, tileObject.transform, false);
                 go.name = $"{structure.name}";
-                
+                tileObject.GetComponent<TileScript>().currentStructure = go;
             }
         }
     }
