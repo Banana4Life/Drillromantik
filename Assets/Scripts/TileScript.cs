@@ -38,7 +38,6 @@ public class TileScript : MonoBehaviour
     public Structure Structure
     {
         get => _structure;
-        set => _structure = value;
     }
 
     
@@ -61,26 +60,7 @@ public class TileScript : MonoBehaviour
             {
                 if (GUILayout.Button(techTreeStructure.name))
                 {
-                    if (!tileScript._controller)
-                    {
-                        Debug.Log("Game is not running!");
-                        return;
-                    }
-                    var canBuild = techTreeStructure.CanBuild(tileScript._controller.GetNeighborTiles(tileScript.pos));
-                    if (canBuild)
-                    {
-                        tileScript._structure = techTreeStructure;
-                        if (tileScript.currentStructure)
-                        {
-                            DestroyImmediate(tileScript.currentStructure);
-                            tileScript.currentStructure = null;
-                        }
-
-                        if (tileScript._structure.prefab)
-                        {
-                            tileScript.currentStructure = Instantiate(tileScript._structure.prefab, tileScript.gameObject.transform);
-                        }
-                    }
+                    tileScript.BuildStructure(techTreeStructure);
                 }
             }
           
@@ -94,5 +74,39 @@ public class TileScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void BuildStructure(Structure structure)
+    {
+        if (!_controller)
+        {
+            Debug.Log("Game is not running!");
+            return;
+        }
+        if (structure.CanBuild(_controller, pos))
+        {
+            AssignStructure(structure);
+        }
+    }
+
+    public void AssignStructure(Structure structure)
+    {
+        _structure = structure;
+        if (currentStructure)
+        {
+            DestroyImmediate(currentStructure);
+            currentStructure = null;
+        }
+
+        if (_structure.prefab)
+        {
+            currentStructure = Instantiate(_structure.prefab, transform, false);
+            currentStructure.name = $"{structure.name}";
+        }
+    }
+
+    public void Init(CubeCoord coord)
+    {
+        pos = coord;
     }
 }

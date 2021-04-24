@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6506639505913630948}
   - component: {fileID: 3610374044835129072}
   - component: {fileID: 1244743580125952737}
+  - component: {fileID: -6594125114713423454}
   m_Layer: 0
   m_Name: lumberjackhut
   m_TagString: Untagged
@@ -83,6 +84,26 @@ MonoBehaviour:
       quantity: -10
     - type: 1
       quantity: -10
+--- !u!114 &-6594125114713423454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588520534324842638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - name: Copper Axe
+    chance: 1
+    type: 0
+    resources:
+      items:
+      - type: 0
+        quantity: 1
 --- !u!1001 &2043154269391687982
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TileGrid;
 using UnityEngine;
 
 [Serializable]
@@ -46,8 +47,9 @@ public class Structure
         }
     }
 
-    public bool CanBuild(List<GameObject> neighborTiles)
+    public bool CanBuild(TileGridController controller, CubeCoord coord)
     {
+        var neighborTiles = controller.GetNeighborTiles(coord);
         Init();
         if (_limit)
         {

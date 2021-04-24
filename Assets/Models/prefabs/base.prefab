@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8793761297805400997}
   - component: {fileID: 8368612590552243003}
+  - component: {fileID: 1905676968793304301}
   m_Layer: 0
   m_Name: base
   m_TagString: Untagged
@@ -46,6 +47,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   click: 1
   tick: 1
+--- !u!114 &1905676968793304301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993110081773359978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - name: Copper Chance
+    chance: 0.1
+    type: 0
+    resources:
+      items:
+      - type: 4
+        quantity: 1
 --- !u!1001 &3371564043433639796
 PrefabInstance:
   m_ObjectHideFlags: 0
