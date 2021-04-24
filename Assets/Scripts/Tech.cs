@@ -19,27 +19,36 @@ public static class Tech
     };
 }
 
-[System.Serializable]
+
+[Serializable]
 public class Structure
 {
     public String name;
     public GameObject prefab;
+    private ExploitationScript _exploitation;
     public Resources costs;
-    public Resources exploitation;
-    public Resources clickExploitation;
+    private bool _init = false;
 
     public float spawnWeight = 0;
-    
-    public Resources ExploitResources(Upgrades upgrades)
-    {
-        if (exploitation == null)
-        {
-            return new Resources();
-        }
-
-        return upgrades.Apply(exploitation);
-    }
  
+    public void TickTile(Upgrades upgrades)
+    {
+        Init();
+        if (_exploitation && _exploitation.tick)
+        {
+            Tech.Resources.Add(_exploitation.Calculate(upgrades));
+            Debug.Log(Tech.Resources);
+        }
+    }
+
+    public void Init()
+    {
+        if (!_init && prefab)
+        {
+            _init = true;
+            _exploitation = prefab.GetComponent<ExploitationScript>();
+        }
+    }
 }
 
 public class Upgrades
@@ -77,6 +86,19 @@ public class Research
         this.costs = costs;
     }
 }
+
+[System.Serializable]
+public class Item
+{
+    public ItemType type;
+    public int quantity;
+}
+
+public enum ItemType
+{
+    WOOD, STONE, CHARCOAL, COAL, COPPER, COPPER_TOOLS, IRON, IRON_TOOLS, STEEL_TOOLS, GOLD, DIAMOND
+}
+
 [System.Serializable]
 public class Resources
 { 
@@ -92,36 +114,42 @@ public class Resources
     public int Gold;
     public int Diamond;
 
+    public Item[] items;
 
     public override string ToString()
     {
         return $"{nameof(Wood)}: {Wood}, {nameof(Stone)}: {Stone}, {nameof(Charcoal)}: {Charcoal}, {nameof(Coal)}: {Coal}, {nameof(Copper)}: {Copper}, {nameof(CopperTools)}: {CopperTools}, {nameof(Iron)}: {Iron}, {nameof(IronTools)}: {IronTools}, {nameof(SteelTools)}: {SteelTools}, {nameof(Gold)}: {Gold}, {nameof(Diamond)}: {Diamond}";
     }
 
-    public void Add(Resources resources)
+    public bool Add(Resources resources)
     {
-        if (resources.Wood < 0 && Wood + resources.Wood < 0) return;
-        if (resources.Stone < 0 && Stone + resources.Stone < 0) return;
-        if (resources.Charcoal < 0 && Charcoal + resources.Charcoal < 0) return;
-        if (resources.Coal < 0 && Coal + resources.Coal < 0) return;
-        if (resources.Copper < 0 && Copper + resources.Copper < 0) return;
-        if (resources.CopperTools < 0 && CopperTools + resources.CopperTools < 0) return;
-        if (resources.Iron < 0 && Iron + resources.Iron < 0) return;
-        if (resources.IronTools < 0 && IronTools + resources.IronTools < 0) return;
-        if (resources.SteelTools < 0 && SteelTools + resources.SteelTools < 0) return;
-        if (resources.Gold < 0 && Gold + resources.Gold < 0) return;
-        if (resources.Diamond < 0 && Diamond + resources.Diamond < 0) return;
+        foreach (var toAdd in resources.items)
+        {
+            if (toAdd.quantity < 0)
+            {
+                foreach (var item in items)
+                {
+                    if (item.quantity + toAdd.quantity < 0)
+                    {
+                        return false;
+                    }
+                }
+                
+            }    
+        }
         
-        Wood += resources.Wood;
-        Stone += resources.Stone;
-        Charcoal += resources.Charcoal;
-        Coal += resources.Coal;
-        Copper += resources.Copper;
-        CopperTools += resources.CopperTools;
-        Iron += resources.Iron;
-        IronTools += resources.IronTools;
-        SteelTools += resources.SteelTools;
-        Gold += resources.Gold;
-        Diamond += resources.Diamond;
+        foreach (var toAdd in resources.items)
+        {
+            foreach (var item in items)
+            {
+                if (item.type == toAdd.type)
+                {
+                    item.quantity += toAdd.quantity;
+                    break;
+                }
+            }
+        }
+
+        return true;
     }
 }

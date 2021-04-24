@@ -276,6 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 471922785}
+  - component: {fileID: 471922786}
   m_Layer: 0
   m_Name: camcart
   m_TagString: Untagged
@@ -299,6 +300,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
+--- !u!114 &471922786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471922784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba53db3b03e2e1ab1a24f0578e60533d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanSpeed: 0.5
+  PointerPrefab: {fileID: 8377779110731441812, guid: cfbfbf008d5bf93d2befb2606577dd23, type: 3}
 --- !u!1 &1060283064
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,16 +464,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
       propertyPath: Specs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
       propertyPath: Specs.Array.data[0].Name
-      value: Test
+      value: Burg
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
+      propertyPath: Specs.Array.data[1].Name
+      value: Brunnen
       objectReference: {fileID: 0}
     - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
       propertyPath: Specs.Array.data[0].Prefab
       value: 
       objectReference: {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+    - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
+      propertyPath: Specs.Array.data[0].Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
+      propertyPath: Specs.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
+    - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
+      propertyPath: Specs.Array.data[1].Weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5919196623164170773, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
       propertyPath: Specs.Array.data[0].Probability
       value: 1

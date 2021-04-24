@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557152856655012426}
+  - component: {fileID: -3828349659282578297}
   m_Layer: 0
   m_Name: charcoalburner
   m_TagString: Untagged
@@ -31,6 +32,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3828349659282578297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163431250783946420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac58bdd2e143332fc8c922ec41120d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: 0
+  tick: 1
+  baseExploitation:
+    Wood: -5
+    Stone: 0
+    Charcoal: 1
+    Coal: 0
+    Copper: 0
+    CopperTools: 0
+    Iron: 0
+    IronTools: 0
+    SteelTools: 0
+    Gold: 0
+    Diamond: 0
+    items:
+    - type: 0
+      quantity: -5
+    - type: 0
+      quantity: 1
 --- !u!1001 &6399849412553484928
 PrefabInstance:
   m_ObjectHideFlags: 0
