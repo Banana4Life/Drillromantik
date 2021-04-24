@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 38985831}
   - component: {fileID: 38985830}
   - component: {fileID: 38985829}
+  - component: {fileID: 38985832}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -267,6 +268,15 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!45 &38985832
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38985827}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 2513c91e87239bbd288b3e5e28dc7c07, type: 2}
 --- !u!1 &471922784
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +322,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba53db3b03e2e1ab1a24f0578e60533d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanSpeed: 0.5
-  PointerPrefab: {fileID: 8377779110731441812, guid: cfbfbf008d5bf93d2befb2606577dd23, type: 3}
+  panSpeed: 0.5
+  pointerPrefab: {fileID: 8377779110731441812, guid: cfbfbf008d5bf93d2befb2606577dd23, type: 3}
+  pointerHeight: 5
+  minZoomLevel: 10
+  maxZoomLevel: 30
+  startZoomLevel: 20
+  scrollSpeed: 60
 --- !u!1 &1060283064
 GameObject:
   m_ObjectHideFlags: 0
