@@ -329,6 +329,7 @@ MonoBehaviour:
   maxZoomLevel: 30
   startZoomLevel: 20
   scrollSpeed: 60
+  PostProcessVolume: {fileID: 1217165787}
 --- !u!1 &1060283064
 GameObject:
   m_ObjectHideFlags: 0

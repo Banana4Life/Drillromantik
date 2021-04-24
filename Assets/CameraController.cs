@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CameraController : MonoBehaviour
     public float maxZoomLevel = 30f;
     public float startZoomLevel = 20f;
     public float scrollSpeed = 10f;
+    public PostProcessVolume PostProcessVolume;
     
     private float _targetZoomLevel;
     private Vector2 _targetPosition = Vector2.zero;
@@ -30,15 +32,16 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var worldPoint = _camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        var hoveringTile = Physics.Raycast(worldPoint, out hit);
+        var hoveringTile = Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out var mouseTileHit);
         _pointer.SetActive(hoveringTile);
         if (hoveringTile)
         {
-            _pointer.transform.position = hit.collider.transform.position;
-            _pointer.transform.Translate(Vector3.up * pointerHeight);
+            var pos = mouseTileHit.collider.transform.position;
+            pos.y += pointerHeight;
+            _pointer.transform.position = pos;
         }
+
+        var oldPos = transform.position;
         if (Input.GetButton("Fire2"))
         {
             var dx = Input.GetAxis("Mouse X");
@@ -53,6 +56,17 @@ public class CameraController : MonoBehaviour
             var pos = transform.position;
             pos.y = Mathf.Clamp(pos.y - dy * scrollSpeed, minZoomLevel, maxZoomLevel);
             transform.position = pos;
+        }
+        
+        var cameraTransform = _camera.transform;
+        if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var centerTileHit))
+        {
+            transform.position = oldPos;
+        }
+        else
+        {
+            var depthOfField = PostProcessVolume.profile.GetSetting<DepthOfField>();
+            depthOfField.focusDistance.value = centerTileHit.distance;
         }
     }
 }

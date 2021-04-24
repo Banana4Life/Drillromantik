@@ -77,11 +77,5 @@ namespace TileGrid
             _populator.Populate(pos, go);
             return go;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }
