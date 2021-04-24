@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;using UnityEditor;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TileScript : MonoBehaviour
 {
-    public Building Structure;
-    public Upgrades Upgrades = new Upgrades();
-    public GameObject Building;
+    private Structure _structure;
+    private Upgrades _upgrades = new Upgrades();
+    public GameObject currentStructure;
 
-    public GameObject[] buildingPrefabs;
+    public GameObject[] structurePrefabs;
     
     // Start is called before the first frame update
     void Start()
@@ -31,55 +32,75 @@ public class TileScript : MonoBehaviour
             }
 
             var tileScript = (TileScript) target;
-            GameObject buildingPrefab = null;
+            GameObject structurePrefab = null;
+            if (GUILayout.Button("BASE"))
+            {
+                tileScript._structure = null;
+                structurePrefab = tileScript.structurePrefabs[0];
+            }
+            if (GUILayout.Button("FOREST"))
+            {
+                tileScript._structure = null;
+                structurePrefab = tileScript.structurePrefabs[1];
+            }
             if (GUILayout.Button("WOOD_CUTTER"))
             {
-                buildingPrefab = tileScript.buildingPrefabs[2];
-                tileScript.Structure = Tech.WOOD_CUTTER;
+                structurePrefab = tileScript.structurePrefabs[2];
+                tileScript._structure = Tech.WOOD_CUTTER;
             }
             if (GUILayout.Button("CHARCOAL_BURNER"))
             {
-                tileScript.Structure = Tech.CHARCOAL_BURNER;
-                buildingPrefab = tileScript.buildingPrefabs[3];
+                tileScript._structure = Tech.CHARCOAL_BURNER;
+                structurePrefab = tileScript.structurePrefabs[3];
             }
             if (GUILayout.Button("SMITH"))
             {
-                tileScript.Structure = Tech.SMITH;
-                buildingPrefab = tileScript.buildingPrefabs[4];
+                tileScript._structure = Tech.SMITH;
+                structurePrefab = tileScript.structurePrefabs[4];
             }
             if (GUILayout.Button("MARKET"))
             {
-                tileScript.Structure = Tech.MARKET;
-                buildingPrefab = tileScript.buildingPrefabs[5];
+                tileScript._structure = Tech.MARKET;
+                structurePrefab = tileScript.structurePrefabs[5];
             }
             if (GUILayout.Button("LOOKOUT_TOWER"))
             {
-                tileScript.Structure = Tech.LOOKOUT_TOWER;
+                tileScript._structure = Tech.LOOKOUT_TOWER;
                 // buildingPrefab = tileScript.buildingPrefabs[6];
             }
             if (GUILayout.Button("RESEARCH_FACILITY"))
             {
-                tileScript.Structure = Tech.RESEARCH_FACILITY;
+                tileScript._structure = Tech.RESEARCH_FACILITY;
                 // buildingPrefab = tileScript.buildingPrefabs[7];
             }
            
-            if (buildingPrefab)
+            if (structurePrefab)
             {
-                if (tileScript.Building)
+                if (tileScript.currentStructure)
                 {
-                    Destroy(tileScript.Building);
-                    tileScript.Building = null;
+                    DestroyImmediate(tileScript.currentStructure);
+                    tileScript.currentStructure = null;
                 }
-                tileScript.Building = Instantiate(buildingPrefab, tileScript.gameObject.transform);
+                tileScript.currentStructure = Instantiate(structurePrefab, tileScript.gameObject.transform);
+            }
+            
+            if (GUILayout.Button("CLEAR"))
+            {
+                tileScript._structure = null;
+                if (tileScript.currentStructure)
+                {
+                    DestroyImmediate(tileScript.currentStructure);
+                    tileScript.currentStructure = null;
+                }
             }
         }
     }
 
     void TileUpdate()
     {
-        if (Structure != null)
+        if (_structure != null)
         {
-            var resources = Structure.ExploitResources(Upgrades);
+            var resources = _structure.ExploitResources(_upgrades);
             Tech.Resources.Add(resources);
             Debug.Log(Tech.Resources);
         }

@@ -6,12 +6,12 @@ using UnityEngine;
 
 public static class Tech
 {
-    public static Building WOOD_CUTTER = new Building{Costs = new Resources{Wood = 10, Stone = 10}, Exploitation = () => new Resources{Wood = 1}};
-    public static Building CHARCOAL_BURNER = new Building{Costs = new Resources{Wood = 20}, Exploitation = () => new Resources{Wood = -1, Charcoal = 1}};
-    public static Building SMITH = new Building{Costs = new Resources{Stone = 20}, Exploitation = () => new Resources{Charcoal = -1, Copper = -1, CopperTools = 1}};
-    public static Building MARKET = new Building{Costs = new Resources{Wood = 500, Stone = 500}};
-    public static Building LOOKOUT_TOWER = new Building{Costs = new Resources{Wood = 100, Stone = 20}};
-    public static Building RESEARCH_FACILITY = new Building{Costs = new Resources{Wood = 500, Stone = 500, Charcoal = 500, CopperTools = 10, Gold = 100}};
+    public static Structure WOOD_CUTTER = new Structure{Costs = new Resources{Wood = 10, Stone = 10}, Exploitation = () => new Resources{Wood = 1}};
+    public static Structure CHARCOAL_BURNER = new Structure{Costs = new Resources{Wood = 20}, Exploitation = () => new Resources{Wood = -1, Charcoal = 1}};
+    public static Structure SMITH = new Structure{Costs = new Resources{Stone = 20}, Exploitation = () => new Resources{Charcoal = -1, Copper = -1, CopperTools = 1}};
+    public static Structure MARKET = new Structure{Costs = new Resources{Wood = 500, Stone = 500}};
+    public static Structure LOOKOUT_TOWER = new Structure{Costs = new Resources{Wood = 100, Stone = 20}};
+    public static Structure RESEARCH_FACILITY = new Structure{Costs = new Resources{Wood = 500, Stone = 500, Charcoal = 500, CopperTools = 10, Gold = 100}};
 
     public static Resources Resources = new Resources();
 
@@ -25,7 +25,7 @@ public static class Tech
     };
 }
 
-public class Building
+public class Structure
 {
     public Resources Costs{get;set;}
     public Func<Resources> Exploitation{get;set;}
