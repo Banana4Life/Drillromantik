@@ -48,10 +48,11 @@ public class TileScript : MonoBehaviour
         {
             DrawDefaultInspector();
 
+            
             if (GUILayout.Button("CLICK"))
             {
-                Tech.Resources.Add(new Resources(ItemType.STONE.of(1), ItemType.WOOD.of(1)));
-                Debug.Log(Tech.Resources);
+                Global.Resources.Add(ItemType.STONE.of(1), ItemType.WOOD.of(1));
+                Debug.Log(Global.Resources);
             }
 
             var tileScript = (TileScript) target;
@@ -103,6 +104,8 @@ public class TileScript : MonoBehaviour
             currentStructure = Instantiate(_structure.prefab, transform, false);
             currentStructure.name = $"{structure.name}";
         }
+
+        _upgrades = _structure.freshUpgrades();
     }
 
     public void Init(CubeCoord coord)

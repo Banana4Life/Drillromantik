@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557152856655012426}
-  - component: {fileID: -3828349659282578297}
+  - component: {fileID: 7861509520510361667}
   m_Layer: 0
   m_Name: charcoalburner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3828349659282578297
+--- !u!114 &7861509520510361667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163431250783946420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac58bdd2e143332fc8c922ec41120d01, type: 3}
+  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  click: 0
-  tick: 1
-  baseExploitation:
-    items:
-    - type: 0
-      quantity: -5
-    - type: 2
-      quantity: 1
+  upgrades:
+  - name: Base
+    grant: 1
+    chance: 1
+    type: 0
+    resources:
+      items: []
+  tickUpgrades:
+  - name: Base
+    grant: 1
+    chance: 1
+    type: 0
+    resources:
+      items:
+      - type: 0
+        quantity: -5
+      - type: 2
+        quantity: 1
+  clickUpgrades: []
 --- !u!1001 &6399849412553484928
 PrefabInstance:
   m_ObjectHideFlags: 0

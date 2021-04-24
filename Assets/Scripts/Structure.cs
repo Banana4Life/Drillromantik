@@ -8,9 +8,9 @@ public class Structure
 {
     public String name;
     public GameObject prefab;
-    private ExploitationScript _exploitationScript;
     private LimitScript _limit;
     private BuildScript _build;
+    private UpgradeScript _upgrade;
     [NonSerialized]
     private bool _init = false;
 
@@ -18,22 +18,14 @@ public class Structure
 
     public void TickTile(Upgrades upgrades)
     {
-        Init();
-        if (_exploitationScript && _exploitationScript.tick)
-        {
-            Tech.Resources.Add(_exploitationScript.CalculateTick(upgrades));
-            Debug.Log(Tech.Resources);
-        }
+        Global.Resources.Add(upgrades.CalculateTick());
+        Debug.Log(Global.Resources);
     }
     
     public void ClickTile(Upgrades upgrades)
     {
-        Init();
-        if (_exploitationScript && _exploitationScript.click)
-        {
-            Tech.Resources.Add(_exploitationScript.CalculateClick(upgrades));
-            Debug.Log(Tech.Resources);
-        }
+        Global.Resources.Add(upgrades.CalculateClick());
+        Debug.Log(Global.Resources);
     }
 
     public void Init()
@@ -41,9 +33,9 @@ public class Structure
         if (!_init && prefab)
         {
             _init = true;
-            _exploitationScript = prefab.GetComponent<ExploitationScript>();
             _build = prefab.GetComponent<BuildScript>();
             _limit = prefab.GetComponent<LimitScript>();
+            _upgrade = prefab.GetComponent<UpgradeScript>();
         }
     }
 
@@ -65,5 +57,29 @@ public class Structure
 
         Debug.Log("Build deny bypassed for " + name);
         return true; // TODO prevent building?
+    }
+
+    public Upgrades freshUpgrades()
+    {
+        Init();
+        var upgrades = new Upgrades();
+        if (_upgrade)
+        {
+            foreach (var upgrade in _upgrade.clickUpgrades)
+            {
+                if (upgrade.grant)
+                {
+                    upgrades.AddClickUpgrade(upgrade);
+                }
+            }
+            foreach (var upgrade in _upgrade.tickUpgrades)
+            {
+                if (upgrade.grant)
+                {
+                    upgrades.AddTickUpgrade(upgrade);
+                }
+            }
+        }
+        return upgrades;
     }
 }

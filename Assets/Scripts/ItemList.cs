@@ -3,11 +3,11 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class Resources
+public class ItemList
 {
     public Item[] items;
 
-    public Resources(params Item[] items)
+    public ItemList(params Item[] items)
     {
         this.items = items;
     }

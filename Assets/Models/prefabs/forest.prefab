@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3426473399399571458}
-  - component: {fileID: -181654277264307497}
+  - component: {fileID: -3677487111163598040}
   m_Layer: 0
   m_Name: forest
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-181654277264307497
+--- !u!114 &-3677487111163598040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,26 +41,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4572134430706394734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac58bdd2e143332fc8c922ec41120d01, type: 3}
+  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  click: 1
-  tick: 0
-  baseExploitation:
-    Wood: 1
-    Stone: 0
-    Charcoal: 0
-    Coal: 0
-    Copper: 0
-    CopperTools: 0
-    Iron: 0
-    IronTools: 0
-    SteelTools: 0
-    Gold: 0
-    Diamond: 0
-    items:
-    - type: 0
-      quantity: 1
+  upgrades: []
+  tickUpgrades: []
+  clickUpgrades:
+  - name: Base
+    grant: 1
+    chance: 1
+    type: 0
+    resources:
+      items:
+      - type: 0
+        quantity: 1
 --- !u!1001 &6945132516729725446
 PrefabInstance:
   m_ObjectHideFlags: 0

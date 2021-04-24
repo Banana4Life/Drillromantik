@@ -6,7 +6,8 @@ using Random = System.Random;
 
 public class UpgradeScript : MonoBehaviour
 {
-    public Upgrade2[] upgrades;
+    public Upgrade[] tickUpgrades;
+    public Upgrade[] clickUpgrades;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,21 +21,22 @@ public class UpgradeScript : MonoBehaviour
     }
 }
 [Serializable]
-public class Upgrade2
+public class Upgrade
 {
     public String name;
+    public bool grant;
     public float chance = 1;
     public UpgradeType type;
-    public Resources resources;
+    public ItemList resources;
 
-    public Resources2 apply(Resources2 resources)
+    public Resources apply(Resources resources)
     {
         if (chance == 1 || UnityEngine.Random.value < chance)
         {
             switch (type)
             {
                 case UpgradeType.ADD:
-                    resources.AddNoCheck(this.resources);
+                    resources.Add(this.resources.items);
                     break;
                 case UpgradeType.MULTIPLY:
                     foreach (var item in this.resources.items)

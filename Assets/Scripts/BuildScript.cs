@@ -7,7 +7,7 @@ using UnityEngine.Networking.PlayerConnection;
 
 public class BuildScript : MonoBehaviour
 {
-    public Resources costs;
+    public ItemList costs;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,12 @@ public class BuildScript : MonoBehaviour
     }
     public bool canBuild(List<GameObject> neighborTiles)
     {
-        return Tech.Resources.Add(costs);
+        var cost = new Resources().Add(costs.items);
+        if (Global.Resources.HasResources(cost))
+        {
+            Global.Resources.AddNoCheck(cost);
+            return true;
+        }
+        return false;
     }
 }
