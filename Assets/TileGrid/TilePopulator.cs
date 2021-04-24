@@ -5,33 +5,31 @@ using Random = UnityEngine.Random;
 
 namespace TileGrid
 {
-    [Serializable]
-    public class PopulationSpec
-    {
-        public String Name;
-        public GameObject Prefab;
-        public float Weight = 0;
-    }
     
     public class TilePopulator : MonoBehaviour
     {
-        public PopulationSpec[] Specs;
+        public TechTree techTree;
         private float[] _weights;
 
         private void Start()
         {
-            _weights = new float[Specs.Length];
-            for (var i = 0; i < Specs.Length; i++)
+            _weights = new float[techTree.Structures.Length];
+            for (var i = 0; i < techTree.Structures.Length; i++)
             {
-                _weights[i] = Specs[i].Weight;
+                _weights[i] = techTree.Structures[i].spawnWeight;
             }
         }
 
         public void Populate(CubeCoord coord, GameObject tileObject)
         {
-            var spec = Util.chooseWeighted(_weights, Specs);
-            var structure = Instantiate(spec.Prefab, tileObject.transform, false);
-            structure.name = $"{spec.Name} at {coord}";
+            var structure = Util.chooseWeighted(_weights, techTree.Structures);
+            
+            if (structure.prefab)
+            {
+                GameObject go = Instantiate(structure.prefab, tileObject.transform, false);
+                go.name = $"{structure.name}";
+                
+            }
         }
     }
 

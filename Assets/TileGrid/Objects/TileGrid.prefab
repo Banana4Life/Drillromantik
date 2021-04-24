@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7519847041953692405}
   - component: {fileID: 7519847041953692406}
+  - component: {fileID: 3271323702112771144}
   m_Layer: 0
   m_Name: TileGrid
   m_TagString: Untagged
@@ -44,3 +45,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 8494158982500493018, guid: 9130c4a0cdaf39230b57aac1dc9c78db, type: 3}
+--- !u!114 &3271323702112771144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519847041953692404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970577dfdef94efaadb88bd2b56e59e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Specs:
+  - Name: 
+    structure:
+      name: 
+      prefab: {fileID: 0}
+      costs:
+        Wood: 0
+        Stone: 0
+        Charcoal: 0
+        Coal: 0
+        Copper: 0
+        CopperTools: 0
+        Iron: 0
+        IronTools: 0
+        SteelTools: 0
+        Gold: 0
+        Diamond: 0
+      exploitation:
+        Wood: 0
+        Stone: 0
+        Charcoal: 0
+        Coal: 0
+        Copper: 0
+        CopperTools: 0
+        Iron: 0
+        IronTools: 0
+        SteelTools: 0
+        Gold: 0
+        Diamond: 0
+      clickExploitation:
+        Wood: 0
+        Stone: 0
+        Charcoal: 0
+        Coal: 0
+        Copper: 0
+        CopperTools: 0
+        Iron: 0
+        IronTools: 0
+        SteelTools: 0
+        Gold: 0
+        Diamond: 0
+    Weight: 0
+  techTree: {fileID: -1334303844850417330, guid: 167826a4775f57e5bb3022d4ddb80c4e, type: 3}

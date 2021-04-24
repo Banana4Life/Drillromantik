@@ -28,6 +28,8 @@ public class Structure
     public Resources exploitation;
     public Resources clickExploitation;
 
+    public float spawnWeight = 0;
+    
     public Resources ExploitResources(Upgrades upgrades)
     {
         if (exploitation == null)
