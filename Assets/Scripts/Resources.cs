@@ -21,6 +21,13 @@ public class Resources
     {
         if (!HasResources(resources)) return false;
 
+        AddNoCheck(resources);
+
+        return true;
+    }
+
+    public Resources AddNoCheck(Resources resources)
+    {
         foreach (var toAdd in resources.items)
         {
             bool added = false;
@@ -40,7 +47,7 @@ public class Resources
             }
         }
 
-        return true;
+        return this;
     }
 
     private bool HasResources(Resources resources)
@@ -113,6 +120,6 @@ public class Item
 
     public override string ToString()
     {
-        return $"{nameof(type)}: {type}, {nameof(quantity)}: {quantity}";
+        return $"{type} : {quantity}";
     }
 }

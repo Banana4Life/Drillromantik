@@ -24,8 +24,6 @@ public class LumberJackLimit : LimitScript
                     return false;
                 }
             }
-                
-           
         }
 
         return true;

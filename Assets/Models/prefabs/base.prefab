@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8793761297805400997}
-  - component: {fileID: 6592507580947281123}
+  - component: {fileID: 8368612590552243003}
   m_Layer: 0
   m_Name: base
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6592507580947281123
+--- !u!114 &8368612590552243003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,26 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3993110081773359978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac58bdd2e143332fc8c922ec41120d01, type: 3}
+  m_Script: {fileID: 11500000, guid: 5284162a4eca40a29257acfce35c4bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   click: 1
   tick: 1
-  baseExploitation:
-    Wood: 0
-    Stone: 1
-    Charcoal: 0
-    Coal: 0
-    Copper: 0
-    CopperTools: 0
-    Iron: 0
-    IronTools: 0
-    SteelTools: 0
-    Gold: 0
-    Diamond: 0
-    items:
-    - type: 1
-      quantity: 1
 --- !u!1001 &3371564043433639796
 PrefabInstance:
   m_ObjectHideFlags: 0

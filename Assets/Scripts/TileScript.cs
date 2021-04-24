@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TileGrid;
 using UnityEditor;
-using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TileScript : MonoBehaviour
 {
@@ -23,6 +18,29 @@ public class TileScript : MonoBehaviour
         InvokeRepeating("TileTick", 1f, 1f);
         _controller = GetComponentInParent<TileGridController>();
     }
+
+    void TileTick()
+    {
+        if (_structure != null)
+        {
+            _structure.TickTile(_upgrades);
+        }
+    }
+    
+    public void ClickTile()
+    {
+        if (_structure != null)
+        {
+            _structure.ClickTile(_upgrades);
+        }
+    }
+
+    public Structure Structure
+    {
+        get => _structure;
+        set => _structure = value;
+    }
+
     
     [CustomEditor(typeof(TileScript))]
     public class TileInspector : Editor
@@ -43,7 +61,13 @@ public class TileScript : MonoBehaviour
             {
                 if (GUILayout.Button(techTreeStructure.name))
                 {
-                    if (techTreeStructure.CanBuild(tileScript._controller.GetNeighborTiles(tileScript.pos)))
+                    if (!tileScript._controller)
+                    {
+                        Debug.Log("Game is not running!");
+                        return;
+                    }
+                    var canBuild = techTreeStructure.CanBuild(tileScript._controller.GetNeighborTiles(tileScript.pos));
+                    if (canBuild)
                     {
                         tileScript._structure = techTreeStructure;
                         if (tileScript.currentStructure)
@@ -70,25 +94,5 @@ public class TileScript : MonoBehaviour
                 }
             }
         }
-    }
-
-    void TileTick()
-    {
-        if (_structure != null)
-        {
-            _structure.TickTile(_upgrades);
-        }
-    }
-
-    public Structure Structure
-    {
-        get => _structure;
-        set => _structure = value;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
     }
 }
