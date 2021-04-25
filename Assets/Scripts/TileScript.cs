@@ -1,3 +1,4 @@
+using System;
 using TileGrid;
 using UnityEditor;
 using UnityEngine;
@@ -32,6 +33,21 @@ public class TileScript : MonoBehaviour
         if (_structure != null)
         {
             _structure.ClickTile(_upgrades);
+        }
+    }
+
+    private void Update()
+    {
+        // TODO other script and hide shadows while falling
+        var position = transform.position;
+        if (position.y > 0)
+        {
+            transform.Translate(0, 30 * -Time.deltaTime, 0);
+        }
+        else
+        {
+            position = new Vector3(position.x, 0, position.z);
+            transform.position = position;
         }
     }
 
@@ -111,5 +127,6 @@ public class TileScript : MonoBehaviour
     public void Init(CubeCoord coord)
     {
         pos = coord;
+        transform.Translate(0,50,0);
     }
 }

@@ -26,9 +26,7 @@ namespace TileGrid
         {
             for (var i = 0; i < 10; ++i)
             {
-                yield return new WaitForSeconds(1);
-                spawnTilesAroundEdge();
-                yield return null;
+                yield return StartCoroutine(spawnTilesAroundEdge());
             }
         }
 
@@ -43,18 +41,17 @@ namespace TileGrid
             return CubeCoord.Neighbors.Select(c => _knownTiles[c + coord]).ToList();
         }
 
-        private List<GameObject> spawnTilesAroundEdge()
+        IEnumerator spawnTilesAroundEdge()
         {
-            var tiles = new List<GameObject>();
             var newEdge = new HashSet<CubeCoord>();
-            foreach (var cubeCoord in _edgeSet.SelectMany(edgeCoord => CubeCoord.Neighbors.Select(offset => edgeCoord + offset)).Where(newCoord => !_knownTiles.ContainsKey(newCoord)))
+            foreach (var cubeCoord in _edgeSet.SelectMany(edgeCoord => CubeCoord.Neighbors.Select(offset => edgeCoord + offset).Where(newCoord => !_knownTiles.ContainsKey(newCoord))).OrderBy(e => Random.value))
             {
-                tiles.Add(spawnAndPopulateTile(cubeCoord));
+                yield return new WaitForSeconds(0.05f);
+                spawnAndPopulateTile(cubeCoord);
                 newEdge.Add(cubeCoord);
             }
 
             _edgeSet = newEdge;
-            return tiles;
         }
 
         private GameObject spawnTile(CubeCoord pos)
