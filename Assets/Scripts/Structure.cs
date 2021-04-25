@@ -41,10 +41,22 @@ public class Structure
         }
     }
 
-    public bool CanBuild(TileGridController controller, CubeCoord coord)
+    public bool CanBuildDeductCost(TileGridController controller, CubeCoord coord)
+    {
+        Init();
+        if (!IsBuildAllowed(controller, coord)) return false;
+        if (_build)
+        {
+            return _build.CanBuildDeductCost();
+        }
+
+        Debug.Log("Build deny bypassed for " + name);
+        return true; // TODO prevent building?
+    }
+
+    public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)
     {
         var neighborTiles = controller.GetNeighborTiles(coord);
-        Init();
         if (_limit)
         {
             if (_limit.BuildLimited(neighborTiles))
@@ -52,13 +64,8 @@ public class Structure
                 return false;
             }
         }
-        if (_build)
-        {
-            return _build.canBuild(neighborTiles);
-        }
 
-        Debug.Log("Build deny bypassed for " + name);
-        return true; // TODO prevent building?
+        return true;
     }
 
     public Upgrades freshUpgrades()

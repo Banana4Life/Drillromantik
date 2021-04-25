@@ -48,7 +48,7 @@ MonoBehaviour:
   costs:
     items:
     - type: 1
-      quantity: 20
+      quantity: -20
 --- !u!114 &8952489946143991427
 MonoBehaviour:
   m_ObjectHideFlags: 0

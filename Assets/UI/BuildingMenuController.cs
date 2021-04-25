@@ -30,7 +30,7 @@ namespace UI
         {
             removeAll();
             var buildableStructures =
-                tile.TechTree.Structures.Where(s => s.texture && s.CanBuild(tileGridController, tile.pos)).ToList();
+                tile.TechTree.Structures.Where(s => s.texture && s.IsBuildAllowed(tileGridController, tile.pos)).ToList();
 
             if (buildableStructures.Count == 0)
             {

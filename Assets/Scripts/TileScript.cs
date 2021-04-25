@@ -183,10 +183,11 @@ public class TileScript : MonoBehaviour
             Debug.Log("Game is not running!");
             return;
         }
-        if (structure.CanBuild(_controller, pos))
+        if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
         }
+        
     }
 
     public void AssignStructure(Structure structure)

@@ -20,7 +20,7 @@ public class BuildScript : MonoBehaviour
     {
         
     }
-    public bool canBuild(List<GameObject> neighborTiles)
+    public bool CanBuildDeductCost()
     {
         var cost = new Resources().Add(costs.items);
         if (Global.Resources.HasResources(cost))
