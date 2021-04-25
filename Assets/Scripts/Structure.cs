@@ -86,4 +86,9 @@ public class Structure
     {
         return "Base".Equals(name);
     }
+
+    public bool IsWasteland()
+    {
+        return "Wasteland".Equals(name);
+    }
 }

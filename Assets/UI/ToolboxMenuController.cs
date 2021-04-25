@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,7 +47,9 @@ namespace UI
         {
             if (button == destroyButton)
             {
-                Debug.Log("destroy");
+                var wasteland = _selectedTile.TechTree.Structures.First(s => s.IsWasteland());
+                _selectedTile.BuildStructure(wasteland);
+                TileSelected(_selectedTile);
             }
             else if (button == buildingUpgradeButton)
             {
