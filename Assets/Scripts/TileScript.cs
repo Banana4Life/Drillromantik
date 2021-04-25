@@ -30,9 +30,17 @@ public class TileScript : MonoBehaviour
         }
     }
 
+    void TileUpgrade()
+    {
+        if (_structure != null)
+        {
+            _upgrades.UpgradeTick();
+        }
+    }
+
     public void SelectTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
+        SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
     }
 
     private static MaterialPropertyBlock coloredMaterialPropertyBlock(String hexColor)
@@ -44,14 +52,24 @@ public class TileScript : MonoBehaviour
         return matPropBlock;
     }
 
+    private void SetTileMaterialPropertyBlock(MaterialPropertyBlock matPropBlock)
+    {
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 2);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 3);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 4);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 5);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 6);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 7);
+    }
+
     public void UnSelectTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(null);
+        SetTileMaterialPropertyBlock(null);
     }
     
     public void HoverTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
+        SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
     }
     
     public void ClickTile()
@@ -89,7 +107,6 @@ public class TileScript : MonoBehaviour
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
             
             if (GUILayout.Button("CLICK"))
             {
@@ -98,7 +115,44 @@ public class TileScript : MonoBehaviour
             }
 
             var tileScript = (TileScript) target;
-            
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Click Upgrades:");
+            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
+            {
+                if (GUILayout.Button("Upgrade"))
+                {
+                    tileScript._upgrades.aquiredClickUpgrades++;
+                }    
+            } 
+            GUILayout.EndHorizontal();
+            for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
+            {
+                var upgrade = tileScript._upgrades.ClickUpgrades[i];
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+                GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
+                GUILayout.EndHorizontal();
+            }
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Tick Upgrades:");
+            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredTickUpgrades)
+            {
+                if (GUILayout.Button("Upgrade"))
+                {
+                    tileScript._upgrades.aquiredTickUpgrades++;
+                }    
+            } 
+            GUILayout.EndHorizontal();
+            for (var i = 0; i < tileScript._upgrades.TickUpgrades.Count; i++)
+            {
+                var upgrade = tileScript._upgrades.TickUpgrades[i];
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+                GUILayout.Toggle(i < tileScript._upgrades.aquiredTickUpgrades, "");
+                GUILayout.EndHorizontal();
+            }
+
             foreach (var techTreeStructure in tileScript.TechTree.Structures)
             {
                 if (GUILayout.Button(techTreeStructure.name))

@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class ItemList
 {
     public Item[] items;
@@ -23,10 +24,14 @@ public static class Helper
 {
     public static Item of(this ItemType type, int quantity)
     {
-        return new Item(type, quantity);
+        var item = new Item();
+        item.type = type;
+        item.quantity = quantity;
+        return item;
     }
 }
 
+[Serializable]
 public enum ItemType
 {
     WOOD,
@@ -43,17 +48,11 @@ public enum ItemType
 }
 
 
-[System.Serializable]
+[Serializable]
 public class Item
 {
     public ItemType type;
     public int quantity;
-
-    public Item(ItemType type, int quantity)
-    {
-        this.type = type;
-        this.quantity = quantity;
-    }
 
     public override string ToString()
     {

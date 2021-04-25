@@ -61,21 +61,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrades: []
-  tickUpgrades:
-  - name: Copper Tools
-    grant: 1
-    chance: 1
-    type: 0
-    resources:
-      items:
-      - type: 2
-        quantity: -10
-      - type: 4
-        quantity: -5
-      - type: 5
-        quantity: 1
-  clickUpgrades: []
+  Upgrades:
+    aquiredClickUpgrades: 0
+    aquiredTickUpgrades: 1
+    ClickUpgrades: []
+    TickUpgrades:
+    - name: Copper Tools
+      grant: 1
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 2
+          quantity: -10
+        - type: 4
+          quantity: -5
+        - type: 5
+          quantity: 1
 --- !u!1001 &6978823065648442331
 PrefabInstance:
   m_ObjectHideFlags: 0
