@@ -65,7 +65,11 @@ MonoBehaviour:
         - type: 4
           quantity: 1
       cost:
-        items: []
+        items:
+        - type: 0
+          quantity: -10
+        - type: 1
+          quantity: -10
     TickUpgrades:
     - name: Miner
       chance: 1
@@ -115,7 +119,7 @@ MonoBehaviour:
           quantity: 1
       cost:
         items:
-        - type: 5
+        - type: 7
           quantity: 10
     - name: Diamonds!
       chance: 1

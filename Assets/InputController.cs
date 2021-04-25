@@ -76,4 +76,9 @@ public class InputController : MonoBehaviour
     {
         tileSelected.ClickTile();
     }
+
+    public void BuildSelectedTile(Structure structure)
+    {
+        tileSelected.BuildStructure(structure);
+    }
 }

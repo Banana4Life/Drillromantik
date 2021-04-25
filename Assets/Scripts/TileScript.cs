@@ -169,7 +169,7 @@ public class TileScript : MonoBehaviour
         }
     }
 
-    private void BuildStructure(Structure structure)
+    public void BuildStructure(Structure structure)
     {
         if (!_controller)
         {
