@@ -50,7 +50,6 @@ MonoBehaviour:
     ClickUpgrades: []
     TickUpgrades:
     - name: Base
-      grant: 1
       chance: 1
       type: 0
       resources:
@@ -59,6 +58,23 @@ MonoBehaviour:
           quantity: -5
         - type: 2
           quantity: 1
+      cost:
+        items: []
+    - name: Improved Burning
+      chance: 1
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+        - type: 2
+          quantity: 3
+      cost:
+        items:
+        - type: 0
+          quantity: 100
+        - type: 2
+          quantity: 50
 --- !u!1001 &6399849412553484928
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,38 +49,85 @@ MonoBehaviour:
     aquiredTickUpgrades: 0
     ClickUpgrades:
     - name: Base
-      grant: 1
       chance: 1
       type: 0
       resources:
         items:
         - type: 1
           quantity: 1
-    - name: Copper Chance
-      grant: 0
+      cost:
+        items: []
+    - name: 10% Copper
       chance: 0.1
       type: 0
       resources:
         items:
         - type: 4
           quantity: 1
+      cost:
+        items: []
     TickUpgrades:
     - name: Miner
-      grant: 0
       chance: 1
       type: 0
       resources:
         items:
         - type: 1
           quantity: 1
-    - name: Copper Chance
-      grant: 0
+      cost:
+        items:
+        - type: 0
+          quantity: -10
+        - type: 1
+          quantity: -10
+    - name: 10% Copper
       chance: 0.1
       type: 0
       resources:
         items:
         - type: 4
           quantity: 1
+      cost:
+        items:
+        - type: 0
+          quantity: -10
+        - type: 1
+          quantity: -10
+    - name: Assured Copper
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 4
+          quantity: 1
+      cost:
+        items:
+        - type: 5
+          quantity: 10
+    - name: Iron
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 6
+          quantity: 1
+        - type: 3
+          quantity: 1
+      cost:
+        items:
+        - type: 5
+          quantity: 10
+    - name: Diamonds!
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 10
+          quantity: 1
+      cost:
+        items:
+        - type: 8
+          quantity: 10
 --- !u!1001 &4605052033936674332
 PrefabInstance:
   m_ObjectHideFlags: 0

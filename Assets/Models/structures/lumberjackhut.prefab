@@ -91,7 +91,7 @@ MonoBehaviour:
           quantity: 0
       cost:
         items: []
-    - name: Copper Axe (200%)
+    - name: Copper Tools
       chance: 1
       type: 1
       resources:
@@ -101,6 +101,28 @@ MonoBehaviour:
       cost:
         items:
         - type: 5
+          quantity: -1
+    - name: Iron Tools
+      chance: 1
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 7
+          quantity: -1
+    - name: Steel Tools
+      chance: 1
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 8
           quantity: -1
 --- !u!1001 &2043154269391687982
 PrefabInstance:

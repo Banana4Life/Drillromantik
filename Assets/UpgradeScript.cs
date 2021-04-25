@@ -111,7 +111,10 @@ public class Upgrade
             switch (type)
             {
                 case UpgradeType.ADD:
-                    resources.Add(this.resources.items);
+                    if (resources.HasResources(this.resources))
+                    {
+                        resources.Add(this.resources.items);
+                    }
                     break;
                 case UpgradeType.MULTIPLY:
                     foreach (var item in this.resources.items)

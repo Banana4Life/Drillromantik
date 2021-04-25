@@ -49,13 +49,69 @@ MonoBehaviour:
     aquiredTickUpgrades: 0
     ClickUpgrades:
     - name: Base
-      grant: 1
       chance: 1
       type: 0
       resources:
         items:
         - type: 0
           quantity: 1
+      cost:
+        items: []
+    - name: Green Thumb
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 0
+          quantity: 4
+      cost:
+        items:
+        - type: 0
+          quantity: 100
+    - name: Copper Tools
+      chance: 2
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 5
+          quantity: -1
+    - name: Copper Tools
+      chance: 2
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 5
+          quantity: -1
+    - name: Iron Tools
+      chance: 2
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 7
+          quantity: -1
+    - name: Steel Tools
+      chance: 2
+      type: 1
+      resources:
+        items:
+        - type: 0
+          quantity: 2
+      cost:
+        items:
+        - type: 8
+          quantity: -1
     TickUpgrades: []
 --- !u!1001 &6945132516729725446
 PrefabInstance:
