@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 public class Resources
 {
-    private Dictionary<ItemType, int> items = new Dictionary<ItemType, int>();
+    public readonly Dictionary<ItemType, BigInteger> Items = new Dictionary<ItemType, BigInteger>();
     
     public bool Add(Resources resources)
     {
@@ -19,7 +20,7 @@ public class Resources
         int val;
         foreach (var resource in resources)
         {
-            items[resource.type] = (items.TryGetValue(resource.type, out val) ? val : 0) + resource.quantity;
+            Items[resource.type] = Items.GetOrElse(resource.type) + resource.quantity;
         }
 
         return this;
@@ -28,9 +29,9 @@ public class Resources
     public Resources AddNoCheck(Resources resources)
     {
         int val;
-        foreach (var toAdd in resources.items)
+        foreach (var toAdd in resources.Items)
         {
-            items[toAdd.Key] = (items.TryGetValue(toAdd.Key, out val) ? val : 0) + toAdd.Value;
+            Items[toAdd.Key] = Items.GetOrElse(toAdd.Key) + toAdd.Value;
         }
         return this;
     }
@@ -41,7 +42,7 @@ public class Resources
         {
             if (toAdd.quantity < 0)
             {
-                if ((items.TryGetValue(toAdd.type, out var val) ? val : 0) + toAdd.quantity < 0)
+                if (Items.GetOrElse(toAdd.type) + toAdd.quantity < 0)
                 {
                     Debug.Log("Resource not available: " + toAdd.type);
                     return false;
@@ -54,11 +55,11 @@ public class Resources
     
     public bool HasResources(Resources resources)
     {
-        foreach (var toAdd in resources.items)
+        foreach (var toAdd in resources.Items)
         {
             if (toAdd.Value < 0)
             {
-                if ((items.TryGetValue(toAdd.Key, out var val) ? val : 0) + toAdd.Value < 0)
+                if (Items.GetOrElse(toAdd.Key) + toAdd.Value < 0)
                 {
                     Debug.Log("Resource not available: " + toAdd.Key);
                     return false;
@@ -71,11 +72,11 @@ public class Resources
 
     public void Mul(ItemType itemType, int factor)
     {
-        items[itemType] = (items.TryGetValue(itemType, out var val) ? val : 0) * factor;
+        Items[itemType] = Items.GetOrElse(itemType) * factor;
     }
 
     public override string ToString()
     {
-        return String.Join(" | ", items.Select(e => e.Key + ": " + e.Value));
+        return String.Join(" | ", Items.Select(e => e.Key + ": " + e.Value));
     }
 }

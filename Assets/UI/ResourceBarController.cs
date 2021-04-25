@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 namespace UI
@@ -19,23 +17,17 @@ namespace UI
             {
                 var statusObject = Instantiate(resourceStatusPrefab, transform, true);
                 var status = statusObject.GetComponent<ResourceStatus>();
-                status.Available = 1;
                 _statusMap[type] = status;
+                //status.UpdateText(BigInteger.Zero);
+                status.UpdateText(300);
             }
-
-            StartCoroutine(IncreaseResources());
         }
 
-        IEnumerator IncreaseResources()
+        private void Update()
         {
-            while (true)
+            foreach (var status in _statusMap)
             {
-                yield return new WaitForSeconds(0.2f);
-                var factor = BigInteger.One * 10;
-                foreach (var keyValuePair in _statusMap)
-                {
-                    keyValuePair.Value.Available *= factor;
-                }
+                status.Value.UpdateText(Global.Resources.Items.GetOrElse(status.Key));
             }
         }
     }

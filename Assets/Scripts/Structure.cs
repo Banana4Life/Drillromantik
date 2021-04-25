@@ -25,7 +25,6 @@ public class Structure
     public void ClickTile(Upgrades upgrades)
     {
         Global.Resources.Add(upgrades.CalculateClick());
-        Debug.Log(Global.Resources);
     }
 
     public void Init()
