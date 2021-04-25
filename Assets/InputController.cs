@@ -11,6 +11,8 @@ public class InputController : MonoBehaviour
     public TileScript tileSelected;
     public TileScript tileHover;
     public TileMenuController tileMenuController;
+    public GameObject plusPrefab;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -74,7 +76,14 @@ public class InputController : MonoBehaviour
 
     public void ClickSelectedTile()
     {
-        tileSelected.ClickTile();
+        var gained = tileSelected.ClickTile();
+        if (gained != null)
+        {
+            var plusText = Instantiate(plusPrefab, clickButton.transform);
+            // TODO icon + text
+            plusText.GetComponent<Text>().text = gained.ToString();
+        }
+        
     }
 
     public void BuildSelectedTile(Structure structure)

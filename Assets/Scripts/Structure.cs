@@ -22,9 +22,11 @@ public class Structure
         Global.Resources.Add(upgrades.CalculateTick());
     }
     
-    public void ClickTile(Upgrades upgrades)
+    public Resources ClickTile(Upgrades upgrades)
     {
-        Global.Resources.Add(upgrades.CalculateClick());
+        var calculated = upgrades.CalculateClick();
+        Global.Resources.Add(calculated);
+        return calculated;
     }
 
     public void Init()

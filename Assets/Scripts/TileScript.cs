@@ -83,12 +83,14 @@ public class TileScript : MonoBehaviour
         return _upgrades.aquiredClickUpgrades > 0;
     }
     
-    public void ClickTile()
+    public Resources ClickTile()
     {
         if (_structure != null)
         {
-            _structure.ClickTile(_upgrades);
+            return _structure.ClickTile(_upgrades);
         }
+
+        return null;
     }
 
     private void Update()
