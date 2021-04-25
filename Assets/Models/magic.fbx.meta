@@ -42,6 +42,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: glass_cyan
+    second: {fileID: 2100000, guid: f2d9e1aace962ecb5b3375a89a2a222a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: glass_light_blue
     second: {fileID: 2100000, guid: 07cd4aa562876ec5bb3ce5ea42d303d0, type: 2}
   - first:
