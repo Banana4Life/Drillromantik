@@ -9,6 +9,7 @@ public class Structure
 {
     public String name;
     public GameObject prefab;
+    public Texture texture;
     private LimitScript _limit;
     private BuildScript _build;
     private UpgradeScript _upgrade;

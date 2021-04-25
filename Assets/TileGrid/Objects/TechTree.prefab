@@ -46,25 +46,33 @@ MonoBehaviour:
   Structures:
   - name: Woods
     prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
+    texture: {fileID: 0}
     spawnWeight: 1
   - name: Lumberjack Hut
     prefab: {fileID: 7588520534324842638, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
+    texture: {fileID: 8400000, guid: aeaa40e00e5ad9acb9159e293dd0fd1f, type: 2}
     spawnWeight: 0
   - name: Charcoal Burner
     prefab: {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
+    texture: {fileID: 0}
     spawnWeight: 0
   - name: Base
     prefab: {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+    texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
     spawnWeight: 0
   - name: Smith
     prefab: {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
+    texture: {fileID: 8400000, guid: 38eba72860794424c97313b87be56961, type: 2}
     spawnWeight: 0
   - name: Market
     prefab: {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
+    texture: {fileID: 0}
     spawnWeight: 0
   - name: Wasteland
     prefab: {fileID: 0}
+    texture: {fileID: 0}
     spawnWeight: 3
   - name: Research Facility
     prefab: {fileID: 6832233711388223767, guid: 2be9f7bc32ea71d64be7c87f28ab1380, type: 3}
+    texture: {fileID: 8400000, guid: f5ce2cbaee957c52b9f7b1b26945abad, type: 2}
     spawnWeight: 0
