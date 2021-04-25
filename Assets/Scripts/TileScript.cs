@@ -190,7 +190,7 @@ public class TileScript : MonoBehaviour
         {
             currentStructure = Instantiate(_structure.prefab, transform, false);
             currentStructure.name = $"{structure.name}";
-            currentStructure.GetComponentInChildren<MeshRenderer>().gameObject.transform.Rotate(Vector3.up, Random.Range(0,360));
+            currentStructure.transform.GetChild(0).Rotate(Vector3.up, Random.Range(0,360));
         }
 
         _upgrades = _structure.copyBuildingUpgrades();
