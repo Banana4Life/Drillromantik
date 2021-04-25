@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class TileScript : MonoBehaviour
 {
     private Structure _structure;
+    public Structure Structure => _structure;
     private Upgrades _upgrades = new Upgrades();
     public GameObject currentStructure;
 
@@ -14,6 +15,7 @@ public class TileScript : MonoBehaviour
     private TileGridController _controller;
     public CubeCoord pos;
     private static readonly int ColorPropertyId = Shader.PropertyToID("_Color");
+    private Renderer _renderer;
 
 
     // Start is called before the first frame update
@@ -21,9 +23,10 @@ public class TileScript : MonoBehaviour
     {
         InvokeRepeating(nameof(TileTick), 1f, 1f);
         _controller = GetComponentInParent<TileGridController>();
+        _renderer = GetComponentInChildren<Renderer>();
     }
 
-    void TileTick()
+    private void TileTick()
     {
         _structure?.TickTile(_upgrades);
     }
@@ -59,13 +62,12 @@ public class TileScript : MonoBehaviour
 
     private void SetTileMaterialPropertyBlock(MaterialPropertyBlock matPropBlock)
     {
-        var componentInChildren = GetComponentInChildren<Renderer>();
-        componentInChildren.SetPropertyBlock(matPropBlock, 2);
-        componentInChildren.SetPropertyBlock(matPropBlock, 3);
-        componentInChildren.SetPropertyBlock(matPropBlock, 4);
-        componentInChildren.SetPropertyBlock(matPropBlock, 5);
-        componentInChildren.SetPropertyBlock(matPropBlock, 6);
-        componentInChildren.SetPropertyBlock(matPropBlock, 7);
+        _renderer.SetPropertyBlock(matPropBlock, 2);
+        _renderer.SetPropertyBlock(matPropBlock, 3);
+        _renderer.SetPropertyBlock(matPropBlock, 4);
+        _renderer.SetPropertyBlock(matPropBlock, 5);
+        _renderer.SetPropertyBlock(matPropBlock, 6);
+        _renderer.SetPropertyBlock(matPropBlock, 7);
     }
 
     public void UnSelectTile()
@@ -85,24 +87,13 @@ public class TileScript : MonoBehaviour
     
     public Resources ClickTile()
     {
-        if (_structure != null)
-        {
-            return _structure.ClickTile(_upgrades);
-        }
-
-        return null;
+        return _structure?.ClickTile(_upgrades);
     }
 
     private void Update()
     {
         
     }
-
-    public Structure Structure
-    {
-        get => _structure;
-    }
-
     
     [CustomEditor(typeof(TileScript))]
     public class TileInspector : Editor
