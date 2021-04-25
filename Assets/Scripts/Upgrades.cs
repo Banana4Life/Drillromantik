@@ -45,16 +45,35 @@ public class Upgrades
         return toAdd;
     }
 
-    public void UpgradeTick()
+    public bool UpgradeTick()
     {
-        if (TickUpgrades.Count > aquiredClickUpgrades)
+        if (TickUpgrades.Count > aquiredTickUpgrades)
         {
-            var upgrade = TickUpgrades[aquiredTickUpgrades+1];
+            var upgrade = TickUpgrades[aquiredTickUpgrades];
             if (Global.Resources.HasResources(upgrade.cost))
             {
                 Global.Resources.Add(upgrade.cost.items);
-                aquiredTickUpgrades++;    
+                aquiredTickUpgrades++;
+                return true;
             }
         }
+
+        return false;
+    }
+
+    public bool UpgradeClick()
+    {
+        if (ClickUpgrades.Count > aquiredClickUpgrades)
+        {
+            var upgrade = ClickUpgrades[aquiredClickUpgrades];
+            if (Global.Resources.HasResources(upgrade.cost))
+            {
+                Global.Resources.Add(upgrade.cost.items);
+                aquiredClickUpgrades++;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

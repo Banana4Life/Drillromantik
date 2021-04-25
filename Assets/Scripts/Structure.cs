@@ -71,4 +71,9 @@ public class Structure
         }
         return upgrades;
     }
+
+    public bool IsBase()
+    {
+        return "Base".Equals(name);
+    }
 }

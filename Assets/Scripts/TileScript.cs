@@ -25,17 +25,22 @@ public class TileScript : MonoBehaviour
 
     void TileTick()
     {
-        if (_structure != null)
-        {
-            _structure.TickTile(_upgrades);
-        }
+        _structure?.TickTile(_upgrades);
     }
 
-    void TileUpgrade()
+    public void TileUpgradeTick()
     {
         if (_structure != null)
         {
             _upgrades.UpgradeTick();
+        }
+    }
+
+    public void TileUpgradeClick()
+    {
+        if (_structure != null)
+        {
+            _upgrades.UpgradeClick();
         }
     }
 
@@ -205,5 +210,20 @@ public class TileScript : MonoBehaviour
     {
         pos = coord;
         transform.Translate(0,50,0);
+    }
+
+    public bool CanUpgradeClick()
+    {
+        return _upgrades.ClickUpgrades.Count > _upgrades.aquiredClickUpgrades;
+    }
+
+    public bool CanUpgradeTick()
+    {
+        return _upgrades.TickUpgrades.Count > _upgrades.aquiredTickUpgrades;
+    }
+
+    public bool CanDestroy()
+    {
+        return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeTick());
     }
 }

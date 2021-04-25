@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -997,6 +997,59 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &601942820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601942821}
+  - component: {fileID: 601942822}
+  m_Layer: 5
+  m_Name: TileMenuBars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &601942821
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601942820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 765478484}
+  - {fileID: 672294210}
+  m_Father: {fileID: 709797272}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &601942822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601942820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed2e71fc6574e398b20b676141d4caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingMenu: {fileID: 765478489}
+  toolboxMenu: {fileID: 672294214}
+  clickButton: {fileID: 1684286107}
 --- !u!1 &618761782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1129,8 @@ GameObject:
   - component: {fileID: 672294213}
   - component: {fileID: 672294212}
   - component: {fileID: 672294211}
+  - component: {fileID: 672294215}
+  - component: {fileID: 672294214}
   m_Layer: 5
   m_Name: ToolboxMenu
   m_TagString: Untagged
@@ -1090,20 +1145,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672294209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1180472291}
   - {fileID: 1894263510}
   - {fileID: 2126985306}
-  m_Father: {fileID: 709797272}
-  m_RootOrder: 3
+  m_Father: {fileID: 601942821}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 181.27747, y: -50}
-  m_SizeDelta: {x: -870, y: 210}
+  m_AnchoredPosition: {x: 181.27747, y: -1240.5}
+  m_SizeDelta: {x: 0, y: 210}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &672294211
 MonoBehaviour:
@@ -1123,7 +1178,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 50
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1169,6 +1224,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672294209}
   m_CullTransparentMesh: 1
+--- !u!114 &672294214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672294209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422dbecb4cb14b9d84ec3e27e3d87956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyButton: {fileID: 1180472292}
+  buildingUpgradeButton: {fileID: 1894263511}
+  clickUpgradeButton: {fileID: 2126985307}
+--- !u!114 &672294215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672294209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 0
 --- !u!1001 &682682095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1275,8 +1359,7 @@ RectTransform:
   m_Children:
   - {fileID: 166250681}
   - {fileID: 1684286106}
-  - {fileID: 765478484}
-  - {fileID: 672294210}
+  - {fileID: 601942821}
   m_Father: {fileID: 1986097084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1359,6 +1442,7 @@ GameObject:
   - component: {fileID: 765478487}
   - component: {fileID: 765478485}
   - component: {fileID: 765478488}
+  - component: {fileID: 765478489}
   m_Layer: 5
   m_Name: BuildingMenu
   m_TagString: Untagged
@@ -1373,20 +1457,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765478483}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1534674583}
   - {fileID: 1228864614}
   - {fileID: 1442748471}
-  m_Father: {fileID: 709797272}
-  m_RootOrder: 2
+  m_Father: {fileID: 601942821}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 181.27747, y: -50}
-  m_SizeDelta: {x: -870, y: 210}
+  m_AnchoredPosition: {x: 181.27747, y: -1240.5}
+  m_SizeDelta: {x: 470, y: 210}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &765478485
 MonoBehaviour:
@@ -1466,6 +1550,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 0
+--- !u!114 &765478489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765478483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22e5fe879d46788889d689f3abf3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1041822141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1827,7 @@ MonoBehaviour:
   holding: 0
   tileSelected: {fileID: 0}
   tileHover: {fileID: 0}
-  clickButton: {fileID: 1684286107}
+  tileMenuController: {fileID: 601942822}
 --- !u!4 &1152096139
 Transform:
   m_ObjectHideFlags: 0
@@ -1828,7 +1924,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1180472293}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672294214}
+        m_TargetAssemblyTypeName: UI.ToolboxMenuController, Assembly-CSharp
+        m_MethodName: ApplyAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1180472292}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1180472293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2880,7 +2988,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1894263512}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672294214}
+        m_TargetAssemblyTypeName: UI.ToolboxMenuController, Assembly-CSharp
+        m_MethodName: ApplyAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1894263511}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1894263512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3264,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2126985308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672294214}
+        m_TargetAssemblyTypeName: UI.ToolboxMenuController, Assembly-CSharp
+        m_MethodName: ApplyAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2126985307}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2126985308
 MonoBehaviour:
   m_ObjectHideFlags: 0
