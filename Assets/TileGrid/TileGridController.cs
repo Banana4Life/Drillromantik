@@ -32,7 +32,8 @@ namespace TileGrid
 
         private void spawnOrigin()
         {
-            spawnTile(CubeCoord.ORIGIN);
+            var tile = spawnTile(CubeCoord.ORIGIN);
+            _populator.PopulateOrigin(tile);
             _edgeSet.Add(CubeCoord.ORIGIN);
         }
 

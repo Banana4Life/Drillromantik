@@ -27,7 +27,15 @@ namespace TileGrid
             var tileScript = tileObject.GetComponent<TileScript>();
             tileScript.Init(coord);
             tileScript.AssignStructure(structure);
-            
+        }
+        
+        public void PopulateOrigin(GameObject tileObject)
+        {
+            var structure = techTree.Structures[3];
+
+            var tileScript = tileObject.GetComponent<TileScript>();
+            tileScript.Init(CubeCoord.ORIGIN);
+            tileScript.AssignStructure(structure);
         }
     }
 

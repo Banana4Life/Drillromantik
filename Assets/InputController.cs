@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputController : MonoBehaviour
 {
     private GameObject _pointer;
     public GameObject PointerPrefab;
     public float holding;
-
+    public TileScript selectedTile;
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,12 @@ public class InputController : MonoBehaviour
             
             if (Input.GetButtonDown("Fire1"))
             {
-                hit.collider.transform.parent.gameObject.GetComponent<TileScript>().ClickTile();
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                selectedTile = hit.collider.transform.parent.gameObject.GetComponent<TileScript>();
             }
 
             if (Input.GetButton("Fire1"))
@@ -47,7 +53,10 @@ public class InputController : MonoBehaviour
                 holding = 0;
             }
         }
-        
-        
+    }
+
+    public void ClickSelectedTile()
+    {
+        selectedTile.ClickTile();
     }
 }
