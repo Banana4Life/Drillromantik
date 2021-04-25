@@ -2,6 +2,7 @@ using System;
 using TileGrid;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TileScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TileScript : MonoBehaviour
     public TechTree TechTree;
     private TileGridController _controller;
     public CubeCoord pos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,30 @@ public class TileScript : MonoBehaviour
         {
             _structure.TickTile(_upgrades);
         }
+    }
+
+    public void SelectTile()
+    {
+        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
+    }
+
+    private static MaterialPropertyBlock coloredMaterialPropertyBlock(String hexColor)
+    {
+        var matPropBlock = new MaterialPropertyBlock();
+        Color color;
+        ColorUtility.TryParseHtmlString(hexColor, out color);
+        matPropBlock.SetColor("_Color", color);
+        return matPropBlock;
+    }
+
+    public void UnSelectTile()
+    {
+        GetComponentInChildren<Renderer>().SetPropertyBlock(null);
+    }
+    
+    public void HoverTile()
+    {
+        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
     }
     
     public void ClickTile()
