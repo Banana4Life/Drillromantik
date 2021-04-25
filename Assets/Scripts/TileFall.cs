@@ -5,6 +5,9 @@ using UnityEngine;
 public class TileFall : MonoBehaviour
 {
     public GameObject hexagone;
+    public const int StartHeight = 50;
+    public const float Duration = 1f;
+    public float currenDuration = 0f;
 
     // Start is called before the first frame update
     void Start() { }
@@ -12,18 +15,28 @@ public class TileFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO other script and hide shadows while falling
         var position = transform.position;
-        if (position.y > 0)
+        currenDuration += Time.deltaTime;
+        if (currenDuration < Duration)
         {
-            transform.Translate(0, 30 * -Time.deltaTime, 0);
+            float y = Mathf.Lerp(StartHeight, 0, EaseOut(currenDuration / Duration));
+            transform.position = new Vector3(position.x, y, position.z);
             return;
         }
 
-        position = new Vector3(position.x, 0, position.z);
-        transform.position = position;
+        transform.position = new Vector3(position.x, 0, position.z);
         hexagone.layer = 11;
-        
+
         Destroy(this);
+    }
+
+    private static float Flip(float t)
+    {
+        return 1 - t;
+    }
+
+    private static float EaseOut(float t)
+    {
+        return Flip(Mathf.Pow(Flip(t), 3));
     }
 }
