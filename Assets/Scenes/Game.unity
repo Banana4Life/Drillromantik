@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658822, g: 0.49642307, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 38985831}
   - component: {fileID: 38985830}
   - component: {fileID: 38985829}
-  - component: {fileID: 38985832}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,18 +267,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &38985832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38985827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78da3f00f3328541b4526c0b0b5ec5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &471922784
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba53db3b03e2e1ab1a24f0578e60533d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanSpeed: 1
+  PanSpeed: 0.6
   minZoomLevel: 10
   maxZoomLevel: 30
   startZoomLevel: 20
@@ -393,6 +380,30 @@ PrefabInstance:
     - target: {fileID: 7329173008209280955, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickSelectedTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838192948251423229, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b67714c1a5fb09378884adbbdb2df97f, type: 3}
