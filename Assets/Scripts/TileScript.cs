@@ -212,15 +212,19 @@ public class TileScript : MonoBehaviour
         return _structure.CanUpgradeClick();
     }
 
-    public bool CanUpgradeTick()
+    public bool CanUpgradeBuilding()
     {
         return _upgrades.upgrades.Count > _upgrades.aquired;
     }
 
     public bool CanDestroy()
     {
-        return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeTick());
+        return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeBuilding());
     }
 
-  
+
+    public bool CanUpgradeGlobal()
+    {
+        return _structure.IsResearch();
+    }
 }

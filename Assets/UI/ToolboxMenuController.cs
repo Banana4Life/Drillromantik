@@ -24,16 +24,18 @@ namespace UI
         public void TileSelected(TileScript tile)
         {
             var canDestroy = tile.CanDestroy();
-            var canUpgradeTick = tile.CanUpgradeTick();
+            var canUpgradeTick = tile.CanUpgradeBuilding();
             var canUpgradeClick = tile.CanUpgradeClick();
+            var canUpgradeGlobal = tile.CanUpgradeGlobal();
 
-            if (canDestroy || canUpgradeTick || canUpgradeClick)
+            if (canDestroy || canUpgradeTick || canUpgradeClick || canUpgradeGlobal)
             {
                 gameObject.SetActive(true);
 
                 destroyButton.gameObject.SetActive(canDestroy);
                 buildingUpgradeButton.gameObject.SetActive(canUpgradeTick);
                 clickUpgradeButton.gameObject.SetActive(canUpgradeClick);
+                // TODO clickUpgradeButton.gameObject.SetActive(canUpgradeGlobal);
 
                 _selectedTile = tile;
             }
@@ -54,7 +56,7 @@ namespace UI
             else if (button == buildingUpgradeButton)
             {
                 _selectedTile.AquireBuildingUpgrade();
-                if (!_selectedTile.CanUpgradeTick())
+                if (!_selectedTile.CanUpgradeBuilding())
                 {
                     button.gameObject.SetActive(false);
                 }
