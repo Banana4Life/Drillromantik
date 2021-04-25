@@ -54,11 +54,11 @@ MonoBehaviour:
     spawnWeight: 0
   - name: Charcoal Burner
     prefab: {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
-    texture: {fileID: 0}
+    texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
     spawnWeight: 0
   - name: Base
     prefab: {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
-    texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
+    texture: {fileID: 0}
     spawnWeight: 0
   - name: Smith
     prefab: {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
