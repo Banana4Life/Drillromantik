@@ -76,3 +76,26 @@ MonoBehaviour:
     prefab: {fileID: 6832233711388223767, guid: 2be9f7bc32ea71d64be7c87f28ab1380, type: 3}
     texture: {fileID: 8400000, guid: f5ce2cbaee957c52b9f7b1b26945abad, type: 2}
     spawnWeight: 0
+  Textures:
+  - type: 0
+    tex: {fileID: 8400000, guid: 993945d05add648f9bae592cea39d313, type: 2}
+  - type: 1
+    tex: {fileID: 8400000, guid: e5bd716a4859249f1b75be227e4a725c, type: 2}
+  - type: 2
+    tex: {fileID: 2800000, guid: 7631378c146a7f517b921467e7ea8858, type: 3}
+  - type: 3
+    tex: {fileID: 2800000, guid: db642c64867c0adbe9f6024d5ca0c3b2, type: 3}
+  - type: 4
+    tex: {fileID: 2800000, guid: 7915fe60d3f805418baf4b72c2e54658, type: 3}
+  - type: 5
+    tex: {fileID: 2800000, guid: 91e604440f3796dac9b4d9fe2d515712, type: 3}
+  - type: 6
+    tex: {fileID: 2800000, guid: bdc7c3bd7106ca04ab201866da4b4983, type: 3}
+  - type: 7
+    tex: {fileID: 2800000, guid: a9c5fd6e7388548f99d67b4c7dd35f01, type: 3}
+  - type: 8
+    tex: {fileID: 2800000, guid: 39c5e3f1dab0c75caa88bce19de81b27, type: 3}
+  - type: 9
+    tex: {fileID: 2800000, guid: e4be53b7dcb245fb6b676d7bb67a655d, type: 3}
+  - type: 10
+    tex: {fileID: 2800000, guid: 72c095d975c39e5dd8132348d77c6116, type: 3}
