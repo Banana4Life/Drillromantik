@@ -111,17 +111,15 @@ public class Upgrade
             switch (type)
             {
                 case UpgradeType.ADD:
-                    if (resources.HasResources(this.resources))
-                    {
-                        resources.Add(this.resources.items);
-                    }
+                    resources.Add(this.resources.items);
                     break;
                 case UpgradeType.MULTIPLY:
+                    
                     foreach (var item in this.resources.items)
                     {
                         resources.Mul(item.type, item.quantity);
+                        
                     }
-
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

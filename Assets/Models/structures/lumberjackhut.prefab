@@ -88,7 +88,7 @@ MonoBehaviour:
       resources:
         items:
         - type: 0
-          quantity: 0
+          quantity: 1
       cost:
         items: []
     - name: Copper Tools
