@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
     public float holding;
     public TileScript tileSelected;
     public TileScript tileHover;
+    public Button clickButton;
     
     // Start is called before the first frame update
     void Start()
     {
+        clickButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -48,6 +51,7 @@ public class InputController : MonoBehaviour
 
                 tileSelected = tileScript;
                 tileSelected.SelectTile();
+                clickButton.gameObject.SetActive(tileSelected.HasClickReward());
             }
 
             if (Input.GetButton("Fire1"))
