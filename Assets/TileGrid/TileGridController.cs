@@ -44,7 +44,7 @@ namespace TileGrid
         IEnumerator spawnTilesAroundEdge()
         {
             var newEdge = new HashSet<CubeCoord>();
-            foreach (var cubeCoord in _edgeSet.SelectMany(edgeCoord => CubeCoord.Neighbors.Select(offset => edgeCoord + offset).Where(newCoord => !_knownTiles.ContainsKey(newCoord))).OrderBy(e => Random.value))
+            foreach (var cubeCoord in _edgeSet.SelectMany(edgeCoord => CubeCoord.Neighbors.Select(offset => edgeCoord + offset).Where(newCoord => !_knownTiles.ContainsKey(newCoord))).Distinct().OrderBy(e => Random.value))
             {
                 yield return new WaitForSeconds(0.05f);
                 spawnAndPopulateTile(cubeCoord);
