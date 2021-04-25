@@ -19,7 +19,6 @@ public class Structure
     public void TickTile(Upgrades upgrades)
     {
         Global.Resources.Add(upgrades.CalculateTick());
-        Debug.Log(Global.Resources);
     }
     
     public void ClickTile(Upgrades upgrades)
