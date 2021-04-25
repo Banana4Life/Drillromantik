@@ -79,7 +79,7 @@ public class InputController : MonoBehaviour
         var gained = tileSelected.ClickTile();
         if (gained != null)
         {
-            var plusText = Instantiate(plusPrefab, clickButton.transform);
+            var plusText = Instantiate(plusPrefab, tileMenuController.clickButton.transform);
             // TODO icon + text
             plusText.GetComponent<Text>().text = gained.ToString();
         }
