@@ -31,14 +31,19 @@ public class TileScript : MonoBehaviour
         _structure?.TickTile(_controller, pos, _upgrades);
     }
 
-    public void TileUpgradeBuilding()
+    public void AquireBuildingUpgrade()
     {
         _upgrades.AcquireNext();
     }
     
-    public void TileUpgradeClick()
+    public void AquireClickUpgrade()
     {
-        _structure.clickUpgrades.AcquireNext();
+        _structure.AcquireNextClickUpgrade();
+    }
+    
+    public void AquireGlobalUpgrade()
+    {
+        _structure.AcquireNextGlobalUpgrade();
     }
 
     public void SelectTile()
@@ -76,12 +81,12 @@ public class TileScript : MonoBehaviour
 
     public bool HasClickReward()
     {
-        return _structure.clickUpgrades.aquired > 0;
+        return _structure.HasClickUpgrades();
     }
     
     public Resources ClickTile()
     {
-        var calculated = _structure.clickUpgrades.Calculate();
+        var calculated = _structure.CalculateClick();
         Global.Resources.Add(calculated);
         return calculated;
     }
@@ -204,7 +209,7 @@ public class TileScript : MonoBehaviour
 
     public bool CanUpgradeClick()
     {
-        return _structure.clickUpgrades.upgrades.Count > _structure.clickUpgrades.aquired;
+        return _structure.CanUpgradeClick();
     }
 
     public bool CanUpgradeTick()

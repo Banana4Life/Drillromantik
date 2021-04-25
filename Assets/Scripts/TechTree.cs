@@ -7,10 +7,6 @@ public class TechTree : MonoBehaviour
 {
     public Structure[] Structures;
     public ItemTypeTexture[] Textures;
-
-  
-
-
 }
 
 [Serializable]

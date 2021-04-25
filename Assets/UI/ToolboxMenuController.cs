@@ -53,7 +53,7 @@ namespace UI
             }
             else if (button == buildingUpgradeButton)
             {
-                _selectedTile.TileUpgradeBuilding();
+                _selectedTile.AquireBuildingUpgrade();
                 if (!_selectedTile.CanUpgradeTick())
                 {
                     button.gameObject.SetActive(false);
@@ -61,7 +61,7 @@ namespace UI
             }
             else if (button == clickUpgradeButton)
             {
-                _selectedTile.TileUpgradeClick();
+                _selectedTile.AquireClickUpgrade();
                 if (!_selectedTile.CanUpgradeClick())
                 {
                     button.gameObject.SetActive(false);

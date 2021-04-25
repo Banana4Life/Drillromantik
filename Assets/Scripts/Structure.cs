@@ -17,6 +17,9 @@ public class Structure
     public Upgrades buildingUpgrades;
     public Upgrades clickUpgrades;
     public Upgrades globalUpgrades;
+
+    private Upgrades clickUpgradesInstance;
+    private Upgrades globalUpgradesInstance;
     
     private LimitScript _limit;
     private BuildScript _build;
@@ -36,6 +39,15 @@ public class Structure
         if (!_init && prefab)
         {
             _init = true;
+            
+            clickUpgradesInstance = new Upgrades();
+            clickUpgradesInstance.upgrades.AddRange(clickUpgrades.upgrades);
+            clickUpgradesInstance.aquired = clickUpgrades.aquired;
+            
+            globalUpgradesInstance = new Upgrades();
+            globalUpgradesInstance.upgrades.AddRange(globalUpgrades.upgrades);
+            globalUpgradesInstance.aquired = globalUpgrades.aquired;
+            
             _build = prefab.GetComponent<BuildScript>();
             _limit = prefab.GetComponent<LimitScript>();
         }
@@ -97,6 +109,31 @@ public class Structure
         return StructureType.MARKETPLACE.Equals(type);
     }
 
+    public bool AcquireNextClickUpgrade()
+    {
+        return clickUpgradesInstance.AcquireNext();
+    }
+
+    public bool AcquireNextGlobalUpgrade()
+    {
+        return globalUpgradesInstance.AcquireNext();
+    }
+
+    public bool HasClickUpgrades()
+    {
+        return clickUpgradesInstance.aquired > 0;
+    }
+
+    public Resources CalculateClick()
+    {
+        return clickUpgradesInstance.Calculate();
+    }
+
+    public bool CanUpgradeClick()
+    {
+        return clickUpgradesInstance.upgrades.Count > clickUpgradesInstance.aquired;
+
+    }
 }
 
 public enum StructureType
