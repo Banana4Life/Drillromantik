@@ -12,6 +12,26 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: bee_nest_bottom
+    second: {fileID: 2100000, guid: 4df9d2f006422f4edbb622ea20dd8af7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bee_nest_front
+    second: {fileID: 2100000, guid: e7f8c8fe55a1b3403bb4f3560771cb63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bee_nest_side
+    second: {fileID: 2100000, guid: c9c03141701e1b6a095b509fcdcca141, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bee_nest_top
+    second: {fileID: 2100000, guid: 965e22a9e72fc3510abfbe14cc020c2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: cornflower
     second: {fileID: 2100000, guid: 21d5991f921f57c799c625ffd6102589, type: 2}
   - first:
@@ -42,6 +62,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: double_plant_fern_bottom
+    second: {fileID: 2100000, guid: 3f4d653b25cfca2498c5ebb267ef2e50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: double_plant_fern_top
+    second: {fileID: 2100000, guid: 6da20d2822e37ccbb8fb914648882059, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: double_plant_grass_bottom
     second: {fileID: 2100000, guid: cf376920970656590835dd027b5e2ffc, type: 2}
   - first:
@@ -49,6 +79,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: double_plant_grass_top
     second: {fileID: 2100000, guid: 2f485b0443d7ac92bb16937bff81053e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fern
+    second: {fileID: 2100000, guid: 3502d29c86cec35bbbb08e3c75118ced, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -104,11 +139,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: poppy
     second: {fileID: 2100000, guid: 7e49bca1579f543e3bd52902b22b7945, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sapling_oak
-    second: {fileID: 2100000, guid: 53a709b86f641c575be5c20b0050005c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
