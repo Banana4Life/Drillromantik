@@ -24,22 +24,25 @@ public class InputController : MonoBehaviour
         {
             return;
         }
-        
+
         Ray worldPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        var hoveringTile = Physics.Raycast(worldPoint, out hit);
+        const int selectableTileLayerMask = 1 << 11;
+        var hoveringTile = Physics.Raycast(worldPoint, out RaycastHit hit, Mathf.Infinity, selectableTileLayerMask);
         if (hoveringTile)
         {
-            var tileScript =  hit.collider.transform.parent.gameObject.GetComponent<TileScript>();
-            if (tileHover && tileHover != tileSelected)
+            var tileScript = hit.collider.transform.parent.gameObject.GetComponent<TileScript>();
+            if (tileHover != tileScript)
             {
-                tileHover.UnSelectTile();
-            }
-            
-            tileHover = tileScript;
-            if (tileScript && tileHover != tileSelected)
-            {
-                tileHover.HoverTile();
+                if (tileHover && tileHover != tileSelected)
+                {
+                    tileHover.UnSelectTile();
+                }
+
+                tileHover = tileScript;
+                if (tileScript && tileHover != tileSelected)
+                {
+                    tileHover.HoverTile();
+                }
             }
 
             if (Input.GetButtonDown("Fire1"))

@@ -13,12 +13,13 @@ public class TileScript : MonoBehaviour
     public TechTree TechTree;
     private TileGridController _controller;
     public CubeCoord pos;
+    private static readonly int ColorPropertyId = Shader.PropertyToID("_Color");
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("TileTick", 1f, 1f);
+        InvokeRepeating(nameof(TileTick), 1f, 1f);
         _controller = GetComponentInParent<TileGridController>();
     }
 
@@ -46,20 +47,20 @@ public class TileScript : MonoBehaviour
     private static MaterialPropertyBlock coloredMaterialPropertyBlock(String hexColor)
     {
         var matPropBlock = new MaterialPropertyBlock();
-        Color color;
-        ColorUtility.TryParseHtmlString(hexColor, out color);
-        matPropBlock.SetColor("_Color", color);
+        ColorUtility.TryParseHtmlString(hexColor, out Color color);
+        matPropBlock.SetColor(ColorPropertyId, color);
         return matPropBlock;
     }
 
     private void SetTileMaterialPropertyBlock(MaterialPropertyBlock matPropBlock)
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 2);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 3);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 4);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 5);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 6);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 7);
+        var componentInChildren = GetComponentInChildren<Renderer>();
+        componentInChildren.SetPropertyBlock(matPropBlock, 2);
+        componentInChildren.SetPropertyBlock(matPropBlock, 3);
+        componentInChildren.SetPropertyBlock(matPropBlock, 4);
+        componentInChildren.SetPropertyBlock(matPropBlock, 5);
+        componentInChildren.SetPropertyBlock(matPropBlock, 6);
+        componentInChildren.SetPropertyBlock(matPropBlock, 7);
     }
 
     public void UnSelectTile()
@@ -87,17 +88,7 @@ public class TileScript : MonoBehaviour
 
     private void Update()
     {
-        // TODO other script and hide shadows while falling
-        var position = transform.position;
-        if (position.y > 0)
-        {
-            transform.Translate(0, 30 * -Time.deltaTime, 0);
-        }
-        else
-        {
-            position = new Vector3(position.x, 0, position.z);
-            transform.position = position;
-        }
+        
     }
 
     public Structure Structure
