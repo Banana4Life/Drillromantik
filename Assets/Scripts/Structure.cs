@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TileGrid;
 using UnityEngine;
 
@@ -64,20 +65,10 @@ public class Structure
         var upgrades = new Upgrades();
         if (_upgrade)
         {
-            foreach (var upgrade in _upgrade.clickUpgrades)
-            {
-                if (upgrade.grant)
-                {
-                    upgrades.AddClickUpgrade(upgrade);
-                }
-            }
-            foreach (var upgrade in _upgrade.tickUpgrades)
-            {
-                if (upgrade.grant)
-                {
-                    upgrades.AddTickUpgrade(upgrade);
-                }
-            }
+            upgrades.ClickUpgrades.AddRange(_upgrade.Upgrades.ClickUpgrades);
+            upgrades.TickUpgrades.AddRange(_upgrade.Upgrades.TickUpgrades);
+            upgrades.aquiredClickUpgrades = _upgrade.Upgrades.aquiredClickUpgrades;
+            upgrades.aquiredTickUpgrades = _upgrade.Upgrades.aquiredTickUpgrades;
         }
         return upgrades;
     }

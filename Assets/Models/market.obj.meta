@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc8ab41bed9cc8a8787f1d308ac730b5
+guid: 05a7953310012f9a7aa731fed97edb7d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: chain
-    second: {fileID: 2100000, guid: a75c45324a7c834c8b27e4a3f8c166a6, type: 2}
+      name: acacia_planks
+    second: {fileID: 2100000, guid: e5443fd9815e0bc329ef8213a2e1a74f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: chest
-    second: {fileID: 2100000, guid: cd67a24ec553c2c41ac4f8ad3e8d594e, type: 2}
+      name: azure_bluet
+    second: {fileID: 2100000, guid: f11c596515ffc9ce7beaceffff6ebec2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt_grass_side
+    second: {fileID: 2100000, guid: bbbd86933c51a6a16850490de976e681, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -22,63 +27,53 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: gray_concrete
-    second: {fileID: 2100000, guid: a9a95afa613e33453957300391ea5745, type: 2}
+      name: glowstone
+    second: {fileID: 2100000, guid: 94504ba937357711497a9c1092f2d111, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: leaves_jungle
-    second: {fileID: 2100000, guid: 748f832454ec67a0ca64e35f80cd4efd, type: 2}
+      name: mob_char
+    second: {fileID: 2100000, guid: f895869ebdd3f9209bf4f9c2b4a78a8f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: log_spruce_side
-    second: {fileID: 2100000, guid: 31abdbe3a9c291afb903ef14d2e35518, type: 2}
+      name: oak_trapdoor
+    second: {fileID: 2100000, guid: 68c38e029f13eb832be2466e6bee165a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: log_spruce_top
-    second: {fileID: 2100000, guid: 2b693303ca91ef8d8b3896084f0b08b5, type: 2}
+      name: poppy
+    second: {fileID: 2100000, guid: 7e49bca1579f543e3bd52902b22b7945, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: sand
-    second: {fileID: 2100000, guid: 5553122bc12c5eda6a9d9e04f9e5f893, type: 2}
+      name: smooth_stone
+    second: {fileID: 2100000, guid: c4b72da48aab64668b80e31d777d8ae7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: sugarcane
-    second: {fileID: 2100000, guid: b9269b660840b01be94d4e68ea984041, type: 2}
+      name: smooth_stone_slab_side
+    second: {fileID: 2100000, guid: 0fa1ef06dad5cbd5d8a8fe16a221a364, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: torch
-    second: {fileID: 2100000, guid: eea8a76a3630b6ef6bf571ed6ddd4a05, type: 2}
+      name: stone_bricks
+    second: {fileID: 2100000, guid: c36eed4e38f3f9b6eb0a8f631c9e05d7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: torch_flame
-    second: {fileID: 2100000, guid: 89a5d30672d73ed0fb4c5171a1720601, type: 2}
+      name: wool_lime
+    second: {fileID: 2100000, guid: be071c5b9adafa545aac758a214317bd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: water
-    second: {fileID: 2100000, guid: 6f14e023a58ed2352a9f17dbcc51491a, type: 2}
+      name: wool_orange
+    second: {fileID: 2100000, guid: c4815a3b163cd4088a968d763f1387ba, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: workbench_back
-    second: {fileID: 2100000, guid: 2bcc61462d5948dbd8a91bbfcddd0c79, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: workbench_front
-    second: {fileID: 2100000, guid: 506fc1f881eec28c9b450909ccd446bc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: workbench_top
-    second: {fileID: 2100000, guid: 62ea11ee074b9db44af0c4fe80cbdcb6, type: 2}
+      name: wool_white
+    second: {fileID: 2100000, guid: 63733869db57a8b178f97cce98284311, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1

@@ -44,40 +44,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickUpgrades:
-  - name: Miner
-    grant: 0
-    chance: 1
-    type: 0
-    resources:
-      items:
-      - type: 1
-        quantity: 1
-  - name: Copper Chance
-    grant: 0
-    chance: 0.1
-    type: 0
-    resources:
-      items:
-      - type: 4
-        quantity: 1
-  clickUpgrades:
-  - name: Base
-    grant: 1
-    chance: 1
-    type: 0
-    resources:
-      items:
-      - type: 1
-        quantity: 1
-  - name: Copper Chance
-    grant: 0
-    chance: 0.1
-    type: 0
-    resources:
-      items:
-      - type: 4
-        quantity: 1
+  Upgrades:
+    aquiredClickUpgrades: 1
+    aquiredTickUpgrades: 0
+    ClickUpgrades:
+    - name: Base
+      grant: 1
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 1
+          quantity: 1
+    - name: Copper Chance
+      grant: 0
+      chance: 0.1
+      type: 0
+      resources:
+        items:
+        - type: 4
+          quantity: 1
+    TickUpgrades:
+    - name: Miner
+      grant: 0
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 1
+          quantity: 1
+    - name: Copper Chance
+      grant: 0
+      chance: 0.1
+      type: 0
+      resources:
+        items:
+        - type: 4
+          quantity: 1
 --- !u!1001 &4605052033936674332
 PrefabInstance:
   m_ObjectHideFlags: 0

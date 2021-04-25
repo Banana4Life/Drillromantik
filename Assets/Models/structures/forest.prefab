@@ -44,17 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrades: []
-  tickUpgrades: []
-  clickUpgrades:
-  - name: Base
-    grant: 1
-    chance: 1
-    type: 0
-    resources:
-      items:
-      - type: 0
-        quantity: 1
+  Upgrades:
+    aquiredClickUpgrades: 1
+    aquiredTickUpgrades: 0
+    ClickUpgrades:
+    - name: Base
+      grant: 1
+      chance: 1
+      type: 0
+      resources:
+        items:
+        - type: 0
+          quantity: 1
+    TickUpgrades: []
 --- !u!1001 &6945132516729725446
 PrefabInstance:
   m_ObjectHideFlags: 0

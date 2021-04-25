@@ -30,6 +30,14 @@ public class TileScript : MonoBehaviour
         }
     }
 
+    void TileUpgrade()
+    {
+        if (_structure != null)
+        {
+            _upgrades.UpgradeTick();
+        }
+    }
+
     public void SelectTile()
     {
         SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
@@ -99,7 +107,6 @@ public class TileScript : MonoBehaviour
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
             
             if (GUILayout.Button("CLICK"))
             {
@@ -108,7 +115,44 @@ public class TileScript : MonoBehaviour
             }
 
             var tileScript = (TileScript) target;
-            
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Click Upgrades:");
+            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
+            {
+                if (GUILayout.Button("Upgrade"))
+                {
+                    tileScript._upgrades.aquiredClickUpgrades++;
+                }    
+            } 
+            GUILayout.EndHorizontal();
+            for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
+            {
+                var upgrade = tileScript._upgrades.ClickUpgrades[i];
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+                GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
+                GUILayout.EndHorizontal();
+            }
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Tick Upgrades:");
+            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredTickUpgrades)
+            {
+                if (GUILayout.Button("Upgrade"))
+                {
+                    tileScript._upgrades.aquiredTickUpgrades++;
+                }    
+            } 
+            GUILayout.EndHorizontal();
+            for (var i = 0; i < tileScript._upgrades.TickUpgrades.Count; i++)
+            {
+                var upgrade = tileScript._upgrades.TickUpgrades[i];
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+                GUILayout.Toggle(i < tileScript._upgrades.aquiredTickUpgrades, "");
+                GUILayout.EndHorizontal();
+            }
+
             foreach (var techTreeStructure in tileScript.TechTree.Structures)
             {
                 if (GUILayout.Button(techTreeStructure.name))
