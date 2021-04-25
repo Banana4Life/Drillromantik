@@ -30,7 +30,7 @@ namespace UI
         {
             while (true)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
                 var factor = BigInteger.One * 10;
                 foreach (var keyValuePair in _statusMap)
                 {

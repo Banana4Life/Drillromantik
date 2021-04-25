@@ -31,11 +31,19 @@ namespace UI
         {
             if (_text)
             {
-                
-                var thousands = Math.Min((int) (Math.Floor(Math.Round(BigInteger.Log10(_available))) / 3d), _unitSuffixes.Length - 1);
-                var significant = _available / BigInteger.Pow(BigInteger.One * 10,  3 * thousands);
-                String suffix = _unitSuffixes[thousands];
-                _text.text = $"{significant}{suffix}";
+                var exp = (int) Math.Floor(Math.Round(BigInteger.Log10(_available)));
+                var thousands = exp / 3;
+                if (thousands >= _unitSuffixes.Length)
+                {
+                    var significant = _available / BigInteger.Pow(BigInteger.One * 10,  exp);
+                    _text.text = $"{significant}E{exp}";
+                }
+                else
+                {
+                    var significant = _available / BigInteger.Pow(BigInteger.One * 10,  3 * thousands);
+                    String suffix = _unitSuffixes[thousands];
+                    _text.text = $"{significant}{suffix}";
+                }
             }
 
             gameObject.SetActive(_available != BigInteger.Zero);
