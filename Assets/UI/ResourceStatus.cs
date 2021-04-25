@@ -1,4 +1,6 @@
 using System;
+using System.Numerics;
+using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +13,9 @@ namespace UI
         [CanBeNull] private Text _text;
         private Image _icon;
         private ItemType? Type = null;
-        private decimal _available = Decimal.Zero;
+        private BigInteger _available = BigInteger.Zero;
+
+        private String[] _unitSuffixes = {"", " K", " M", " G", " T", " P", " E", " Z", " Y"};
 
         // Start is called before the first frame update
         void Start()
@@ -25,17 +29,26 @@ namespace UI
         
         private void updateText()
         {
-            if (_text != null)
+            if (_text)
             {
-                _text.text = $"{_available}";
+                
+                var thousands = Math.Min((int) (Math.Floor(Math.Round(BigInteger.Log10(_available))) / 3d), _unitSuffixes.Length - 1);
+                var significant = _available / BigInteger.Pow(BigInteger.One * 10,  3 * thousands);
+                String suffix = _unitSuffixes[thousands];
+                _text.text = $"{significant}{suffix}";
             }
-            gameObject.SetActive(_available != Decimal.Zero);
+
+            gameObject.SetActive(_available != BigInteger.Zero);
         }
 
-        public void SetAvailable(decimal n)
+        public BigInteger Available
         {
-            _available = n;
-            updateText();
+            get => _available;
+            set
+            {
+                _available = value;
+                updateText();
+            }
         }
     }
 }
