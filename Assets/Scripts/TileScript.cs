@@ -71,6 +71,11 @@ public class TileScript : MonoBehaviour
     {
         SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
     }
+
+    public bool HasClickReward()
+    {
+        return _upgrades.aquiredClickUpgrades > 0;
+    }
     
     public void ClickTile()
     {
