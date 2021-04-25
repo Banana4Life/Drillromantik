@@ -4,6 +4,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class InputController : MonoBehaviour
 {
@@ -79,8 +80,10 @@ public class InputController : MonoBehaviour
         var gained = tileSelected.ClickTile();
         if (gained != null)
         {
-            var plusText = Instantiate(plusPrefab, tileMenuController.clickButton.transform);
-            // TODO icon + text
+            var plusText = Instantiate(plusPrefab, tileMenuController.clickButton.transform.parent);
+            plusText.transform.position = Input.mousePosition;
+            
+            // TODO icon + text Icon aus TechTree.Textures
             plusText.GetComponent<Text>().text = gained.ToString();
         }
         

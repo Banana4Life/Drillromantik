@@ -1,25 +1,47 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
 using Random = System.Random;
+using System;
 
-public class UpgradeScript : MonoBehaviour
+[Serializable]
+public class Upgrade
 {
-    public Upgrades Upgrades;
+    public String name;
+    public float chance = 1;
+    public UpgradeType type;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public ItemList resources;
+    public ItemList cost;
 
-    // Update is called once per frame
-    void Update()
+    public Resources Apply(Resources resources)
     {
+        if (chance == 1 || UnityEngine.Random.value < chance)
+        {
+            switch (type)
+            {
+                case UpgradeType.ADD:
+                    resources.Add(this.resources.items);
+                    break;
+                case UpgradeType.MULTIPLY:
+                    
+                    foreach (var item in this.resources.items)
+                    {
+                        resources.Mul(item.type, item.quantity);
+                        
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        return resources;
     }
 }
+
 
 [CustomPropertyDrawer((typeof(Upgrade)))]
 public class UpgradeDrawer : PropertyDrawer
@@ -57,16 +79,21 @@ public class UpgradeDrawer : PropertyDrawer
 
      public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
      {
-         var resItems = property.FindPropertyRelative("resources");
-         var cosItems = property.FindPropertyRelative("cost");
+         return UpgradeHeight(property) * base.GetPropertyHeight(property, label);
+     }
+
+     public static float UpgradeHeight(SerializedProperty prop)
+     {
+         var resItems = prop.FindPropertyRelative("resources");
+         var cosItems = prop.FindPropertyRelative("cost");
          
          var res = height(resItems);
          var cos = height(cosItems);
-         
-         return (1 + res +cos) * base.GetPropertyHeight(property, label);
+
+         return (1 + res + cos);
      }
 
-     private static int height(SerializedProperty itemList)
+     private static float height(SerializedProperty itemList)
      {
          var itemArray = itemList.FindPropertyRelative("items");
          return itemList.isExpanded ? (itemArray.isExpanded ? itemArray.arraySize + 5 : 3) : 1;
@@ -92,42 +119,6 @@ public class ItemDrawer : PropertyDrawer
     // {
     //     return property.arraySize * base.GetPropertyHeight(property, label);
     // }
-}
-
-[Serializable]
-public class Upgrade
-{
-    public String name;
-    public float chance = 1;
-    public UpgradeType type;
-
-    public ItemList resources;
-    public ItemList cost;
-
-    public Resources Apply(Resources resources)
-    {
-        if (chance == 1 || UnityEngine.Random.value < chance)
-        {
-            switch (type)
-            {
-                case UpgradeType.ADD:
-                    resources.Add(this.resources.items);
-                    break;
-                case UpgradeType.MULTIPLY:
-                    
-                    foreach (var item in this.resources.items)
-                    {
-                        resources.Mul(item.type, item.quantity);
-                        
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        return resources;
-    }
 }
 
 

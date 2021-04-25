@@ -44,38 +44,402 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Structures:
-  - name: Woods
-    prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
-    texture: {fileID: 0}
-    spawnWeight: 1
-  - name: Lumberjack Hut
-    prefab: {fileID: 7588520534324842638, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
-    texture: {fileID: 8400000, guid: aeaa40e00e5ad9acb9159e293dd0fd1f, type: 2}
-    spawnWeight: 0
-  - name: Charcoal Burner
-    prefab: {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
-    texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
-    spawnWeight: 0
   - name: Base
+    type: 0
     prefab: {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
     texture: {fileID: 0}
     spawnWeight: 0
+    buildingUpgrades:
+      aquired: 0
+      upgrades:
+      - name: Miner
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 1
+            quantity: 1
+        cost:
+          items:
+          - type: 0
+            quantity: -10
+          - type: 1
+            quantity: -10
+      - name: 10% Copper
+        chance: 0.1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: 1
+        cost:
+          items:
+          - type: 0
+            quantity: -10
+          - type: 1
+            quantity: -10
+      - name: Assured Copper
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: 1
+        cost:
+          items:
+          - type: 5
+            quantity: -10
+      - name: Iron
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 6
+            quantity: 1
+          - type: 3
+            quantity: 1
+        cost:
+          items:
+          - type: 7
+            quantity: -10
+      - name: Diamonds!
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 10
+            quantity: 1
+        cost:
+          items:
+          - type: 8
+            quantity: -10
+    clickUpgrades:
+      aquired: 1
+      upgrades:
+      - name: Base
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 1
+            quantity: 1
+        cost:
+          items: []
+      - name: 10% Copper
+        chance: 0.1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: 1
+        cost:
+          items:
+          - type: 0
+            quantity: -10
+          - type: 1
+            quantity: -10
+      - name: More Stone
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 1
+            quantity: 5
+        cost:
+          items:
+          - type: 5
+            quantity: -1
+      - name: More Copper
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: 1
+        cost:
+          items:
+          - type: 5
+            quantity: -10
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
+  - name: Woods
+    type: 1
+    prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
+    texture: {fileID: 0}
+    spawnWeight: 1
+    buildingUpgrades:
+      aquired: 0
+      upgrades: []
+    clickUpgrades:
+      aquired: 1
+      upgrades:
+      - name: Base
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 0
+            quantity: 1
+        cost:
+          items: []
+      - name: Green Thumb
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 0
+            quantity: 4
+        cost:
+          items:
+          - type: 0
+            quantity: -100
+      - name: Copper Tools
+        chance: 2
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 5
+            quantity: -1
+      - name: Copper Tools
+        chance: 2
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 5
+            quantity: -1
+      - name: Iron Tools
+        chance: 2
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 7
+            quantity: -1
+      - name: Steel Tools
+        chance: 2
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 8
+            quantity: -1
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
+  - name: Lumberjack Hut
+    type: 3
+    prefab: {fileID: 7588520534324842638, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
+    texture: {fileID: 8400000, guid: aeaa40e00e5ad9acb9159e293dd0fd1f, type: 2}
+    spawnWeight: 0
+    buildingUpgrades:
+      aquired: 1
+      upgrades:
+      - name: Base
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 0
+            quantity: 1
+        cost:
+          items: []
+      - name: Copper Tools
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 5
+            quantity: -1
+      - name: Iron Tools
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 7
+            quantity: -1
+      - name: Steel Tools
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 8
+            quantity: -1
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
+  - name: Charcoal Burner
+    type: 4
+    prefab: {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
+    texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
+    spawnWeight: 0
+    buildingUpgrades:
+      aquired: 1
+      upgrades:
+      - name: Base
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 0
+            quantity: -5
+          - type: 2
+            quantity: 1
+        cost:
+          items: []
+      - name: Improved Burning
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+          - type: 2
+            quantity: 3
+        cost:
+          items:
+          - type: 0
+            quantity: -100
+          - type: 2
+            quantity: -50
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
   - name: Smith
+    type: 7
     prefab: {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
     texture: {fileID: 8400000, guid: 38eba72860794424c97313b87be56961, type: 2}
     spawnWeight: 0
+    buildingUpgrades:
+      aquired: 0
+      upgrades: []
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades:
+      - name: Copper Tools
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 2
+            quantity: -10
+          - type: 4
+            quantity: -5
+          - type: 5
+            quantity: 1
+        cost:
+          items:
+          - type: 4
+            quantity: -10
+      - name: Iron Tools
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 2
+            quantity: -10
+          - type: 6
+            quantity: -5
+          - type: 7
+            quantity: 1
+        cost:
+          items:
+          - type: 6
+            quantity: -10
+      - name: Steel Tools
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 3
+            quantity: -10
+          - type: 6
+            quantity: -5
+          - type: 7
+            quantity: 1
+        cost:
+          items:
+          - type: 3
+            quantity: -10
+          - type: 6
+            quantity: -20
   - name: Market
+    type: 6
     prefab: {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
     texture: {fileID: 0}
     spawnWeight: 0
+    buildingUpgrades:
+      aquired: 0
+      upgrades: []
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
   - name: Wasteland
+    type: 2
     prefab: {fileID: 0}
     texture: {fileID: 0}
     spawnWeight: 3
+    buildingUpgrades:
+      aquired: 0
+      upgrades: []
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
   - name: Research Facility
+    type: 0
     prefab: {fileID: 6832233711388223767, guid: 2be9f7bc32ea71d64be7c87f28ab1380, type: 3}
     texture: {fileID: 8400000, guid: f5ce2cbaee957c52b9f7b1b26945abad, type: 2}
     spawnWeight: 0
+    buildingUpgrades:
+      aquired: 0
+      upgrades: []
+    clickUpgrades:
+      aquired: 0
+      upgrades: []
+    globalUpgrades:
+      aquired: 0
+      upgrades: []
   Textures:
   - type: 0
     tex: {fileID: 8400000, guid: 993945d05add648f9bae592cea39d313, type: 2}

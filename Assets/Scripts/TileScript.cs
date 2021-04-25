@@ -28,23 +28,17 @@ public class TileScript : MonoBehaviour
 
     private void TileTick()
     {
-        _structure?.TickTile(_upgrades);
+        _structure?.TickTile(_controller, pos, _upgrades);
     }
 
-    public void TileUpgradeTick()
+    public void TileUpgradeBuilding()
     {
-        if (_structure != null)
-        {
-            _upgrades.UpgradeTick();
-        }
+        _upgrades.AcquireNext();
     }
-
+    
     public void TileUpgradeClick()
     {
-        if (_structure != null)
-        {
-            _upgrades.UpgradeClick();
-        }
+        _structure.clickUpgrades.AcquireNext();
     }
 
     public void SelectTile()
@@ -82,12 +76,14 @@ public class TileScript : MonoBehaviour
 
     public bool HasClickReward()
     {
-        return _upgrades.aquiredClickUpgrades > 0;
+        return _structure.clickUpgrades.aquired > 0;
     }
     
     public Resources ClickTile()
     {
-        return _structure?.ClickTile(_upgrades);
+        var calculated = _structure.clickUpgrades.Calculate();
+        Global.Resources.Add(calculated);
+        return calculated;
     }
 
     private void Update()
@@ -102,68 +98,68 @@ public class TileScript : MonoBehaviour
         {
             DrawDefaultInspector();
             
-            if (GUILayout.Button("CLICK"))
-            {
-                Global.Resources.Add(ItemType.STONE.of(1), ItemType.WOOD.of(1));
-                Debug.Log(Global.Resources);
-            }
-
-            var tileScript = (TileScript) target;
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Click Upgrades:");
-            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
-            {
-                if (GUILayout.Button("Upgrade"))
-                {
-                    tileScript._upgrades.aquiredClickUpgrades++;
-                }    
-            } 
-            GUILayout.EndHorizontal();
-            for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
-            {
-                var upgrade = tileScript._upgrades.ClickUpgrades[i];
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-                GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
-                GUILayout.EndHorizontal();
-            }
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Tick Upgrades:");
-            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredTickUpgrades)
-            {
-                if (GUILayout.Button("Upgrade"))
-                {
-                    tileScript._upgrades.aquiredTickUpgrades++;
-                }    
-            } 
-            GUILayout.EndHorizontal();
-            for (var i = 0; i < tileScript._upgrades.TickUpgrades.Count; i++)
-            {
-                var upgrade = tileScript._upgrades.TickUpgrades[i];
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-                GUILayout.Toggle(i < tileScript._upgrades.aquiredTickUpgrades, "");
-                GUILayout.EndHorizontal();
-            }
-
-            foreach (var techTreeStructure in tileScript.TechTree.Structures)
-            {
-                if (GUILayout.Button(techTreeStructure.name))
-                {
-                    tileScript.BuildStructure(techTreeStructure);
-                }
-            }
-          
-            if (GUILayout.Button("CLEAR"))
-            {
-                tileScript._structure = null;
-                if (tileScript.currentStructure)
-                {
-                    DestroyImmediate(tileScript.currentStructure);
-                    tileScript.currentStructure = null;
-                }
-            }
+            // if (GUILayout.Button("CLICK"))
+            // {
+            //     Global.Resources.Add(ItemType.STONE.of(1), ItemType.WOOD.of(1));
+            //     Debug.Log(Global.Resources);
+            // }
+            //
+            // var tileScript = (TileScript) target;
+            //
+            // GUILayout.BeginHorizontal();
+            // GUILayout.Label("Click Upgrades:");
+            // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
+            // {
+            //     if (GUILayout.Button("Upgrade"))
+            //     {
+            //         tileScript._upgrades.aquiredClickUpgrades++;
+            //     }    
+            // } 
+            // GUILayout.EndHorizontal();
+            // for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
+            // {
+            //     var upgrade = tileScript._upgrades.ClickUpgrades[i];
+            //     GUILayout.BeginHorizontal();
+            //     GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+            //     GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
+            //     GUILayout.EndHorizontal();
+            // }
+            // GUILayout.BeginHorizontal();
+            // GUILayout.Label("Tick Upgrades:");
+            // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquired)
+            // {
+            //     if (GUILayout.Button("Upgrade"))
+            //     {
+            //         tileScript._upgrades.aquired++;
+            //     }    
+            // } 
+            // GUILayout.EndHorizontal();
+            // for (var i = 0; i < tileScript._upgrades.upgrades.Count; i++)
+            // {
+            //     var upgrade = tileScript._upgrades.upgrades[i];
+            //     GUILayout.BeginHorizontal();
+            //     GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+            //     GUILayout.Toggle(i < tileScript._upgrades.aquired, "");
+            //     GUILayout.EndHorizontal();
+            // }
+            //
+            // foreach (var techTreeStructure in tileScript.TechTree.Structures)
+            // {
+            //     if (GUILayout.Button(techTreeStructure.name))
+            //     {
+            //         tileScript.BuildStructure(techTreeStructure);
+            //     }
+            // }
+            //
+            // if (GUILayout.Button("CLEAR"))
+            // {
+            //     tileScript._structure = null;
+            //     if (tileScript.currentStructure)
+            //     {
+            //         DestroyImmediate(tileScript.currentStructure);
+            //         tileScript.currentStructure = null;
+            //     }
+            // }
         }
     }
 
@@ -194,10 +190,10 @@ public class TileScript : MonoBehaviour
         {
             currentStructure = Instantiate(_structure.prefab, transform, false);
             currentStructure.name = $"{structure.name}";
-            currentStructure.GetComponentInChildren<MeshRenderer>().gameObject.transform.RotateAround(Vector3.up, Random.Range(0,360));
+            currentStructure.GetComponentInChildren<MeshRenderer>().gameObject.transform.Rotate(Vector3.up, Random.Range(0,360));
         }
 
-        _upgrades = _structure.freshUpgrades();
+        _upgrades = _structure.copyBuildingUpgrades();
     }
 
     public void Init(CubeCoord coord)
@@ -208,16 +204,18 @@ public class TileScript : MonoBehaviour
 
     public bool CanUpgradeClick()
     {
-        return _upgrades.ClickUpgrades.Count > _upgrades.aquiredClickUpgrades;
+        return _structure.clickUpgrades.upgrades.Count > _structure.clickUpgrades.aquired;
     }
 
     public bool CanUpgradeTick()
     {
-        return _upgrades.TickUpgrades.Count > _upgrades.aquiredTickUpgrades;
+        return _upgrades.upgrades.Count > _upgrades.aquired;
     }
 
     public bool CanDestroy()
     {
         return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeTick());
     }
+
+  
 }

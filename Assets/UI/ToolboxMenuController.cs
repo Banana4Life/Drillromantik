@@ -53,7 +53,7 @@ namespace UI
             }
             else if (button == buildingUpgradeButton)
             {
-                _selectedTile.TileUpgradeTick();
+                _selectedTile.TileUpgradeBuilding();
                 if (!_selectedTile.CanUpgradeTick())
                 {
                     button.gameObject.SetActive(false);

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3426473399399571458}
-  - component: {fileID: -3677487111163598040}
   m_Layer: 0
   m_Name: forest
   m_TagString: Untagged
@@ -32,87 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3677487111163598040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4572134430706394734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Upgrades:
-    aquiredClickUpgrades: 1
-    aquiredTickUpgrades: 0
-    ClickUpgrades:
-    - name: Base
-      chance: 1
-      type: 0
-      resources:
-        items:
-        - type: 0
-          quantity: 1
-      cost:
-        items: []
-    - name: Green Thumb
-      chance: 1
-      type: 0
-      resources:
-        items:
-        - type: 0
-          quantity: 4
-      cost:
-        items:
-        - type: 0
-          quantity: -100
-    - name: Copper Tools
-      chance: 2
-      type: 1
-      resources:
-        items:
-        - type: 0
-          quantity: 2
-      cost:
-        items:
-        - type: 5
-          quantity: -1
-    - name: Copper Tools
-      chance: 2
-      type: 1
-      resources:
-        items:
-        - type: 0
-          quantity: 2
-      cost:
-        items:
-        - type: 5
-          quantity: -1
-    - name: Iron Tools
-      chance: 2
-      type: 1
-      resources:
-        items:
-        - type: 0
-          quantity: 2
-      cost:
-        items:
-        - type: 7
-          quantity: -1
-    - name: Steel Tools
-      chance: 2
-      type: 1
-      resources:
-        items:
-        - type: 0
-          quantity: 2
-      cost:
-        items:
-        - type: 8
-          quantity: -1
-    TickUpgrades: []
 --- !u!1001 &6945132516729725446
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1595385217317361046}
   - component: {fileID: -687152484002846009}
-  - component: {fileID: 8952489946143991427}
   m_Layer: 0
   m_Name: blacksmithhut
   m_TagString: Untagged
@@ -49,70 +48,6 @@ MonoBehaviour:
     items:
     - type: 1
       quantity: -20
---- !u!114 &8952489946143991427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2700594142609715560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeeb9a4d0630e37d8a142ba1211ebe0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Upgrades:
-    aquiredClickUpgrades: 0
-    aquiredTickUpgrades: 0
-    ClickUpgrades: []
-    TickUpgrades:
-    - name: Copper Tools
-      chance: 1
-      type: 0
-      resources:
-        items:
-        - type: 2
-          quantity: -10
-        - type: 4
-          quantity: -5
-        - type: 5
-          quantity: 1
-      cost:
-        items:
-        - type: 4
-          quantity: -10
-    - name: Iron Tools
-      chance: 1
-      type: 0
-      resources:
-        items:
-        - type: 2
-          quantity: -10
-        - type: 6
-          quantity: -5
-        - type: 7
-          quantity: 1
-      cost:
-        items:
-        - type: 6
-          quantity: -10
-    - name: Steel Tools
-      chance: 1
-      type: 0
-      resources:
-        items:
-        - type: 3
-          quantity: -10
-        - type: 6
-          quantity: -5
-        - type: 7
-          quantity: 1
-      cost:
-        items:
-        - type: 3
-          quantity: -10
-        - type: 6
-          quantity: -20
 --- !u!1001 &2350043077522528741
 PrefabInstance:
   m_ObjectHideFlags: 0

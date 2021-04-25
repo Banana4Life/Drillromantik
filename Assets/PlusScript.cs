@@ -12,7 +12,6 @@ public class PlusScript : MonoBehaviour
     void Start()
     {
         _dir = Random.Range(-1f, +1f) * 100;
-        transform.Translate(0, 100, 0);
     }
 
     // Update is called once per frame
