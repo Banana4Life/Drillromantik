@@ -67,7 +67,7 @@ MonoBehaviour:
       cost:
         items:
         - type: 0
-          quantity: 100
+          quantity: -100
     - name: Copper Tools
       chance: 2
       type: 1
