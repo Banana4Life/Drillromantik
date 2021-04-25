@@ -26,36 +26,72 @@ public class UpgradeDrawer : PropertyDrawer
 {
      public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             EditorGUI.BeginProperty(position, label, property);
-            EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-            EditorGUI.EndProperty();
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("name"), GUIContent.none);
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("type"), GUIContent.none);
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("chance"), GUIContent.none);
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.Space();
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("resources"));
-            EditorGUILayout.PropertyField(property.FindPropertyRelative("cost"));
+            var baseHeight = base.GetPropertyHeight(property, label);
+
+            var chanceRect = new Rect(position.x, position.y, 30, baseHeight);
+            var unitRect = new Rect(position.x + 35, position.y, 50, baseHeight);
+            var nameRect = new Rect(position.x + 90, position.y, position.width - 90, baseHeight);
+            EditorGUI.PropertyField(chanceRect, property.FindPropertyRelative("chance"), GUIContent.none);
+            EditorGUI.PropertyField(unitRect, property.FindPropertyRelative("type"), GUIContent.none);
+            EditorGUI.PropertyField(nameRect, property.FindPropertyRelative("name"), GUIContent.none);
+            
+            var indent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
+
+            var yOffset = position.y + baseHeight;
+            var resItems = property.FindPropertyRelative("resources");
+            var rect = new Rect(position.x, yOffset, position.width, baseHeight * height(resItems));
+            EditorGUI.PropertyField(rect, property.FindPropertyRelative("resources"), true);
+
+            yOffset += baseHeight * height(resItems);
+            var cosItems = property.FindPropertyRelative("cost");
+            rect = new Rect(position.x, yOffset, position.width, baseHeight * height(cosItems));
+            EditorGUI.PropertyField(rect, property.FindPropertyRelative("cost"), true);
+            
+            // Set indent back to what it was
+            EditorGUI.indentLevel = indent;
+            
+            EditorGUI.EndProperty();
         }
- 
+
+     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+     {
+         var resItems = property.FindPropertyRelative("resources");
+         var cosItems = property.FindPropertyRelative("cost");
+         
+         var res = height(resItems);
+         var cos = height(cosItems);
+         
+         return (1 + res +cos) * base.GetPropertyHeight(property, label);
+     }
+
+     private static int height(SerializedProperty itemList)
+     {
+         var itemArray = itemList.FindPropertyRelative("items");
+         return itemList.isExpanded ? (itemArray.isExpanded ? itemArray.arraySize + 5 : 3) : 1;
+     }
 }
 
-
-[CustomPropertyDrawer((typeof(Item)))]
+[CustomPropertyDrawer(typeof(Item))]
 public class ItemDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         EditorGUI.BeginProperty(position, label, property);
-        EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-        EditorGUI.EndProperty();
+        var baseHeight = base.GetPropertyHeight(property, label);
         
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.PropertyField(property.FindPropertyRelative("type"), GUIContent.none);
-        GUILayout.Label("x");
-        EditorGUILayout.PropertyField(property.FindPropertyRelative("quantity"), GUIContent.none);
-        EditorGUILayout.EndHorizontal();
+        var typeRect = new Rect(position.x, position.y, 90, baseHeight);
+        var quantityRect = new Rect(position.x + 90, position.y, position.width - 90, baseHeight);
+        EditorGUI.PropertyField(typeRect,  property.FindPropertyRelative("type"), GUIContent.none);
+        EditorGUI.PropertyField(quantityRect, property.FindPropertyRelative("quantity"), GUIContent.none);    
+        EditorGUI.EndProperty();
+
     }
+    
+    // public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    // {
+    //     return property.arraySize * base.GetPropertyHeight(property, label);
+    // }
 }
 
 [Serializable]

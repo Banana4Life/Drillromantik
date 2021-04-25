@@ -62,9 +62,9 @@ MonoBehaviour:
   costs:
     items:
     - type: 0
-      quantity: -10
+      quantity: 10
     - type: 1
-      quantity: -10
+      quantity: 10
 --- !u!114 &-6594125114713423454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
       resources:
         items:
         - type: 0
-          quantity: 1
+          quantity: 0
       cost:
         items: []
     - name: Copper Axe (200%)
