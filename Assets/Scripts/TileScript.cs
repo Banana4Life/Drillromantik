@@ -32,7 +32,7 @@ public class TileScript : MonoBehaviour
 
     public void SelectTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
+        SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
     }
 
     private static MaterialPropertyBlock coloredMaterialPropertyBlock(String hexColor)
@@ -44,14 +44,24 @@ public class TileScript : MonoBehaviour
         return matPropBlock;
     }
 
+    private void SetTileMaterialPropertyBlock(MaterialPropertyBlock matPropBlock)
+    {
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 2);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 3);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 4);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 5);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 6);
+        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 7);
+    }
+
     public void UnSelectTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(null);
+        SetTileMaterialPropertyBlock(null);
     }
     
     public void HoverTile()
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
+        SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
     }
     
     public void ClickTile()
