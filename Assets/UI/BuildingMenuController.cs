@@ -10,18 +10,25 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
+
+        private TileScript _selectedTile;
         
         private void Start()
         {
             gameObject.SetActive(false);
         }
 
-        public void TileSelected(TileScript tile)
+        private void removeAll()
         {
             for (var i = 0; i < transform.childCount; ++i)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
+        }
+
+        public void TileSelected(TileScript tile)
+        {
+            removeAll();
             var buildableStructures =
                 tile.TechTree.Structures.Where(s => s.texture && s.CanBuild(tileGridController, tile.pos)).ToList();
 
@@ -37,6 +44,12 @@ namespace UI
                     obj.name = structure.name;
                     var rawImage = obj.GetComponent<RawImage>();
                     rawImage.texture = structure.texture;
+                    var button = obj.GetComponent<Button>();
+                    button.onClick.AddListener(() =>
+                    {
+                        removeAll();
+                        tile.BuildStructure(structure);
+                    });
                 }
                 gameObject.SetActive(true);
             }

@@ -85,9 +85,4 @@ public class InputController : MonoBehaviour
         }
         
     }
-
-    public void BuildSelectedTile(Structure structure)
-    {
-        tileSelected.BuildStructure(structure);
-    }
 }
