@@ -65,8 +65,8 @@ MonoBehaviour:
             quantity: -10
           - type: 1
             quantity: -10
-      - name: Copper Nuggets
-        chance: 0.1
+      - name: Copper Mining
+        chance: 0.5
         type: 0
         resources:
           items:
@@ -74,10 +74,8 @@ MonoBehaviour:
             quantity: 1
         cost:
           items:
-          - type: 0
-            quantity: -10
-          - type: 1
-            quantity: -10
+          - type: 5
+            quantity: -1
       - name: Hire a second Miner
         chance: 1
         type: 1
@@ -96,12 +94,12 @@ MonoBehaviour:
           - type: 5
             quantity: -1
       - name: Copper Vein
-        chance: 1
-        type: 0
+        chance: 0.8
+        type: 1
         resources:
           items:
           - type: 4
-            quantity: 1
+            quantity: 5
         cost:
           items:
           - type: 5
@@ -132,8 +130,8 @@ MonoBehaviour:
             quantity: 1
         cost:
           items:
-          - type: 5
-            quantity: -1000
+          - type: 7
+            quantity: -1
       - name: Expand Mining Operation
         chance: 1
         type: 1
@@ -177,7 +175,7 @@ MonoBehaviour:
         cost:
           items: []
       - name: Look for Copper
-        chance: 0.1
+        chance: 0.2
         type: 0
         resources:
           items:
@@ -233,7 +231,7 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -30
-      - name: Iron
+      - name: Look for Iron
         chance: 1
         type: 0
         resources:
@@ -517,8 +515,19 @@ MonoBehaviour:
             quantity: 1
         cost:
           items: []
-      - name: Copper Tools
+      - name: More Workers
         chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 0
+            quantity: -100
+      - name: Copper Tools
+        chance: 0.9
         type: 1
         resources:
           items:
@@ -528,8 +537,19 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -1
-      - name: Iron Tools
+      - name: More Workers II
         chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 3
+        cost:
+          items:
+          - type: 0
+            quantity: -1000
+      - name: Iron Tools
+        chance: 0.9
         type: 1
         resources:
           items:
@@ -539,8 +559,19 @@ MonoBehaviour:
           items:
           - type: 7
             quantity: -1
-      - name: Steel Tools
+      - name: More Workers III
         chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 4
+        cost:
+          items:
+          - type: 0
+            quantity: -10000
+      - name: Steel Tools
+        chance: 0.9
         type: 1
         resources:
           items:
@@ -550,6 +581,17 @@ MonoBehaviour:
           items:
           - type: 8
             quantity: -1
+      - name: More Workers IV
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 0
+            quantity: -100000
     clickUpgrades:
       aquired: 0
       upgrades: []
@@ -569,9 +611,9 @@ MonoBehaviour:
     texture: {fileID: 8400000, guid: ed6ccf1cd0630d261b94ba6813b55fe6, type: 2}
     spawnWeight: 0
     buildingUpgrades:
-      aquired: 1
+      aquired: 0
       upgrades:
-      - name: Base
+      - name: Hire a Worker
         chance: 1
         type: 0
         resources:
@@ -592,6 +634,8 @@ MonoBehaviour:
         cost:
           items:
           - type: 0
+            quantity: -150
+          - type: 2
             quantity: -50
     clickUpgrades:
       aquired: 0
@@ -608,7 +652,9 @@ MonoBehaviour:
         cost:
           items:
           - type: 0
-            quantity: -50
+            quantity: -30
+          - type: 2
+            quantity: 10
     globalUpgrades:
       aquired: 0
       upgrades:
@@ -625,6 +671,38 @@ MonoBehaviour:
           items:
           - type: 2
             quantity: -10
+          - type: 0
+            quantity: -50
+      - name: Improved Burning II
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 2
+            quantity: 3
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 2
+            quantity: -100
+          - type: 0
+            quantity: -500
+      - name: Improved Burning III
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 2
+            quantity: 3
+          - type: 0
+            quantity: 2
+        cost:
+          items:
+          - type: 2
+            quantity: -1000
+          - type: 0
+            quantity: -5000
     buildable: 1
     buildCost:
       items:
@@ -653,8 +731,8 @@ MonoBehaviour:
             quantity: 1
         cost:
           items:
-          - type: 4
-            quantity: -10
+          - type: 5
+            quantity: -1
       - name: Copper Tools II
         chance: 1
         type: 1
@@ -726,46 +804,46 @@ MonoBehaviour:
         type: 1
         resources:
           items:
+          - type: 2
+            quantity: 2
           - type: 4
             quantity: 2
           - type: 5
             quantity: 3
         cost:
           items:
-          - type: 4
-            quantity: -50
+          - type: 5
+            quantity: -10
       - name: Improved Iron Tools
         chance: 1
-        type: 0
+        type: 1
         resources:
           items:
           - type: 2
-            quantity: -50
+            quantity: 2
           - type: 6
-            quantity: -10
+            quantity: 2
           - type: 7
-            quantity: 5
+            quantity: 3
         cost:
           items:
-          - type: 6
+          - type: 7
             quantity: -10
       - name: Improved Steel Tools
         chance: 1
-        type: 0
+        type: 1
         resources:
           items:
           - type: 3
-            quantity: -10
+            quantity: 2
           - type: 6
-            quantity: -5
+            quantity: 2
           - type: 7
-            quantity: 1
+            quantity: 3
         cost:
           items:
-          - type: 3
+          - type: 8
             quantity: -10
-          - type: 6
-            quantity: -20
     buildable: 1
     buildCost:
       items:
