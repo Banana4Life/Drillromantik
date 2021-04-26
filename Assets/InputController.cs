@@ -13,12 +13,7 @@ public class InputController : MonoBehaviour
     public TileScript tileHover;
     public TileMenuController tileMenuController;
     public GameObject plusPrefab;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public AudioSource clickSource;
 
     // Update is called once per frame
     void Update()
@@ -77,6 +72,7 @@ public class InputController : MonoBehaviour
 
     public void ClickSelectedTile()
     {
+        clickSource.Play();
         tileSelected.ClickTile(tileMenuController.clickButton.transform);
     }
 }
