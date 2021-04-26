@@ -729,10 +729,10 @@ MonoBehaviour:
     spawnWeight: 0
     buildingUpgrades:
       upgradeChains:
-      - name: Click Upgrades
+      - name: Copper Tool Automation
         aquired: 0
         chain:
-        - name: Copper Tools
+        - name: Start Copper Tool Production
           chance: 1
           type: 0
           resources:
@@ -762,7 +762,7 @@ MonoBehaviour:
             items:
             - type: 5
               quantity: -10
-        - name: Copper Tools II
+        - name: Copper Tools III
           chance: 1
           type: 1
           resources:
@@ -777,6 +777,54 @@ MonoBehaviour:
             items:
             - type: 5
               quantity: -10
+      - name: Iron Tool Automation
+        aquired: 0
+        chain:
+        - name: Start Iron Tool Production
+          chance: 1
+          type: 0
+          resources:
+            items:
+            - type: 6
+              quantity: -5
+            - type: 2
+              quantity: -10
+            - type: 7
+              quantity: 1
+          cost:
+            items:
+            - type: 7
+              quantity: -1
+        - name: Iron Tools II
+          chance: 1
+          type: 1
+          resources:
+            items:
+            - type: 6
+              quantity: 4
+            - type: 2
+              quantity: 4
+            - type: 7
+              quantity: 5
+          cost:
+            items:
+            - type: 7
+              quantity: -10
+        - name: Iron Tools III
+          chance: 1
+          type: 1
+          resources:
+            items:
+            - type: 6
+              quantity: 4
+            - type: 2
+              quantity: 4
+            - type: 7
+              quantity: 5
+          cost:
+            items:
+            - type: 7
+              quantity: -100
     clickUpgrades:
       upgradeChains:
       - name: Click Upgrades
@@ -796,7 +844,11 @@ MonoBehaviour:
           cost:
             items:
             - type: 4
-              quantity: -10
+              quantity: -8
+            - type: 2
+              quantity: -4
+            - type: 5
+              quantity: 1
         - name: Handmade Iron Tools
           chance: 1
           type: 0
@@ -811,7 +863,30 @@ MonoBehaviour:
           cost:
             items:
             - type: 6
-              quantity: -10
+              quantity: -4
+            - type: 2
+              quantity: -8
+            - type: 7
+              quantity: 1
+        - name: Handmade Steel Tools
+          chance: 1
+          type: 0
+          resources:
+            items:
+            - type: 6
+              quantity: -4
+            - type: 3
+              quantity: -8
+            - type: 8
+              quantity: 1
+          cost:
+            items:
+            - type: 6
+              quantity: -4
+            - type: 3
+              quantity: -8
+            - type: 8
+              quantity: 1
     globalUpgrades:
       upgradeChains:
       - name: Global Upgrades
