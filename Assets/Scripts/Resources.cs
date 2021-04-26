@@ -70,6 +70,16 @@ public class Resources
     {
         Items[itemType] = Items.GetOrElse(itemType) * factor;
     }
+    
+    public Resources Mul(int factor)
+    {
+        foreach (var k in Items.Keys.ToList()) 
+        {
+            Items[k] *= factor;
+        }
+
+        return this;
+    }
 
     public override string ToString()
     {

@@ -74,7 +74,7 @@ public class Structure
         Init();
         if (!IsBuildAllowed(controller, coord)) return false;
 
-        var cost = Cost();
+        var cost = Cost(controller);
         if (Global.Resources.HasResources(cost))
         {
             Global.Resources.AddNoCheck(cost);
@@ -83,9 +83,9 @@ public class Structure
         return false;
     }
 
-    public Resources Cost()
+    public Resources Cost(TileGridController controller)
     {
-        return new Resources().Add(buildCost.items);
+        return new Resources().Add(buildCost.items).Mul(controller.typeCount(type));
     }
 
     public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)

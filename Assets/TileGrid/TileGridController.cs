@@ -17,6 +17,8 @@ namespace TileGrid
 
         private Coroutine spawnRoutine = null;
         public GameObject worldUi;
+
+        private Dictionary<StructureType, int> _typeCount = new Dictionary<StructureType, int>();
     
         void Start()
         {
@@ -101,6 +103,17 @@ namespace TileGrid
             var go = spawnTile(pos);
             _populator.Populate(pos, go);
             return go;
+        }
+
+        public int typeCount(StructureType type)
+        {
+            return _typeCount.ContainsKey(type) ? 0 : _typeCount[type];
+        }
+
+        public void CountStructure(StructureType structureType, int p1)
+        {
+            var cnt = _typeCount.ContainsKey(structureType) ? 0 : _typeCount[structureType];
+            _typeCount[structureType] = cnt + p1;
         }
     }
 }

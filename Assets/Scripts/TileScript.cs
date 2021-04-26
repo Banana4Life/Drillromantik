@@ -89,7 +89,7 @@ public partial class TileScript : MonoBehaviour
             Debug.Log("Game is not running!");
             return;
         }
-        var cost = structure.Cost();
+        var cost = structure.Cost(_controller);
         if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
@@ -133,6 +133,15 @@ public partial class TileScript : MonoBehaviour
 
     public void AssignStructure(Structure structure)
     {
+        if (_controller)
+        {
+            if (_structure != null)
+            {
+                _controller.CountStructure(_structure.type, -1);
+            }
+            _controller.CountStructure(structure.type, 1);    
+        }
+            
         _structure = structure;
         if (currentStructure)
         {

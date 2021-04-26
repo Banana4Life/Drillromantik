@@ -53,7 +53,7 @@ namespace UI
                 entry.eventID = EventTriggerType.PointerEnter;
                 entry.callback.AddListener(d =>
                 {
-                    var cost = structure.Cost();
+                    var cost = structure.Cost(tileGridController);
                     tile.displayCost(button.transform, cost, structure.name);
                 });
                 eventTrigger.triggers.Add(entry);
