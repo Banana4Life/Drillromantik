@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TileGrid;
 using UI;
 using UnityEngine;
@@ -34,26 +35,7 @@ public partial class TileScript : MonoBehaviour
     {
         _structure?.TickTile(_controller, pos, _upgrades, this);
     }
-
-    public void AquireBuildingUpgrade(Transform transform)
-    {
-        var next = _upgrades.Next();
-        var res = new Resources().Add(next.cost.items);
-        floaty(transform, res, _upgrades.AcquireNext(), next.name);
-    }
     
-    public void AquireClickUpgrade(Transform transform)
-    {
-        var next = _structure.clickUpgrades.Next();
-        var res = new Resources().Add(next.cost.items);
-        floaty(transform, res, _structure.AcquireNextClickUpgrade(), next.name);
-    }
-    
-    public void AquireGlobalUpgrade()
-    {
-        _structure.AcquireNextGlobalUpgrade();
-    }
-
     public void SelectTile()
     {
         SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#D8FFB1"));
@@ -97,11 +79,6 @@ public partial class TileScript : MonoBehaviour
         var calculated = _structure.CalculateClick();
 
         floaty(tr, calculated, Global.Resources.Add(calculated), "");
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void BuildStructure(Structure structure, Transform aTransform)
@@ -194,6 +171,17 @@ public partial class TileScript : MonoBehaviour
     {
         return _upgrades.HasUpgradeAvailable();
     }
+    
+    public List<UpgradeChain> AvailableBuildingUpgrades()
+    {
+        return _upgrades.GetAvailable();
+    }
+    
+    
+    public List<UpgradeChain> getClickUpgrades()
+    {
+        return _structure.clickUpgrades.GetAvailable();
+    }
 
     public Upgrade NextUpgrade()
     {
@@ -229,4 +217,6 @@ public partial class TileScript : MonoBehaviour
         if (number >= 1) return "I" + ToRoman(number - 1);
         throw new ArgumentOutOfRangeException("something bad happened");
     }
+
+
 }

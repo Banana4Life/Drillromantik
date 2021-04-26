@@ -14,6 +14,11 @@ public class Upgrade
     public ItemList resources;
     public ItemList cost;
 
+    public Resources Cost()
+    {
+        return new Resources().Add(cost.items);
+    }
+
     public Resources Apply(Resources resources)
     {
         if (chance == 1 || UnityEngine.Random.value < chance)

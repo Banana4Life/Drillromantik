@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Serialization;
 
 [Serializable]
@@ -69,6 +70,11 @@ public class Upgrades
         }
 
         return false;
+    }
+
+    public List<UpgradeChain> GetAvailable()
+    {
+        return upgradeChains.Where(c => c.HasUpgradeAvailable()).ToList();
     }
 }
 

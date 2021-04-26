@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -7,65 +10,53 @@ namespace UI
     public class ToolboxMenuController : MonoBehaviour
     {
         public Button destroyButton;
-        public Button buildingUpgradeButton;
-        public Button clickUpgradeButton;
-        public Text clickUpgradeText;
-        public Text buildingUpgradeText;
+        
+        public GameObject upgradeButtonPrefab;
 
         private TileScript _selectedTile;
+
+        private Dictionary<Button, UpgradeChain> upgradeButtons = new Dictionary<Button, UpgradeChain>();
         
         public void TileSelected(TileScript tile)
         {
             var canDestroy = tile.CanDestroy();
-            var canUpgradeBuilding = tile.CanUpgradeBuilding();
-            var canUpgradeClick = tile.CanUpgradeClick();
+            var buildingUpgrades = tile.AvailableBuildingUpgrades();
+            var clickUpgrades = tile.getClickUpgrades();
 
-            if (canDestroy || canUpgradeBuilding || canUpgradeClick)
+            foreach (var oldGameObject in upgradeButtons.Keys)
+            {
+                Destroy(oldGameObject.gameObject);
+            }
+            upgradeButtons.Clear();
+
+            if (canDestroy || buildingUpgrades.Count > 0 || clickUpgrades.Count > 0)
             {
                 gameObject.SetActive(true);
-
                 destroyButton.gameObject.SetActive(canDestroy);
-                if (canUpgradeBuilding)
+
+                foreach (var buildingUpgrade in buildingUpgrades)
                 {
-                    buildingUpgradeText.text = tile.NextUpgrade().name;
-                } 
-                buildingUpgradeButton.gameObject.SetActive(canUpgradeBuilding);
-                if (canUpgradeClick)
-                {
-                    clickUpgradeText.text = tile.Structure.clickUpgrades.Next().name;
+                    var newButton = Instantiate(upgradeButtonPrefab, transform);
+                    newButton.GetComponentInChildren<Text>().text = buildingUpgrade.Next().name;
+                    var button = newButton.GetComponent<Button>();
+                    AttachTriggers(button);
+                    upgradeButtons[button] = buildingUpgrade;
                 }
-                clickUpgradeButton.gameObject.SetActive(canUpgradeClick);
+
+                foreach (var clickUpgrade in clickUpgrades)
+                {
+                    var newButton = Instantiate(upgradeButtonPrefab, transform);
+                    newButton.GetComponentInChildren<Text>().text = clickUpgrade.Next().name;
+                    var button = newButton.GetComponent<Button>();
+                    AttachTriggers(button);
+                    upgradeButtons[button] = clickUpgrade;
+                }
 
                 _selectedTile = tile;
             }
             else
             {
                 gameObject.SetActive(false);
-            }
-        }
-
-        public void HideCost(Button button)
-        {
-            foreach (Transform child in button.transform.GetComponentInChildren<VerticalLayoutGroup>().transform)
-            {
-                Destroy(child.gameObject);
-            }
-        }
-        public void ShowCost(Button button)
-        {
-            if (button == destroyButton)
-            {
-                _selectedTile.displayCost(button.transform, new Resources(),  "Destroy Building");
-            }
-            else if (button == buildingUpgradeButton)
-            {
-                var nextUpgrade = _selectedTile.NextUpgrade();
-                _selectedTile.displayCost(button.transform, new Resources().Add(nextUpgrade.cost.items), nextUpgrade.name);
-            }
-            else if (button == clickUpgradeButton)
-            {
-                var nextUpgrade = _selectedTile.Structure.clickUpgrades.Next();
-                _selectedTile.displayCost(button.transform, new Resources().Add(nextUpgrade.cost.items), nextUpgrade.name);
             }
         }
 
@@ -77,34 +68,42 @@ namespace UI
                 _selectedTile.AssignStructure(wasteland);
                 TileSelected(_selectedTile);
             }
-            else if (button == buildingUpgradeButton)
+        }
+        
+        public void AttachTriggers(Button button)
+        {
+            button.onClick.AddListener(() =>
             {
-                _selectedTile.AquireBuildingUpgrade(gameObject.transform);
-                if (!_selectedTile.CanUpgradeBuilding())
+                var upgradeChain = upgradeButtons[button];
+                var next = upgradeChain.Next();
+                if (upgradeChain.AquireNext())
                 {
-                    button.gameObject.SetActive(false);
+                    _selectedTile.floaty(transform, next.Cost(), true, next.name);
                 }
-                else
-                {
-                    buildingUpgradeText.text = _selectedTile.NextUpgrade().name;
-                    HideCost(button);
-                    ShowCost(button);
-                }
-            }
-            else if (button == clickUpgradeButton)
+                TileSelected(_selectedTile);
+            });
+            
+            var eventTrigger = button.gameObject.GetComponent<EventTrigger>();
+            var entry = new EventTrigger.Entry {eventID = EventTriggerType.PointerEnter};
+            entry.callback.AddListener(d =>
             {
-                _selectedTile.AquireClickUpgrade(gameObject.transform);
-                if (!_selectedTile.CanUpgradeClick())
+                var upgrade = upgradeButtons[button].Next();
+                _selectedTile.displayCost(button.transform, upgrade.Cost(), upgrade.name);
+            });
+            eventTrigger.triggers.Add(entry);
+
+            entry = new EventTrigger.Entry {eventID = EventTriggerType.PointerExit};
+            entry.callback.AddListener(d =>
+            {
+                foreach (Transform child in button.transform.GetComponentInChildren<VerticalLayoutGroup>().transform)
                 {
-                    button.gameObject.SetActive(false);
+                    Destroy(child.gameObject);
                 }
-                else
-                {
-                    clickUpgradeText.text = _selectedTile.Structure.clickUpgrades.Next().name;
-                    HideCost(button);
-                    ShowCost(button);
-                }
-            }
+            });
+            eventTrigger.triggers.Add(entry);
         }
     }
+    
+ 
+    
 }

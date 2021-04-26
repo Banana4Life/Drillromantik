@@ -138,7 +138,6 @@ public class Structure
     public bool CanUpgradeClick()
     {
         return clickUpgrades.HasUpgradeAvailable();
-
     }
 }
 
