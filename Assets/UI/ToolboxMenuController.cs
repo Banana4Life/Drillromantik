@@ -9,6 +9,7 @@ namespace UI
         public Button destroyButton;
         public Button buildingUpgradeButton;
         public Button clickUpgradeButton;
+        public GameObject resourcePrefab;
 
         private TileScript _selectedTile;
         
@@ -31,6 +32,24 @@ namespace UI
             else
             {
                 gameObject.SetActive(false);
+            }
+        }
+
+        public void ShowCost(Button button)
+        {
+            if (button == destroyButton)
+            {
+                _selectedTile.floaty(gameObject.transform, new Resources(), false, "Destroy Building");
+            }
+            else if (button == buildingUpgradeButton)
+            {
+                var nextUpgrade = _selectedTile.NextUpgrade();
+                _selectedTile.floaty(gameObject.transform, new Resources().Add(nextUpgrade.cost.items), true, nextUpgrade.name); // TODO icons pls
+            }
+            else if (button == clickUpgradeButton)
+            {
+                var nextUpgrade = _selectedTile.Structure.clickUpgrades.Next();
+                _selectedTile.floaty(gameObject.transform, new Resources().Add(nextUpgrade.cost.items), true, nextUpgrade.name); // TODO icons pls
             }
         }
 

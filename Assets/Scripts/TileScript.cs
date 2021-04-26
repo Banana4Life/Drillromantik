@@ -227,6 +227,11 @@ public class TileScript : MonoBehaviour
         return _upgrades.upgrades.Count > _upgrades.aquired;
     }
 
+    public Upgrade NextUpgrade()
+    {
+        return _upgrades.Next();
+    }
+
     public bool CanDestroy()
     {
         return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeBuilding());

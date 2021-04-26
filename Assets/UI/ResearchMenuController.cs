@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -40,6 +41,16 @@ namespace UI
                         tile.floaty(transform, res, structure.globalUpgrades.AcquireNext(), next.name);
                         TileSelected(tile);
                     });
+                    
+                    var eventTrigger = obj.GetComponent<EventTrigger>();
+                    var entry = new EventTrigger.Entry();
+                    entry.eventID = EventTriggerType.PointerEnter;
+                    entry.callback.AddListener(d =>
+                    {
+                        var globalUpgrade = structure.globalUpgrades.Next();
+                        tile.floaty(gameObject.transform, new Resources().Add(globalUpgrade.cost.items), true, globalUpgrade.name); // TODO icons pls
+                    });
+                    eventTrigger.triggers.Add(entry);
                 }
                 
                 gameObject.SetActive(true);
