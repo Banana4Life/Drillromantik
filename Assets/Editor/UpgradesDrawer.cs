@@ -121,8 +121,26 @@ public static class HeightUtil
 
     public static float upgrades(SerializedProperty property)
     {
-        float aq = 1;
         float ch = chainlist( property.FindPropertyRelative("upgradeChains"));
-        return 2 + aq + ch;
+        return 1 + ch;
+    }
+
+    public static float items(SerializedProperty property)
+    {
+        if (!property.isExpanded)
+        {
+            return 2.5f;
+        }
+        return property.arraySize + 2.5f;
+    }
+
+    public static float itemList(SerializedProperty property)
+    {
+        if (!property.isExpanded)
+        {
+            return 2.5f;
+        }
+
+        return 2.5f + items(property.FindPropertyRelative("items"));
     }
 }

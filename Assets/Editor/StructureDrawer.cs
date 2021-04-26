@@ -38,28 +38,28 @@ namespace Editor
             EditorGUI.indentLevel = 0;
         
             offsetY += baseHeight;
-            var upgradeProp = property.FindPropertyRelative("buildingUpgrades");
-            var height = HeightUtil.upgrades(upgradeProp) * baseHeight;
+            var prop = property.FindPropertyRelative("buildingUpgrades");
+            var height = HeightUtil.upgrades(prop) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
-            EditorGUI.PropertyField(rect, upgradeProp, true);
+            EditorGUI.PropertyField(rect, prop, true);
         
             offsetY += height;
-            upgradeProp = property.FindPropertyRelative("clickUpgrades");
-            height = HeightUtil.upgrades(upgradeProp) * baseHeight;
+            prop = property.FindPropertyRelative("clickUpgrades");
+            height = HeightUtil.upgrades(prop) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
-            EditorGUI.PropertyField(rect, upgradeProp, true);
+            EditorGUI.PropertyField(rect, prop, true);
         
             offsetY += height;
-            upgradeProp = property.FindPropertyRelative("globalUpgrades");
-            height = HeightUtil.upgrades(upgradeProp) * baseHeight;
+            prop = property.FindPropertyRelative("globalUpgrades");
+            height = HeightUtil.upgrades(prop) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
-            EditorGUI.PropertyField(rect, upgradeProp, true);
+            EditorGUI.PropertyField(rect, prop, true);
         
             offsetY += height;
-            upgradeProp = property.FindPropertyRelative("buildCost");
-            height = (upgradeProp.FindPropertyRelative("items").arraySize + 2) * baseHeight;
+            prop = property.FindPropertyRelative("buildCost");
+            height = HeightUtil.itemList(prop) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
-            EditorGUI.PropertyField(rect, upgradeProp, true);
+            EditorGUI.PropertyField(rect, prop, true);
             
             // Set indent back to what it was
             EditorGUI.indentLevel = indent;
@@ -70,12 +70,14 @@ namespace Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             var baseHeight = base.GetPropertyHeight(property, label);
+            var h = 6; // Name/Type/Prefab/Texture/spawnWeight/buildable
             var bU = property.FindPropertyRelative("buildingUpgrades");
             var cU = property.FindPropertyRelative("clickUpgrades");
             var gU = property.FindPropertyRelative("globalUpgrades");
-            var bC = property.FindPropertyRelative("buildCost").FindPropertyRelative("items");
-            var uH = HeightUtil.upgrades(bU) + HeightUtil.upgrades(cU) + HeightUtil.upgrades(gU);
-            return (5.5f + uH+5 + bC.arraySize) * baseHeight;
+            var bC = property.FindPropertyRelative("buildCost");
+            var uH = HeightUtil.upgrades(bU) + HeightUtil.upgrades(cU) + 
+                         HeightUtil.upgrades(gU) + HeightUtil.itemList(bC);
+            return (h + uH) *  baseHeight;
         }
 
     }
