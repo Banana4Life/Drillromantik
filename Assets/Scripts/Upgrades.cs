@@ -29,6 +29,11 @@ public class Upgrades
     }
 
 
+    public Upgrade Next()
+    {
+        return upgrades[aquired];
+    }
+    
     public bool AcquireNext()
     {
         if (upgrades.Count > aquired)
