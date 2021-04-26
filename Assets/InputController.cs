@@ -77,15 +77,6 @@ public class InputController : MonoBehaviour
 
     public void ClickSelectedTile()
     {
-        var gained = tileSelected.ClickTile();
-        if (gained != null)
-        {
-            var plusText = Instantiate(plusPrefab, tileMenuController.clickButton.transform.parent);
-            plusText.transform.position = Input.mousePosition;
-            
-            // TODO icon + text Icon aus TechTree.Textures
-            plusText.GetComponent<Text>().text = gained.ToString();
-        }
-        
+        tileSelected.ClickTile(tileMenuController.clickButton.transform);
     }
 }

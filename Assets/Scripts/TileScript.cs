@@ -90,11 +90,11 @@ public class TileScript : MonoBehaviour
         return _structure.HasClickUpgrades();
     }
     
-    public Resources ClickTile()
+    public void ClickTile(Transform tr)
     {
         var calculated = _structure.CalculateClick();
-        Global.Resources.Add(calculated);
-        return calculated;
+
+        floaty(tr, calculated, Global.Resources.Add(calculated), "");
     }
 
     private void Update()
@@ -181,6 +181,7 @@ public class TileScript : MonoBehaviour
 
     public void floaty(Transform aTransform, Resources resources, bool success, String floatyName)
     {
+        // TODO icon + text Icon aus TechTree.Textures
         var floaty = Instantiate(floatyTextPrefab, aTransform.parent);
         floaty.GetComponent<Text>().text = floatyName + "\n" + resources;
         if (!success)
