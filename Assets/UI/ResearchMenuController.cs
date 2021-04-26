@@ -9,6 +9,7 @@ namespace UI
     public class ResearchMenuController : MonoBehaviour
     {
         public GameObject buildingButtonPrefab;
+        public TileMenuController tileMenuController;
         
         public void TileSelected(TileScript tile)
         {
@@ -40,7 +41,7 @@ namespace UI
                         var next = structure.globalUpgrades.Next();
                         var res = new Resources().Add(next.cost.items);
                         tile.floaty(transform, res, structure.globalUpgrades.AcquireNext(), next.name);
-                        TileSelected(tile);
+                        tileMenuController.TileSelected(tile);
                     });
                     
                     var eventTrigger = obj.GetComponent<EventTrigger>();

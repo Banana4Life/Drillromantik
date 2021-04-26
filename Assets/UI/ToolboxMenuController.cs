@@ -12,6 +12,8 @@ namespace UI
         public Button destroyButton;
         
         public GameObject upgradeButtonPrefab;
+        
+        public TileMenuController tileMenuController;
 
         private TileScript _selectedTile;
         private Dictionary<Button, UpgradeChain> _upgradeButtons = new Dictionary<Button, UpgradeChain>();
@@ -65,7 +67,7 @@ namespace UI
             {
                 var wasteland = Global.FindTechTree().Structures.First(s => s.IsWasteland());
                 _selectedTile.AssignStructure(wasteland);
-                TileSelected(_selectedTile);
+                tileMenuController.TileSelected(_selectedTile);
             }
         }
         
@@ -79,7 +81,7 @@ namespace UI
                 {
                     _selectedTile.floaty(transform, next.Cost(), true, next.name);
                 }
-                TileSelected(_selectedTile);
+                tileMenuController.TileSelected(_selectedTile);
             });
             
             var eventTrigger = button.gameObject.GetComponent<EventTrigger>();

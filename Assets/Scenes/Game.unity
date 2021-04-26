@@ -3733,6 +3733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingButtonPrefab: {fileID: 3552036615422640668, guid: 2456321b8028ac151af4a73c25c90491, type: 3}
+  tileMenuController: {fileID: 900739781600089171}
 --- !u!224 &900739781383363209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4030,6 +4031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileGridController: {fileID: 7519847040705227513}
   buildingButtonPrefab: {fileID: 3552036615422640668, guid: 2456321b8028ac151af4a73c25c90491, type: 3}
+  tileMenuController: {fileID: 900739781600089171}
 --- !u!114 &900739781428164909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4110,6 +4112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyButton: {fileID: 900739783136537745}
   upgradeButtonPrefab: {fileID: 8697221164676600762, guid: 7fae4cfcdc9b29bae8dd30ca7ff23e6f, type: 3}
+  tileMenuController: {fileID: 900739781600089171}
 --- !u!1 &900739781487794740
 GameObject:
   m_ObjectHideFlags: 0

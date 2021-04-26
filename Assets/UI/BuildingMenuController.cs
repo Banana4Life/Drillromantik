@@ -10,7 +10,8 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
-
+        public TileMenuController tileMenuController;
+        
         public void TileSelected(TileScript tile)
         {
             var techTree = Global.FindTechTree();
@@ -44,7 +45,7 @@ namespace UI
                 button.onClick.AddListener(() =>
                 {
                     tile.BuildStructure(structure, gameObject.transform);
-                    TileSelected(tile);
+                    tileMenuController.TileSelected(tile);
                 });
 
                 var eventTrigger = obj.GetComponent<EventTrigger>();
