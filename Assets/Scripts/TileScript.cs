@@ -171,6 +171,7 @@ public class TileScript : MonoBehaviour
         if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
+            _controller.SpawnNewAroundAsync(pos);
             floaty(aTransform, cost, true, structure.name);
         }
         else

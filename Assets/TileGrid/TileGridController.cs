@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,50 +10,75 @@ namespace TileGrid
     public class TileGridController : MonoBehaviour
     {
         public GameObject TilePrefab;
+        public int initialRings = 3;
         private MeshRenderer _renderer;
         private TilePopulator _populator;
-        private HashSet<CubeCoord> _edgeSet = new HashSet<CubeCoord>();
         private Dictionary<CubeCoord, GameObject> _knownTiles = new Dictionary<CubeCoord, GameObject>();
+
+        private Coroutine spawnRoutine = null;
     
         void Start()
         {
             _renderer = TilePrefab.GetComponentInChildren<MeshRenderer>();
             _populator = GetComponent<TilePopulator>();
             spawnOrigin();
-            StartCoroutine(SpawnEdgeTiles());
+            var spiralCoords = CubeCoord.ShuffledRings(CubeCoord.ORIGIN, 1, initialRings);
+            enqueue(() => SpawnAll(spiralCoords, 0.5f, 0.1f));
+            //StartCoroutine(SpawnAll(CubeCoord.Spiral(CubeCoord.ORIGIN, 1).Take(40), 0.5f, 0.1f));
+            //StartCoroutine(SpawnAll(CubeCoord.Ring(CubeCoord.ORIGIN, 2), 0.1f, 2f));
+            //StartCoroutine(SpawnEdgeTiles());
         }
 
-        IEnumerator SpawnEdgeTiles()
+        private void enqueue(Func<IEnumerator> spawner)
         {
-            for (var i = 0; i < 10; ++i)
+            Coroutine old = spawnRoutine;
+            
+            IEnumerator NewRoutine()
             {
-                yield return StartCoroutine(spawnTilesAroundEdge());
+                yield return old;
+                yield return StartCoroutine(spawner());
             }
+
+            spawnRoutine = StartCoroutine(NewRoutine());
+        }
+
+        IEnumerator SpawnAll(IEnumerator<CubeCoord> coords, float delay, float gap)
+        {
+            if (delay > 0)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+
+            while (coords.MoveNext())
+            {
+                spawnAndPopulateTile(coords.Current);
+                if (gap > 0)
+                {
+                    yield return new WaitForSeconds(gap);
+                }
+            }
+        }
+
+        public void SpawnNewAroundAsync(CubeCoord coord)
+        {
+            var enumerator = CubeCoord.ShuffledRings(coord, 1, 3).WhereNot(_knownTiles.ContainsKey);
+
+            enqueue(() => SpawnAll(enumerator, 0f, 0.2f));
         }
 
         private void spawnOrigin()
         {
             var tile = spawnTile(CubeCoord.ORIGIN);
             _populator.PopulateOrigin(tile);
-            _edgeSet.Add(CubeCoord.ORIGIN);
         }
 
         public List<GameObject> GetNeighborTiles(CubeCoord coord)
         {
-            return CubeCoord.Neighbors.Select(c => _knownTiles[c + coord]).ToList();
-        }
-
-        IEnumerator spawnTilesAroundEdge()
-        {
-            var newEdge = new HashSet<CubeCoord>();
-            foreach (var cubeCoord in _edgeSet.SelectMany(edgeCoord => CubeCoord.Neighbors.Select(offset => edgeCoord + offset).Where(newCoord => !_knownTiles.ContainsKey(newCoord))).Distinct().OrderBy(e => Random.value))
-            {
-                yield return new WaitForSeconds(0.05f);
-                spawnAndPopulateTile(cubeCoord);
-                newEdge.Add(cubeCoord);
-            }
-
-            _edgeSet = newEdge;
+            return CubeCoord.Neighbors
+                .Select(c => c + coord)
+                .Where(_knownTiles.ContainsKey)
+                .Select(c => _knownTiles[c])
+                .ToList();
         }
 
         private GameObject spawnTile(CubeCoord pos)
