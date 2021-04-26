@@ -8,6 +8,7 @@ namespace UI
     {
         public BuildingMenuController buildingMenu;
         public ToolboxMenuController toolboxMenu;
+        public ResearchMenuController researchMenu;
         public Button clickButton;
 
         private void Start()
@@ -19,6 +20,7 @@ namespace UI
         {
             buildingMenu.TileSelected(tile);
             toolboxMenu.TileSelected(tile);
+            researchMenu.TileSelected(tile);
             clickButton.gameObject.SetActive(tile.HasClickReward());
         }
     }

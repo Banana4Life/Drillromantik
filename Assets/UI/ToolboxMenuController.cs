@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,16 +25,14 @@ namespace UI
             var canDestroy = tile.CanDestroy();
             var canUpgradeTick = tile.CanUpgradeBuilding();
             var canUpgradeClick = tile.CanUpgradeClick();
-            var canUpgradeGlobal = tile.CanUpgradeGlobal();
 
-            if (canDestroy || canUpgradeTick || canUpgradeClick || canUpgradeGlobal)
+            if (canDestroy || canUpgradeTick || canUpgradeClick)
             {
                 gameObject.SetActive(true);
 
                 destroyButton.gameObject.SetActive(canDestroy);
                 buildingUpgradeButton.gameObject.SetActive(canUpgradeTick);
                 clickUpgradeButton.gameObject.SetActive(canUpgradeClick);
-                // TODO clickUpgradeButton.gameObject.SetActive(canUpgradeGlobal);
 
                 _selectedTile = tile;
             }

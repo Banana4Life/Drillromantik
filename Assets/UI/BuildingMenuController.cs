@@ -10,8 +10,6 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
-
-        private TileScript _selectedTile;
         
         private void Start()
         {
@@ -53,11 +51,6 @@ namespace UI
                 });
             }
             gameObject.SetActive(true);
-        }
-
-        public void Build(Button button)
-        {
-            
         }
     }
 }

@@ -32,6 +32,8 @@ namespace UI
 
         private void Update()
         {
+            Global.Resources.Add(new Item { quantity = 1000, type = ItemType.WOOD});
+            Global.Resources.Add(new Item { quantity = 1000, type = ItemType.STONE});
             foreach (var status in _statusMap)
             {
                 status.Value.UpdateText(Global.Resources.Items.GetOrElse(status.Key));

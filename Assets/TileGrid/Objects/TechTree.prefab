@@ -475,7 +475,7 @@ MonoBehaviour:
       aquired: 0
       upgrades: []
   - name: Research Facility
-    type: 0
+    type: 5
     prefab: {fileID: 6832233711388223767, guid: 2be9f7bc32ea71d64be7c87f28ab1380, type: 3}
     texture: {fileID: 8400000, guid: f5ce2cbaee957c52b9f7b1b26945abad, type: 2}
     spawnWeight: 0
