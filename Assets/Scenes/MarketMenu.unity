@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 701494084}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -2854,7 +2854,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: Trade
         m_Mode: 1
@@ -2963,6 +2963,7 @@ GameObject:
   - component: {fileID: 658679371}
   - component: {fileID: 658679370}
   - component: {fileID: 658679373}
+  - component: {fileID: 658679374}
   m_Layer: 5
   m_Name: Resources
   m_TagString: Untagged
@@ -3075,6 +3076,19 @@ MonoBehaviour:
   m_FlexibleWidth: 0.9999
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &658679374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658679368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf66a45c5bf55d49ad27fc78e31ffb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 450705656}
 --- !u!1 &659500762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,7 +3397,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 701494084}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -3585,7 +3599,6 @@ GameObject:
   - component: {fileID: 701494080}
   - component: {fileID: 701494082}
   - component: {fileID: 701494083}
-  - component: {fileID: 701494084}
   m_Layer: 5
   m_Name: Tools
   m_TagString: Untagged
@@ -3699,19 +3712,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0.5
   m_LayoutPriority: 1
---- !u!114 &701494084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701494078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf66a45c5bf55d49ad27fc78e31ffb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 450705656}
 --- !u!1 &704824938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -5055,7 +5055,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -5683,7 +5683,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -5863,7 +5863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 701494084}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -6640,7 +6640,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
@@ -6822,7 +6822,6 @@ GameObject:
   - component: {fileID: 1521568318}
   - component: {fileID: 1521568320}
   - component: {fileID: 1521568321}
-  - component: {fileID: 1521568322}
   m_Layer: 5
   m_Name: Materials
   m_TagString: Untagged
@@ -6940,19 +6939,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0.5
   m_LayoutPriority: 1
---- !u!114 &1521568322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521568316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf66a45c5bf55d49ad27fc78e31ffb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 450705656}
 --- !u!1 &1532189218
 GameObject:
   m_ObjectHideFlags: 0
@@ -7455,7 +7441,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1521568322}
+      - m_Target: {fileID: 658679374}
         m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
         m_MethodName: SelectedItem
         m_Mode: 2
