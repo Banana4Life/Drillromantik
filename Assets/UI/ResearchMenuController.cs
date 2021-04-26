@@ -52,6 +52,17 @@ namespace UI
                     });
                     eventTrigger.triggers.Add(entry);
                     
+                    entry = new EventTrigger.Entry();
+                    entry.eventID = EventTriggerType.PointerExit;
+                    entry.callback.AddListener(d =>
+                    {
+                        foreach (Transform child in button.transform.GetComponentInChildren<VerticalLayoutGroup>().transform)
+                        {
+                            Destroy(child.gameObject);
+                        }
+                    });
+                    eventTrigger.triggers.Add(entry);
+                    
                     button.GetComponentInChildren<Text>().text = structure.globalUpgrades.Next().name;
                 }
                 

@@ -44,6 +44,13 @@ namespace UI
             }
         }
 
+        public void HideCost(Button button)
+        {
+            foreach (Transform child in button.transform.GetComponentInChildren<VerticalLayoutGroup>().transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
         public void ShowCost(Button button)
         {
             if (button == destroyButton)
