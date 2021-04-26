@@ -12,14 +12,14 @@ namespace Editor
         
             var tileScript = (TileScript) target;
             
-            for (var i = 0; i < tileScript.Upgrades.upgrades.Count; i++)
-            {
-                var upgrade = tileScript.Upgrades.upgrades[i];
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-                GUILayout.Toggle(i < tileScript.Upgrades.aquired, "");
-                GUILayout.EndHorizontal();
-            }
+            // for (var i = 0; i < tileScript.Upgrades.upgrades.Count; i++)
+            // {
+            //     var upgrade = tileScript.Upgrades.upgrades[i];
+            //     GUILayout.BeginHorizontal();
+            //     GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+            //     GUILayout.Toggle(i < tileScript.Upgrades.aquired, "");
+            //     GUILayout.EndHorizontal();
+            // }
             // GUILayout.BeginHorizontal();
             // GUILayout.Label("Tick Upgrades:");
             // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquired)

@@ -39,19 +39,19 @@ namespace Editor
         
             offsetY += baseHeight;
             var upgradeProp = property.FindPropertyRelative("buildingUpgrades");
-            var height = UpgradesDrawer.UpgradesHeight(upgradeProp) * baseHeight;
+            var height = HeightUtil.upgrades(upgradeProp) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
             EditorGUI.PropertyField(rect, upgradeProp, true);
         
             offsetY += height;
             upgradeProp = property.FindPropertyRelative("clickUpgrades");
-            height = UpgradesDrawer.UpgradesHeight(upgradeProp) * baseHeight;
+            height = HeightUtil.upgrades(upgradeProp) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
             EditorGUI.PropertyField(rect, upgradeProp, true);
         
             offsetY += height;
             upgradeProp = property.FindPropertyRelative("globalUpgrades");
-            height = UpgradesDrawer.UpgradesHeight(upgradeProp) * baseHeight;
+            height = HeightUtil.upgrades(upgradeProp) * baseHeight;
             rect = new Rect(position.x, offsetY, position.width, height);
             EditorGUI.PropertyField(rect, upgradeProp, true);
         
@@ -74,7 +74,7 @@ namespace Editor
             var cU = property.FindPropertyRelative("clickUpgrades");
             var gU = property.FindPropertyRelative("globalUpgrades");
             var bC = property.FindPropertyRelative("buildCost").FindPropertyRelative("items");
-            var uH = UpgradesDrawer.UpgradesHeight(bU) + UpgradesDrawer.UpgradesHeight(cU) + UpgradesDrawer.UpgradesHeight(gU);
+            var uH = HeightUtil.upgrades(bU) + HeightUtil.upgrades(cU) + HeightUtil.upgrades(gU);
             return (5.5f + uH+5 + bC.arraySize) * baseHeight;
         }
 

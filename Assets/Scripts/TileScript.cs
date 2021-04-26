@@ -192,7 +192,7 @@ public partial class TileScript : MonoBehaviour
 
     public bool CanUpgradeBuilding()
     {
-        return _upgrades.upgrades.Count > _upgrades.aquired;
+        return _upgrades.HasUpgradeAvailable();
     }
 
     public Upgrade NextUpgrade()

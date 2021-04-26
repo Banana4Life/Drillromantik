@@ -92,11 +92,7 @@ public class Structure
 
     public Upgrades copyBuildingUpgrades()
     {
-        Init();
-        var upgrades = new Upgrades();
-        upgrades.upgrades.AddRange(buildingUpgrades.upgrades);
-        upgrades.aquired = buildingUpgrades.aquired;
-        return upgrades;
+        return buildingUpgrades.Clone();
     }
 
     public bool IsBase()
@@ -131,7 +127,7 @@ public class Structure
 
     public bool HasClickUpgrades()
     {
-        return clickUpgrades.aquired > 0;
+        return clickUpgrades.HasAquiredAny();
     }
 
     public Resources CalculateClick()
@@ -141,7 +137,7 @@ public class Structure
 
     public bool CanUpgradeClick()
     {
-        return clickUpgrades.upgrades.Count > clickUpgrades.aquired;
+        return clickUpgrades.HasUpgradeAvailable();
 
     }
 }
