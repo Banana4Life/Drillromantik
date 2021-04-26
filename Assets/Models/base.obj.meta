@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: black_concrete
+    second: {fileID: 2100000, guid: f3b7118469ee70d3aaad4d6bdcdd3190, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black_terracotta
+    second: {fileID: 2100000, guid: 10af0584e358b6cc5bc272f1adeb27df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: cobblestone
     second: {fileID: 2100000, guid: 472d897fbbfb5a3f58cbbc088d3b2523, type: 2}
   - first:
@@ -27,6 +37,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: glass_blue
+    second: {fileID: 2100000, guid: 6bf1edbb7bd30ced7af625f4555ae8c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_light_blue
+    second: {fileID: 2100000, guid: 07cd4aa562876ec5bb3ce5ea42d303d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_pane_side_blue
+    second: {fileID: 2100000, guid: 5d0c8e89633a815f4a699b6e7eb42029, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: gravel
     second: {fileID: 2100000, guid: e0034873acb32df96b942bd20a17d8fa, type: 2}
   - first:
@@ -37,13 +62,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: iron_block
-    second: {fileID: 2100000, guid: 4fcdfc025d7453bfe9156248f7c7ea9e, type: 2}
+      name: gray_terracotta
+    second: {fileID: 2100000, guid: 9aeeed873be4dcc77b8a83afb8a04c71, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: jungle_planks
-    second: {fileID: 2100000, guid: 8e5e4411d639bc49dba9e4b5234bb385, type: 2}
+      name: iron_block
+    second: {fileID: 2100000, guid: 4fcdfc025d7453bfe9156248f7c7ea9e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -52,8 +77,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: log_oak_side
-    second: {fileID: 2100000, guid: 24768a648277b34e4ae2f558f48029ca, type: 2}
+      name: log_acacia_side
+    second: {fileID: 2100000, guid: c0d3c5e2468a4c0aba0cf05a62ad4ed8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: log_dark_oak_side
+    second: {fileID: 2100000, guid: bc0757fac01cb539b999607e84762485, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -62,33 +92,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: oak_planks
-    second: {fileID: 2100000, guid: 895c6c335124d969b8b8d833f77d895d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: spruce_planks
-    second: {fileID: 2100000, guid: 4e06ae7c0e7f5ece0a81d929c58356ec, type: 2}
+      name: sea_lantern
+    second: {fileID: 2100000, guid: cdf0d9f3db6390be7ad48469725b4e45, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: stone
     second: {fileID: 2100000, guid: b310e30ceb6b94928838a387a08a3a0e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: stripped_dark_oak_log
-    second: {fileID: 2100000, guid: 0f53b4f718c2cc7839968b040a6cb2c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: stripped_dark_oak_log_top
-    second: {fileID: 2100000, guid: d9296b9c037362413a09597a6a6aec79, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wool_lime
-    second: {fileID: 2100000, guid: be071c5b9adafa545aac758a214317bd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1

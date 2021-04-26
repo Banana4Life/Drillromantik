@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class InputController : MonoBehaviour
 {
     public float holding;
     public TileScript tileSelected;
     public TileScript tileHover;
+    public TileMenuController tileMenuController;
+    public GameObject plusPrefab;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -21,22 +27,25 @@ public class InputController : MonoBehaviour
         {
             return;
         }
-        
+
         Ray worldPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        var hoveringTile = Physics.Raycast(worldPoint, out hit);
+        const int selectableTileLayerMask = 1 << 11;
+        var hoveringTile = Physics.Raycast(worldPoint, out RaycastHit hit, Mathf.Infinity, selectableTileLayerMask);
         if (hoveringTile)
         {
-            var tileScript =  hit.collider.transform.parent.gameObject.GetComponent<TileScript>();
-            if (tileHover && tileHover != tileSelected)
+            var tileScript = hit.collider.transform.parent.gameObject.GetComponent<TileScript>();
+            if (tileHover != tileScript)
             {
-                tileHover.UnSelectTile();
-            }
-            
-            tileHover = tileScript;
-            if (tileScript && tileHover != tileSelected)
-            {
-                tileHover.HoverTile();
+                if (tileHover && tileHover != tileSelected)
+                {
+                    tileHover.UnSelectTile();
+                }
+
+                tileHover = tileScript;
+                if (tileScript && tileHover != tileSelected)
+                {
+                    tileHover.HoverTile();
+                }
             }
 
             if (Input.GetButtonDown("Fire1"))
@@ -48,6 +57,7 @@ public class InputController : MonoBehaviour
 
                 tileSelected = tileScript;
                 tileSelected.SelectTile();
+                tileMenuController.TileSelected(tileScript);
             }
 
             if (Input.GetButton("Fire1"))
@@ -67,6 +77,6 @@ public class InputController : MonoBehaviour
 
     public void ClickSelectedTile()
     {
-        tileSelected.ClickTile();
+        tileSelected.ClickTile(tileMenuController.clickButton.transform);
     }
 }

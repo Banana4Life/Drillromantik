@@ -7,28 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: allium
-    second: {fileID: 2100000, guid: 26730f8c9c636a73da555a36d6b5ab60, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: azure_bluet
     second: {fileID: 2100000, guid: f11c596515ffc9ce7beaceffff6ebec2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bamboo_large_leaves
-    second: {fileID: 2100000, guid: 6582c8a665674f77db829960ea5891d3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bamboo_small_leaves
-    second: {fileID: 2100000, guid: 3ed29c725cc11dcde965dd510027850a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: bamboo_stalk
-    second: {fileID: 2100000, guid: fa2d2b02a9c48838aabcbf58640578a3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -52,33 +32,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: blue_orchid
-    second: {fileID: 2100000, guid: 0224570c54f0acfbb8eb811399badb1e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: book
-    second: {fileID: 2100000, guid: 419b704c208b8d4b6be7140d59b2d509, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: cornflower
     second: {fileID: 2100000, guid: 21d5991f921f57c799c625ffd6102589, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: crimson_roots
-    second: {fileID: 2100000, guid: d602acec7a542527eb4334b67e12492f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: crying_obsidian
-    second: {fileID: 2100000, guid: fc89f9e43b8ea8b848c51b7a7bddf478, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: dandelion
     second: {fileID: 2100000, guid: b771323e4e3f1f650a21d4fc4cb8712f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt_grass_side
+    second: {fileID: 2100000, guid: bbbd86933c51a6a16850490de976e681, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt_grass_top
+    second: {fileID: 2100000, guid: ce8e90231c35c251d8479fc86ffbb914, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt_podzol_side
+    second: {fileID: 2100000, guid: 562912935e4b29a26a57801cdd29837c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt_podzol_top
+    second: {fileID: 2100000, guid: bbe2300bb6dec9072b7ab76ff3fd2302, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -102,23 +82,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: enchant_table_bottom
-    second: {fileID: 2100000, guid: 5edf090342282a88c87b9e3b90b3c4e8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: enchant_table_side
-    second: {fileID: 2100000, guid: 79ecc06beee726ee49479e340cdb3929, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: enchant_table_top
-    second: {fileID: 2100000, guid: e1f6468e09e747d8fab905fdaa444566, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: fern
     second: {fileID: 2100000, guid: 3502d29c86cec35bbbb08e3c75118ced, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leaves_dark_oak
+    second: {fileID: 2100000, guid: 7f0d5ea65f0d355b484f7e80bade5998, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -127,8 +97,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lily_of_the_valley
-    second: {fileID: 2100000, guid: b43e0cc5bb94005b8b0876c69ce4dd20, type: 2}
+      name: leaves_spruce
+    second: {fileID: 2100000, guid: 5f01db67ade3cda28846f29673d10e4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: log_dark_oak_side
+    second: {fileID: 2100000, guid: bc0757fac01cb539b999607e84762485, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: log_dark_oak_top
+    second: {fileID: 2100000, guid: 2b37657813fd1b923af58f0b43a2a1f8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -142,6 +122,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: log_spruce_side
+    second: {fileID: 2100000, guid: 31abdbe3a9c291afb903ef14d2e35518, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: log_spruce_top
+    second: {fileID: 2100000, guid: 2b693303ca91ef8d8b3896084f0b08b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: oxeye_daisy
     second: {fileID: 2100000, guid: 69a5f5d785d3bc475aa19ea7e021b4cb, type: 2}
   - first:
@@ -152,38 +142,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: rose_bush_bottom
-    second: {fileID: 2100000, guid: bde1a3e069a223713b7745435510b2ae, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: rose_bush_top
-    second: {fileID: 2100000, guid: 80ce3c5e614f2594699131484a318979, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: soul_torch
-    second: {fileID: 2100000, guid: bda12c47e6386be7585c00c84fda40a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sugarcane
-    second: {fileID: 2100000, guid: b9269b660840b01be94d4e68ea984041, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: tall_grass
     second: {fileID: 2100000, guid: 9903382a9c8bc3af5a67d3a3b79a01a7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: torch_flame
-    second: {fileID: 2100000, guid: 89a5d30672d73ed0fb4c5171a1720601, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: warped_roots
-    second: {fileID: 2100000, guid: 25f56ffaaa2f60958bb7c6172afdeb5a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1

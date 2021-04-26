@@ -2,40 +2,54 @@ using System;
 using TileGrid;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class TileScript : MonoBehaviour
 {
     private Structure _structure;
+    public Structure Structure => _structure;
     private Upgrades _upgrades = new Upgrades();
     public GameObject currentStructure;
 
-    public TechTree TechTree;
     private TileGridController _controller;
     public CubeCoord pos;
+    private static readonly int ColorPropertyId = Shader.PropertyToID("_Color");
+    private Renderer _renderer;
+
+    public GameObject floatyTextPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("TileTick", 1f, 1f);
+        InvokeRepeating(nameof(BuildingTick), 1f, 1f);
         _controller = GetComponentInParent<TileGridController>();
+        _renderer = GetComponentInChildren<Renderer>();
     }
 
-    void TileTick()
+    private void BuildingTick()
     {
-        if (_structure != null)
-        {
-            _structure.TickTile(_upgrades);
-        }
+        _structure?.TickTile(_controller, pos, _upgrades);
     }
 
-    void TileUpgrade()
+    public void AquireBuildingUpgrade(Transform transform)
     {
-        if (_structure != null)
-        {
-            _upgrades.UpgradeTick();
-        }
+        var next = _upgrades.Next();
+        var res = new Resources().Add(next.cost.items);
+        floaty(transform, res, _upgrades.AcquireNext(), next.name);
+    }
+    
+    public void AquireClickUpgrade(Transform transform)
+    {
+        var next = _structure.clickUpgrades.Next();
+        var res = new Resources().Add(next.cost.items);
+        floaty(transform, res, _structure.AcquireNextClickUpgrade(), next.name);
+    }
+    
+    public void AquireGlobalUpgrade()
+    {
+        _structure.AcquireNextGlobalUpgrade();
     }
 
     public void SelectTile()
@@ -46,20 +60,19 @@ public class TileScript : MonoBehaviour
     private static MaterialPropertyBlock coloredMaterialPropertyBlock(String hexColor)
     {
         var matPropBlock = new MaterialPropertyBlock();
-        Color color;
-        ColorUtility.TryParseHtmlString(hexColor, out color);
-        matPropBlock.SetColor("_Color", color);
+        ColorUtility.TryParseHtmlString(hexColor, out Color color);
+        matPropBlock.SetColor(ColorPropertyId, color);
         return matPropBlock;
     }
 
     private void SetTileMaterialPropertyBlock(MaterialPropertyBlock matPropBlock)
     {
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 2);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 3);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 4);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 5);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 6);
-        GetComponentInChildren<Renderer>().SetPropertyBlock(matPropBlock, 7);
+        _renderer.SetPropertyBlock(matPropBlock, 2);
+        _renderer.SetPropertyBlock(matPropBlock, 3);
+        _renderer.SetPropertyBlock(matPropBlock, 4);
+        _renderer.SetPropertyBlock(matPropBlock, 5);
+        _renderer.SetPropertyBlock(matPropBlock, 6);
+        _renderer.SetPropertyBlock(matPropBlock, 7);
     }
 
     public void UnSelectTile()
@@ -71,35 +84,23 @@ public class TileScript : MonoBehaviour
     {
         SetTileMaterialPropertyBlock(coloredMaterialPropertyBlock("#FFD37C"));
     }
-    
-    public void ClickTile()
+
+    public bool HasClickReward()
     {
-        if (_structure != null)
-        {
-            _structure.ClickTile(_upgrades);
-        }
+        return _structure.HasClickUpgrades();
+    }
+    
+    public void ClickTile(Transform tr)
+    {
+        var calculated = _structure.CalculateClick();
+
+        floaty(tr, calculated, Global.Resources.Add(calculated), "");
     }
 
     private void Update()
     {
-        // TODO other script and hide shadows while falling
-        var position = transform.position;
-        if (position.y > 0)
-        {
-            transform.Translate(0, 30 * -Time.deltaTime, 0);
-        }
-        else
-        {
-            position = new Vector3(position.x, 0, position.z);
-            transform.position = position;
-        }
+        
     }
-
-    public Structure Structure
-    {
-        get => _structure;
-    }
-
     
     [CustomEditor(typeof(TileScript))]
     public class TileInspector : Editor
@@ -108,82 +109,87 @@ public class TileScript : MonoBehaviour
         {
             DrawDefaultInspector();
             
-            if (GUILayout.Button("CLICK"))
-            {
-                Global.Resources.Add(ItemType.STONE.of(1), ItemType.WOOD.of(1));
-                Debug.Log(Global.Resources);
-            }
-
+            
             var tileScript = (TileScript) target;
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Click Upgrades:");
-            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
+            
+            for (var i = 0; i < tileScript._upgrades.upgrades.Count; i++)
             {
-                if (GUILayout.Button("Upgrade"))
-                {
-                    tileScript._upgrades.aquiredClickUpgrades++;
-                }    
-            } 
-            GUILayout.EndHorizontal();
-            for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
-            {
-                var upgrade = tileScript._upgrades.ClickUpgrades[i];
+                var upgrade = tileScript._upgrades.upgrades[i];
                 GUILayout.BeginHorizontal();
                 GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-                GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
+                GUILayout.Toggle(i < tileScript._upgrades.aquired, "");
                 GUILayout.EndHorizontal();
             }
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Tick Upgrades:");
-            if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredTickUpgrades)
-            {
-                if (GUILayout.Button("Upgrade"))
-                {
-                    tileScript._upgrades.aquiredTickUpgrades++;
-                }    
-            } 
-            GUILayout.EndHorizontal();
-            for (var i = 0; i < tileScript._upgrades.TickUpgrades.Count; i++)
-            {
-                var upgrade = tileScript._upgrades.TickUpgrades[i];
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-                GUILayout.Toggle(i < tileScript._upgrades.aquiredTickUpgrades, "");
-                GUILayout.EndHorizontal();
-            }
-
-            foreach (var techTreeStructure in tileScript.TechTree.Structures)
-            {
-                if (GUILayout.Button(techTreeStructure.name))
-                {
-                    tileScript.BuildStructure(techTreeStructure);
-                }
-            }
-          
-            if (GUILayout.Button("CLEAR"))
-            {
-                tileScript._structure = null;
-                if (tileScript.currentStructure)
-                {
-                    DestroyImmediate(tileScript.currentStructure);
-                    tileScript.currentStructure = null;
-                }
-            }
+            // GUILayout.BeginHorizontal();
+            // GUILayout.Label("Tick Upgrades:");
+            // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquired)
+            // {
+            //     if (GUILayout.Button("Upgrade"))
+            //     {
+            //         tileScript._upgrades.aquired++;
+            //     }    
+            // } 
+            // GUILayout.EndHorizontal();
+            // for (var i = 0; i < tileScript._upgrades.upgrades.Count; i++)
+            // {
+            //     var upgrade = tileScript._upgrades.upgrades[i];
+            //     GUILayout.BeginHorizontal();
+            //     GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+            //     GUILayout.Toggle(i < tileScript._upgrades.aquired, "");
+            //     GUILayout.EndHorizontal();
+            // }
+            //
+            // foreach (var techTreeStructure in tileScript.TechTree.Structures)
+            // {
+            //     if (GUILayout.Button(techTreeStructure.name))
+            //     {
+            //         tileScript.BuildStructure(techTreeStructure);
+            //     }
+            // }
+            //
+            // if (GUILayout.Button("CLEAR"))
+            // {
+            //     tileScript._structure = null;
+            //     if (tileScript.currentStructure)
+            //     {
+            //         DestroyImmediate(tileScript.currentStructure);
+            //         tileScript.currentStructure = null;
+            //     }
+            // }
         }
     }
 
-    private void BuildStructure(Structure structure)
+    public void BuildStructure(Structure structure, Transform aTransform)
     {
         if (!_controller)
         {
             Debug.Log("Game is not running!");
             return;
         }
-        if (structure.CanBuild(_controller, pos))
+        var cost = structure.Cost();
+        if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
+            floaty(aTransform, cost, true, structure.name);
         }
+        else
+        {
+            floaty(aTransform, cost, false, structure.name);
+        }
+        
+    }
+
+    public void floaty(Transform aTransform, Resources resources, bool success, String floatyName)
+    {
+        // TODO icon + text Icon aus TechTree.Textures
+        var floaty = Instantiate(floatyTextPrefab, aTransform.parent);
+        floaty.GetComponent<Text>().text = floatyName + "\n" + resources;
+        if (!success)
+        {
+            floaty.GetComponent<Text>().color = Color.red;
+        }
+        floaty.transform.position = Input.mousePosition;
+        floaty.GetComponent<PlusScript>().ttl = 0.4f;
     }
 
     public void AssignStructure(Structure structure)
@@ -199,14 +205,40 @@ public class TileScript : MonoBehaviour
         {
             currentStructure = Instantiate(_structure.prefab, transform, false);
             currentStructure.name = $"{structure.name}";
+            currentStructure.transform.GetChild(0).Rotate(Vector3.up, Random.Range(0,360));
         }
 
-        _upgrades = _structure.freshUpgrades();
+        _upgrades = _structure.copyBuildingUpgrades();
     }
 
     public void Init(CubeCoord coord)
     {
         pos = coord;
         transform.Translate(0,50,0);
+    }
+
+    public bool CanUpgradeClick()
+    {
+        return _structure.CanUpgradeClick();
+    }
+
+    public bool CanUpgradeBuilding()
+    {
+        return _upgrades.upgrades.Count > _upgrades.aquired;
+    }
+
+    public Upgrade NextUpgrade()
+    {
+        return _upgrades.Next();
+    }
+
+    public bool CanDestroy()
+    {
+        return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeBuilding());
+    }
+
+    public bool CanUpgradeGlobal()
+    {
+        return _structure.IsResearch();
     }
 }

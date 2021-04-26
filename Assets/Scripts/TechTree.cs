@@ -6,15 +6,12 @@ using UnityEngine;
 public class TechTree : MonoBehaviour
 {
     public Structure[] Structures;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public ItemTypeTexture[] Textures;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[Serializable]
+public class ItemTypeTexture
+{
+    public ItemType type;
+    public Texture tex;
 }

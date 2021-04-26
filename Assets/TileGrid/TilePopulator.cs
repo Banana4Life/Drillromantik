@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +19,8 @@ namespace TileGrid
             {
                 _weights[i] = techTree.Structures[i].spawnWeight;
             }
+
+            Global.TechTree = Instantiate(techTree, transform);
         }
 
         public void Populate(CubeCoord coord, GameObject tileObject)
@@ -31,7 +34,7 @@ namespace TileGrid
         
         public void PopulateOrigin(GameObject tileObject)
         {
-            var structure = techTree.Structures[3];
+            var structure = techTree.Structures.First(s => s.IsBase());
 
             var tileScript = tileObject.GetComponent<TileScript>();
             tileScript.Init(CubeCoord.ORIGIN);

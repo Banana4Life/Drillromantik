@@ -17,7 +17,6 @@ public class Resources
     
     public Resources Add(params Item[] resources)
     {
-        int val;
         foreach (var resource in resources)
         {
             Items[resource.type] = Items.GetOrElse(resource.type) + resource.quantity;
@@ -28,7 +27,6 @@ public class Resources
 
     public Resources AddNoCheck(Resources resources)
     {
-        int val;
         foreach (var toAdd in resources.Items)
         {
             Items[toAdd.Key] = Items.GetOrElse(toAdd.Key) + toAdd.Value;
@@ -44,7 +42,6 @@ public class Resources
             {
                 if (Items.GetOrElse(toAdd.type) + toAdd.quantity < 0)
                 {
-                    Debug.Log("Resource not available: " + toAdd.type);
                     return false;
                 }
             }
@@ -61,7 +58,6 @@ public class Resources
             {
                 if (Items.GetOrElse(toAdd.Key) + toAdd.Value < 0)
                 {
-                    Debug.Log("Resource not available: " + toAdd.Key);
                     return false;
                 }
             }
