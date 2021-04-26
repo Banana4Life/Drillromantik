@@ -27,10 +27,22 @@ public class Structure
 
     public Resources TickTile(TileGridController controller, CubeCoord pos, Upgrades upgrades, TileScript tile)
     {
-        // var neighborTiles = controller.GetNeighborTiles(pos);
-        // TODO bonus based on tiles!
         var buildingResources = upgrades.Calculate(new Resources());
         var modified = globalUpgrades.Calculate(buildingResources);
+        
+        if (tile.Structure.type == StructureType.LUMBERJACK)
+        {
+            var neighborTiles = controller.GetNeighborTiles(pos);
+            modified.Mul(ItemType.WOOD, neighborTiles.Count(t => t.GetComponent<TileScript>().Structure.type == StructureType.WOODS));
+        }
+        
+        if (tile.Structure.type == StructureType.CHARCOAL_BURNER)
+        {
+            var neighborTiles = controller.GetNeighborTiles(pos);
+            var cnt = neighborTiles.Count(t => t.GetComponent<TileScript>().Structure.type == StructureType.CHARCOAL_BURNER);
+            modified.Mul(ItemType.CHARCOAL, cnt);
+        }
+        
         if (modified.Items.Count > 0)
         {
             if (Global.Resources.Add(modified))
