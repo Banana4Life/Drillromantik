@@ -512,9 +512,9 @@ MonoBehaviour:
     buildingUpgrades:
       upgradeChains:
       - name: Building Upgrades
-        aquired: 1
+        aquired: 0
         chain:
-        - name: Base
+        - name: Hire Worker
           chance: 1
           type: 0
           resources:
@@ -522,7 +522,9 @@ MonoBehaviour:
             - type: 0
               quantity: 1
           cost:
-            items: []
+            items:
+            - type: 0
+              quantity: -5
         - name: More Workers
           chance: 1
           type: 1
