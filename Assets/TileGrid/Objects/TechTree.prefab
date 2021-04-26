@@ -136,7 +136,7 @@ MonoBehaviour:
           - type: 8
             quantity: -10
     clickUpgrades:
-      aquired: 4
+      aquired: 6
       upgrades:
       - name: Base
         chance: 1
@@ -171,7 +171,7 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -1
-      - name: More Copper
+      - name: Copper
         chance: 1
         type: 0
         resources:
@@ -181,6 +181,85 @@ MonoBehaviour:
         cost:
           items:
           - type: 5
+            quantity: -10
+      - name: More Copper
+        chance: 0.5
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 5
+        cost:
+          items:
+          - type: 5
+            quantity: -15
+      - name: Even more Copper
+        chance: 0.6
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 10
+        cost:
+          items:
+          - type: 5
+            quantity: -30
+      - name: Iron
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 6
+            quantity: 1
+        cost:
+          items:
+          - type: 5
+            quantity: -100
+      - name: More Iron
+        chance: 0.5
+        type: 1
+        resources:
+          items:
+          - type: 6
+            quantity: 5
+        cost:
+          items:
+          - type: 7
+            quantity: -50
+      - name: Even More Iron
+        chance: 0.5
+        type: 1
+        resources:
+          items:
+          - type: 6
+            quantity: 7
+        cost:
+          items:
+          - type: 7
+            quantity: -150
+      - name: Coal
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 3
+            quantity: 3
+        cost:
+          items:
+          - type: 7
+            quantity: -200
+      - name: Coal
+        chance: 0.5
+        type: 1
+        resources:
+          items:
+          - type: 3
+            quantity: 8
+        cost:
+          items:
+          - type: 7
+            quantity: -250
+          - type: 8
             quantity: -10
     globalUpgrades:
       aquired: 0
