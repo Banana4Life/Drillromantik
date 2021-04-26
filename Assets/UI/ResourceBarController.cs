@@ -33,8 +33,11 @@ namespace UI
 
         private void Update()
         {
-            // Global.Resources.Add(new Item { quantity = 1000, type = ItemType.WOOD});
-            // Global.Resources.Add(new Item { quantity = 1000, type = ItemType.STONE});
+            Global.Resources.Add(new Item { quantity = 10, type = ItemType.WOOD});
+            Global.Resources.Add(new Item { quantity = 10, type = ItemType.STONE});
+            Global.Resources.Add(new Item { quantity = 10, type = ItemType.COPPER});
+            Global.Resources.Add(new Item { quantity = 10, type = ItemType.COAL});
+            Global.Resources.Add(new Item { quantity = 10, type = ItemType.IRON});
             foreach (var status in _statusMap)
             {
                 status.Value.UpdateText(Global.Resources.Items.GetOrElse(status.Key));

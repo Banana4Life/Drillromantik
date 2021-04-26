@@ -105,15 +105,9 @@ public partial class TileScript : MonoBehaviour
 
     public GameObject floaty(Transform aTransform, Resources resources, bool success, String floatyName)
     {
-        // TODO icon + text Icon aus TechTree.Textures
         var floaty = Instantiate(floatyTextPrefab, aTransform.parent);
-        floaty.GetComponent<Text>().text = floatyName + "\n" + resources;
-        if (!success)
-        {
-            floaty.GetComponent<Text>().color = Color.red;
-        }
+        floaty.GetComponent<FloatyScript>().Init(floatyName, resources, 0.4f, success ? Color.green : Color.red);
         floaty.transform.position = Input.mousePosition;
-        floaty.GetComponent<PlusScript>().ttl = 0.4f;
         return floaty;
     }
 
@@ -133,7 +127,6 @@ public partial class TileScript : MonoBehaviour
                     status.GetComponentInChildren<RawImage>().texture = techTreeTexture.tex;
                     break;
                 }
-
             }
         }
     }
