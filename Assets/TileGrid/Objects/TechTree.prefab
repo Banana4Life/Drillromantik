@@ -279,7 +279,7 @@ MonoBehaviour:
             items:
             - type: 7
               quantity: -200
-        - name: Coal
+        - name: Coal II
           chance: 0.5
           type: 1
           resources:
@@ -290,8 +290,6 @@ MonoBehaviour:
             items:
             - type: 7
               quantity: -250
-            - type: 8
-              quantity: -10
     globalUpgrades:
       upgradeChains:
       - name: Global Upgrades
@@ -826,6 +824,54 @@ MonoBehaviour:
           cost:
             items:
             - type: 7
+              quantity: -100
+      - name: Steel Tool Automation
+        aquired: 0
+        chain:
+        - name: Start Steel Tool Production
+          chance: 1
+          type: 0
+          resources:
+            items:
+            - type: 6
+              quantity: -5
+            - type: 3
+              quantity: -10
+            - type: 8
+              quantity: 1
+          cost:
+            items:
+            - type: 8
+              quantity: -1
+        - name: Steel Tools II
+          chance: 1
+          type: 1
+          resources:
+            items:
+            - type: 6
+              quantity: 4
+            - type: 3
+              quantity: 4
+            - type: 8
+              quantity: 5
+          cost:
+            items:
+            - type: 8
+              quantity: -10
+        - name: Steel Tools III
+          chance: 1
+          type: 1
+          resources:
+            items:
+            - type: 6
+              quantity: 4
+            - type: 3
+              quantity: 4
+            - type: 8
+              quantity: 5
+          cost:
+            items:
+            - type: 8
               quantity: -100
     clickUpgrades:
       upgradeChains:
