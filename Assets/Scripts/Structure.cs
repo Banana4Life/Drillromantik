@@ -85,7 +85,9 @@ public class Structure
 
     public Resources Cost(TileGridController controller)
     {
-        return new Resources().Add(buildCost.items).Mul(controller.typeCount(type));
+        var typeCount = controller.typeCount(type) + 1;
+        var floor = (int) Math.Pow(10, (int)(typeCount / 5f));
+        return new Resources().Add(buildCost.items).Mul(typeCount * floor);
     }
 
     public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)

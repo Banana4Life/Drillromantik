@@ -107,12 +107,12 @@ namespace TileGrid
 
         public int typeCount(StructureType type)
         {
-            return _typeCount.ContainsKey(type) ? 0 : _typeCount[type];
+            return _typeCount.ContainsKey(type) ? _typeCount[type] : 0;
         }
 
         public void CountStructure(StructureType structureType, int p1)
         {
-            var cnt = _typeCount.ContainsKey(structureType) ? 0 : _typeCount[structureType];
+            var cnt = _typeCount.ContainsKey(structureType) ? _typeCount[structureType] : 0;
             _typeCount[structureType] = cnt + p1;
         }
     }
