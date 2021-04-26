@@ -35,14 +35,16 @@ public class TileScript : MonoBehaviour
 
     public void AquireBuildingUpgrade(Transform transform)
     {
-        var res = new Resources().Add(_upgrades.Next().cost.items);
-        floaty(transform, res, _upgrades.AcquireNext());
+        var next = _upgrades.Next();
+        var res = new Resources().Add(next.cost.items);
+        floaty(transform, res, _upgrades.AcquireNext(), next.name);
     }
     
     public void AquireClickUpgrade(Transform transform)
     {
-        var res = new Resources().Add(_structure.clickUpgrades.Next().cost.items);
-        floaty(transform, res, _structure.AcquireNextClickUpgrade());
+        var next = _structure.clickUpgrades.Next();
+        var res = new Resources().Add(next.cost.items);
+        floaty(transform, res, _structure.AcquireNextClickUpgrade(), next.name);
     }
     
     public void AquireGlobalUpgrade()
@@ -168,19 +170,19 @@ public class TileScript : MonoBehaviour
         if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
-            floaty(aTransform, cost, true);
+            floaty(aTransform, cost, true, structure.name);
         }
         else
         {
-            floaty(aTransform, cost, false);
+            floaty(aTransform, cost, false, structure.name);
         }
         
     }
 
-    private void floaty(Transform aTransform, Resources resources, bool success)
+    public void floaty(Transform aTransform, Resources resources, bool success, String floatyName)
     {
         var floaty = Instantiate(floatyTextPrefab, aTransform.parent);
-        floaty.GetComponent<Text>().text = resources.ToString();
+        floaty.GetComponent<Text>().text = floatyName + "\n" + resources;
         if (!success)
         {
             floaty.GetComponent<Text>().color = Color.red;

@@ -42,7 +42,6 @@ public class Resources
             {
                 if (Items.GetOrElse(toAdd.type) + toAdd.quantity < 0)
                 {
-                    Debug.Log("Resource not available: " + toAdd.type);
                     return false;
                 }
             }
@@ -59,7 +58,6 @@ public class Resources
             {
                 if (Items.GetOrElse(toAdd.Key) + toAdd.Value < 0)
                 {
-                    Debug.Log("Resource not available: " + toAdd.Key);
                     return false;
                 }
             }

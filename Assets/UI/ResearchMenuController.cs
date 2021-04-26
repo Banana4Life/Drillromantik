@@ -35,7 +35,9 @@ namespace UI
                     var button = obj.GetComponent<Button>();
                     button.onClick.AddListener(() =>
                     {
-                        structure.globalUpgrades.AcquireNext();
+                        var next = structure.globalUpgrades.Next();
+                        var res = new Resources().Add(next.cost.items);
+                        tile.floaty(transform, res, structure.globalUpgrades.AcquireNext(), next.name);
                         TileSelected(tile);
                     });
                 }
