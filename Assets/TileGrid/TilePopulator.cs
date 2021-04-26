@@ -1,45 +1,41 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace TileGrid
 {
-    
     public class TilePopulator : MonoBehaviour
     {
-        public TechTree techTree;
         private float[] _weights;
 
         private void Start()
         {
-            Global.TechTree = Instantiate(techTree, transform);
-            techTree = Global.TechTree;
-
-            _weights = new float[Global.TechTree.Structures.Length];
-            for (var i = 0; i < Global.TechTree.Structures.Length; i++)
+            var techTree = Global.FindTechTree();
+            _weights = new float[techTree.Structures.Length];
+            for (var i = 0; i < techTree.Structures.Length; i++)
             {
-                _weights[i] = Global.TechTree.Structures[i].spawnWeight;
+                _weights[i] = techTree.Structures[i].spawnWeight;
             }
 
         }
 
         public void Populate(CubeCoord coord, GameObject tileObject)
         {
-            var structure = Util.chooseWeighted(_weights, Global.TechTree.Structures);
+            var techTree = Global.FindTechTree();
+            var structure = Util.chooseWeighted(_weights, techTree.Structures);
             
             var tileScript = tileObject.GetComponent<TileScript>();
-            tileScript.Init(coord);
+            tileScript.Init(coord, techTree);
             tileScript.AssignStructure(structure);
         }
         
         public void PopulateOrigin(GameObject tileObject)
         {
-            var structure = Global.TechTree.Structures.First(s => s.IsBase());
+            var techTree = Global.FindTechTree();
+            var structure = techTree.Structures.First(s => s.IsBase());
 
             var tileScript = tileObject.GetComponent<TileScript>();
-            tileScript.Init(CubeCoord.ORIGIN);
+            tileScript.Init(CubeCoord.ORIGIN, techTree);
             tileScript.AssignStructure(structure);
         }
     }

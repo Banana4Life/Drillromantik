@@ -22,6 +22,7 @@ public partial class TileScript : MonoBehaviour
     public GameObject resourcePrefab;
 
     public Upgrades Upgrades => _upgrades;
+    private TechTree _techTree;
 
     // Start is called before the first frame update
     void Start()
@@ -125,7 +126,7 @@ public partial class TileScript : MonoBehaviour
             
             var status = resObj.GetComponent<ResourceStatus>();
             status.Init(item.Value);
-            foreach (var techTreeTexture in Global.TechTree.Textures)
+            foreach (var techTreeTexture in _techTree.Textures)
             {
                 if (techTreeTexture.type == item.Key)
                 {
@@ -156,9 +157,10 @@ public partial class TileScript : MonoBehaviour
         _upgrades = _structure.copyBuildingUpgrades();
     }
 
-    public void Init(CubeCoord coord)
+    public void Init(CubeCoord coord, TechTree techTree)
     {
         pos = coord;
+        _techTree = techTree;
         transform.Translate(0,50,0);
     }
 

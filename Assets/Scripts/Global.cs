@@ -1,5 +1,17 @@
+using UnityEngine;
+
 public static class Global
 {
     public static Resources Resources = new Resources();
-    public static TechTree TechTree { get; set; }
+
+    private static TechTree _techTree;
+    public static TechTree FindTechTree()
+    {
+        if (_techTree == null)
+        {
+            _techTree = GameObject.Find("TechTree").GetComponent<TechTree>();
+        }
+
+        return _techTree;
+    }
 }

@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,8 +14,7 @@ namespace UI
         public GameObject upgradeButtonPrefab;
 
         private TileScript _selectedTile;
-
-        private Dictionary<Button, UpgradeChain> upgradeButtons = new Dictionary<Button, UpgradeChain>();
+        private Dictionary<Button, UpgradeChain> _upgradeButtons = new Dictionary<Button, UpgradeChain>();
         
         public void TileSelected(TileScript tile)
         {
@@ -23,11 +22,11 @@ namespace UI
             var buildingUpgrades = tile.AvailableBuildingUpgrades();
             var clickUpgrades = tile.getClickUpgrades();
 
-            foreach (var oldGameObject in upgradeButtons.Keys)
+            foreach (var oldGameObject in _upgradeButtons.Keys)
             {
                 Destroy(oldGameObject.gameObject);
             }
-            upgradeButtons.Clear();
+            _upgradeButtons.Clear();
 
             if (canDestroy || buildingUpgrades.Count > 0 || clickUpgrades.Count > 0)
             {
@@ -40,7 +39,7 @@ namespace UI
                     newButton.GetComponentInChildren<Text>().text = buildingUpgrade.Next().name;
                     var button = newButton.GetComponent<Button>();
                     AttachTriggers(button);
-                    upgradeButtons[button] = buildingUpgrade;
+                    _upgradeButtons[button] = buildingUpgrade;
                 }
 
                 foreach (var clickUpgrade in clickUpgrades)
@@ -49,7 +48,7 @@ namespace UI
                     newButton.GetComponentInChildren<Text>().text = clickUpgrade.Next().name;
                     var button = newButton.GetComponent<Button>();
                     AttachTriggers(button);
-                    upgradeButtons[button] = clickUpgrade;
+                    _upgradeButtons[button] = clickUpgrade;
                 }
 
                 _selectedTile = tile;
@@ -64,7 +63,7 @@ namespace UI
         {
             if (button == destroyButton)
             {
-                var wasteland = Global.TechTree.Structures.First(s => s.IsWasteland());
+                var wasteland = Global.FindTechTree().Structures.First(s => s.IsWasteland());
                 _selectedTile.AssignStructure(wasteland);
                 TileSelected(_selectedTile);
             }
@@ -74,7 +73,7 @@ namespace UI
         {
             button.onClick.AddListener(() =>
             {
-                var upgradeChain = upgradeButtons[button];
+                var upgradeChain = _upgradeButtons[button];
                 var next = upgradeChain.Next();
                 if (upgradeChain.AquireNext())
                 {
@@ -87,7 +86,7 @@ namespace UI
             var entry = new EventTrigger.Entry {eventID = EventTriggerType.PointerEnter};
             entry.callback.AddListener(d =>
             {
-                var upgrade = upgradeButtons[button].Next();
+                var upgrade = _upgradeButtons[button].Next();
                 _selectedTile.displayCost(button.transform, upgrade.Cost(), upgrade.name);
             });
             eventTrigger.triggers.Add(entry);

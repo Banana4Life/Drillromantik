@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ namespace UI
         
         public void TileSelected(TileScript tile)
         {
+            var techTree = Global.FindTechTree();
             if (tile.Structure.IsResearch())
             {
                 for (var i = 0; i < transform.childCount; ++i)
@@ -18,8 +20,7 @@ namespace UI
                     Destroy(transform.GetChild(i).gameObject);
                 }
                 
-                var upgradableStructures =
-                    Global.TechTree.Structures.Where(s => s.globalUpgrades.HasUpgradeAvailable()).ToList();
+                var upgradableStructures = techTree.Structures.Where(s => s.globalUpgrades.HasUpgradeAvailable()).ToList();
 
                 if (upgradableStructures.Count == 0)
                 {

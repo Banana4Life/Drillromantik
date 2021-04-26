@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using TileGrid;
 using UnityEngine;
@@ -11,9 +10,10 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
-        
+
         public void TileSelected(TileScript tile)
         {
+            var techTree = Global.FindTechTree();
             for (var i = 0; i < transform.childCount; ++i)
             {
                 Destroy(transform.GetChild(i).gameObject);
@@ -25,7 +25,7 @@ namespace UI
                 return;
             }
             var buildableStructures =
-                Global.TechTree.Structures.Where(s => s.IsBuildAllowed(tileGridController, tile.pos)).ToList();
+                techTree.Structures.Where(s => s.IsBuildAllowed(tileGridController, tile.pos)).ToList();
 
             if (buildableStructures.Count == 0)
             {

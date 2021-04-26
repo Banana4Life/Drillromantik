@@ -8,11 +8,13 @@ namespace UI
     public class ResourceBarController : MonoBehaviour
     {
         public GameObject resourceStatusPrefab;
+        private TechTree _techTree;
 
         private Dictionary<ItemType, ResourceStatus> _statusMap = new Dictionary<ItemType, ResourceStatus>();
         
         private void Start()
         {
+            _techTree = Global.FindTechTree();
             ItemType[] types = (ItemType[]) Enum.GetValues(typeof(ItemType));
             foreach (ItemType type in types)
             {
@@ -23,7 +25,7 @@ namespace UI
                 //status.UpdateText(BigInteger.Zero);
                 status.UpdateText(300);
             }
-            foreach (var techTreeTexture in Global.TechTree.Textures)
+            foreach (var techTreeTexture in _techTree.Textures)
             {
                 _statusMap[techTreeTexture.type].GetComponentInChildren<RawImage>().texture = techTreeTexture.tex;
             }
