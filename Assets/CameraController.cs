@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public float startZoomLevel = 20f;
     public float zoomSpeed = 60f;
     public PostProcessVolume PostProcessVolume;
+    public AudioListener listener;
 
     private void Start()
     {
@@ -46,6 +47,7 @@ public class CameraController : MonoBehaviour
         {
             var depthOfField = PostProcessVolume.profile.GetSetting<DepthOfField>();
             depthOfField.focusDistance.value = centerTileHit.distance;
+            listener.transform.position = centerTileHit.point;
         }
     }
 }
