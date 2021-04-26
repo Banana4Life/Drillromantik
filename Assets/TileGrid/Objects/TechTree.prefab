@@ -437,7 +437,7 @@ MonoBehaviour:
   - name: Woods
     type: 1
     prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
-    texture: {fileID: 0}
+    texture: {fileID: 8400000, guid: 9f2db466827693c40b9652b43841795a, type: 2}
     spawnWeight: 1
     buildingUpgrades:
       upgradeChains: []
