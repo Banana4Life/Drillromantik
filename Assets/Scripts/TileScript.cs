@@ -103,32 +103,17 @@ public class TileScript : MonoBehaviour
         {
             DrawDefaultInspector();
             
-            // if (GUILayout.Button("CLICK"))
-            // {
-            //     Global.Resources.Add(ItemType.STONE.of(1), ItemType.WOOD.of(1));
-            //     Debug.Log(Global.Resources);
-            // }
-            //
-            // var tileScript = (TileScript) target;
-            //
-            // GUILayout.BeginHorizontal();
-            // GUILayout.Label("Click Upgrades:");
-            // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquiredClickUpgrades)
-            // {
-            //     if (GUILayout.Button("Upgrade"))
-            //     {
-            //         tileScript._upgrades.aquiredClickUpgrades++;
-            //     }    
-            // } 
-            // GUILayout.EndHorizontal();
-            // for (var i = 0; i < tileScript._upgrades.ClickUpgrades.Count; i++)
-            // {
-            //     var upgrade = tileScript._upgrades.ClickUpgrades[i];
-            //     GUILayout.BeginHorizontal();
-            //     GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
-            //     GUILayout.Toggle(i < tileScript._upgrades.aquiredClickUpgrades, "");
-            //     GUILayout.EndHorizontal();
-            // }
+            
+            var tileScript = (TileScript) target;
+            
+            for (var i = 0; i < tileScript._upgrades.upgrades.Count; i++)
+            {
+                var upgrade = tileScript._upgrades.upgrades[i];
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(upgrade.name + ": " + new Resources().Add(upgrade.resources.items));
+                GUILayout.Toggle(i < tileScript._upgrades.aquired, "");
+                GUILayout.EndHorizontal();
+            }
             // GUILayout.BeginHorizontal();
             // GUILayout.Label("Tick Upgrades:");
             // if (tileScript._upgrades.ClickUpgrades.Count > tileScript._upgrades.aquired)
@@ -221,7 +206,6 @@ public class TileScript : MonoBehaviour
     {
         return !_structure.IsBase() && (CanUpgradeClick() || CanUpgradeBuilding());
     }
-
 
     public bool CanUpgradeGlobal()
     {

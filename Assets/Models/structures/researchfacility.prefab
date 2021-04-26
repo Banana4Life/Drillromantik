@@ -47,11 +47,9 @@ MonoBehaviour:
   costs:
     items:
     - type: 0
-      quantity: -500
+      quantity: -100
     - type: 1
-      quantity: -500
-    - type: 9
-      quantity: -10
+      quantity: -100
 --- !u!1001 &599754817636694161
 PrefabInstance:
   m_ObjectHideFlags: 0

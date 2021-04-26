@@ -96,7 +96,18 @@ MonoBehaviour:
           items:
           - type: 6
             quantity: 1
+        cost:
+          items:
+          - type: 5
+            quantity: -100
+      - name: Steel?
+        chance: 1
+        type: 0
+        resources:
+          items:
           - type: 3
+            quantity: 2
+          - type: 6
             quantity: 1
         cost:
           items:
@@ -162,7 +173,33 @@ MonoBehaviour:
             quantity: -10
     globalUpgrades:
       aquired: 0
-      upgrades: []
+      upgrades:
+      - name: 
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 2
+        cost:
+          items:
+          - type: 4
+            quantity: 50
+          - type: 5
+            quantity: 1
+      - name: 
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 2
+        cost:
+          items:
+          - type: 4
+            quantity: 100
+          - type: 5
+            quantity: 10
   - name: Woods
     type: 1
     prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
@@ -343,8 +380,23 @@ MonoBehaviour:
     texture: {fileID: 8400000, guid: 38eba72860794424c97313b87be56961, type: 2}
     spawnWeight: 0
     buildingUpgrades:
-      aquired: 0
-      upgrades: []
+      aquired: 1
+      upgrades:
+      - name: Copper Tools
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: -5
+          - type: 2
+            quantity: -10
+          - type: 5
+            quantity: 1
+        cost:
+          items:
+          - type: 4
+            quantity: -10
     clickUpgrades:
       aquired: 0
       upgrades: []
@@ -353,19 +405,15 @@ MonoBehaviour:
       upgrades:
       - name: Copper Tools
         chance: 1
-        type: 0
+        type: 1
         resources:
           items:
-          - type: 2
-            quantity: -10
-          - type: 4
-            quantity: -5
           - type: 5
-            quantity: 1
+            quantity: 2
         cost:
           items:
           - type: 4
-            quantity: -10
+            quantity: -50
       - name: Iron Tools
         chance: 1
         type: 0
