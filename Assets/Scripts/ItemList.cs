@@ -47,7 +47,6 @@ public enum ItemType
     DIAMOND
 }
 
-
 [Serializable]
 public class Item
 {

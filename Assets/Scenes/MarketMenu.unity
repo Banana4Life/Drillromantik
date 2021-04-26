@@ -260,8 +260,9 @@ GameObject:
   - component: {fileID: 36148540}
   - component: {fileID: 36148539}
   - component: {fileID: 36148538}
+  - component: {fileID: 36148542}
   m_Layer: 5
-  m_Name: Charcoal
+  m_Name: CHARCOAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +333,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 36148540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 36148542}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &36148539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +410,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36148536}
   m_CullTransparentMesh: 1
+--- !u!114 &36148542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36148536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 2
+  amountSelected: {fileID: 815533417}
+  itemPrice: {fileID: 2105319215}
+  goldPrice: 10
+  currentSelectedAmount: 0
 --- !u!1 &46863342
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +518,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: StonePrice
+  m_Text: ' 200 Gold'
 --- !u!222 &46863346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -588,7 +618,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DiamondPrice
+  m_Text: 700 Gold
 --- !u!222 &147565837
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -786,175 +816,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &240240415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 240240416}
-  - component: {fileID: 240240421}
-  - component: {fileID: 240240420}
-  - component: {fileID: 240240419}
-  - component: {fileID: 240240418}
-  - component: {fileID: 240240417}
-  m_Layer: 5
-  m_Name: Buy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &240240416
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1650304269}
-  m_Father: {fileID: 746994914}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!114 &240240417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 5
-    m_Right: 5
-    m_Top: 5
-    m_Bottom: 5
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
---- !u!114 &240240418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 0.5
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
---- !u!114 &240240419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.50980395, g: 0.7019608, b: 0.4, a: 1}
-    m_HighlightedColor: {r: 0.50980395, g: 0.7019608, b: 0.4, a: 0.45490196}
-    m_PressedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_SelectedColor: {r: 0.94509804, g: 1, b: 0.4862745, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 240240420}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &240240420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &240240421
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240240415}
-  m_CullTransparentMesh: 1
 --- !u!1 &269140861
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,8 +829,9 @@ GameObject:
   - component: {fileID: 269140865}
   - component: {fileID: 269140864}
   - component: {fileID: 269140863}
+  - component: {fileID: 269140867}
   m_Layer: 5
-  m_Name: Coal
+  m_Name: COAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,7 +902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 269140865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 269140867}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &269140864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +979,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269140861}
   m_CullTransparentMesh: 1
+--- !u!114 &269140867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269140861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 3
+  amountSelected: {fileID: 510798113}
+  itemPrice: {fileID: 302400553}
+  goldPrice: 100
+  currentSelectedAmount: 0
 --- !u!1 &286826750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CoalPrice
+  m_Text: 400 Gold
 --- !u!222 &302400554
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1456,7 +1347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SELL
+  m_Text: TRADE
 --- !u!222 &316834311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1986,6 +1877,7 @@ MonoBehaviour:
   currentAmount: {fileID: 1670224740}
   maxAmount: {fileID: 347087952}
   minAmount: {fileID: 430589996}
+  sliderControl: {fileID: 0}
 --- !u!1 &475656594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +1957,7 @@ GameObject:
   - component: {fileID: 510798113}
   - component: {fileID: 510798112}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: CoalAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2261,8 +2153,9 @@ GameObject:
   - component: {fileID: 553653750}
   - component: {fileID: 553653749}
   - component: {fileID: 553653748}
+  - component: {fileID: 553653752}
   m_Layer: 5
-  m_Name: CopperTool
+  m_Name: COPPER_TOOLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2226,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553653750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701494084}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 553653752}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553653749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2398,6 +2303,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553653746}
   m_CullTransparentMesh: 1
+--- !u!114 &553653752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553653746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 5
+  amountSelected: {fileID: 2048772932}
+  itemPrice: {fileID: 554809050}
+  goldPrice: 200
+  currentSelectedAmount: 0
 --- !u!1 &554809047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,7 +2557,7 @@ GameObject:
   - component: {fileID: 598701926}
   - component: {fileID: 598701925}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: IronToolAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2713,7 +2635,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AmountSelected
+  m_Text: IronToolAmountSelected
 --- !u!222 &598701927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2862,7 +2784,7 @@ GameObject:
   - component: {fileID: 646521873}
   - component: {fileID: 646521872}
   m_Layer: 5
-  m_Name: Sell
+  m_Name: Trade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2931,7 +2853,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646521870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: Trade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &646521870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3375,8 +3309,9 @@ GameObject:
   - component: {fileID: 682819926}
   - component: {fileID: 682819925}
   - component: {fileID: 682819924}
+  - component: {fileID: 682819928}
   m_Layer: 5
-  m_Name: SteelTool
+  m_Name: STEEL_TOOLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3447,7 +3382,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 682819926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701494084}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 682819928}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &682819925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3512,6 +3459,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682819922}
   m_CullTransparentMesh: 1
+--- !u!114 &682819928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682819922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 8
+  amountSelected: {fileID: 926167082}
+  itemPrice: {fileID: 1259293101}
+  goldPrice: 1000
+  currentSelectedAmount: 0
 --- !u!1 &689326350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,6 +3585,7 @@ GameObject:
   - component: {fileID: 701494080}
   - component: {fileID: 701494082}
   - component: {fileID: 701494083}
+  - component: {fileID: 701494084}
   m_Layer: 5
   m_Name: Tools
   m_TagString: Untagged
@@ -3734,6 +3699,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0.5
   m_LayoutPriority: 1
+--- !u!114 &701494084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701494078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf66a45c5bf55d49ad27fc78e31ffb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 450705656}
 --- !u!1 &704824938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4080,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 646521868}
-  - {fileID: 240240416}
   m_Father: {fileID: 1860421573}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4208,7 +4185,7 @@ GameObject:
   - component: {fileID: 815533417}
   - component: {fileID: 815533416}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: CharcoalAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4308,8 +4285,9 @@ GameObject:
   - component: {fileID: 833950793}
   - component: {fileID: 833950792}
   - component: {fileID: 833950791}
+  - component: {fileID: 833950795}
   m_Layer: 5
-  m_Name: Iron
+  m_Name: IRON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4380,7 +4358,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 833950793}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 833950795}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &833950792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4445,6 +4435,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833950789}
   m_CullTransparentMesh: 1
+--- !u!114 &833950795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833950789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 6
+  amountSelected: {fileID: 1609858860}
+  itemPrice: {fileID: 1859577745}
+  goldPrice: 60
+  currentSelectedAmount: 0
 --- !u!1 &835348896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,8 +4981,9 @@ GameObject:
   - component: {fileID: 900980666}
   - component: {fileID: 900980665}
   - component: {fileID: 900980664}
+  - component: {fileID: 900980668}
   m_Layer: 5
-  m_Name: Copper
+  m_Name: COPPER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5046,7 +5054,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 900980666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 900980668}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900980665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5111,6 +5131,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900980662}
   m_CullTransparentMesh: 1
+--- !u!114 &900980668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900980662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 4
+  amountSelected: {fileID: 1148406396}
+  itemPrice: {fileID: 1569254750}
+  goldPrice: 30
+  currentSelectedAmount: 0
 --- !u!1 &926167079
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,7 +5161,7 @@ GameObject:
   - component: {fileID: 926167082}
   - component: {fileID: 926167081}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: SteelToolAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5202,7 +5239,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AmountSelected
+  m_Text: SteelToolAmountSelected
 --- !u!222 &926167083
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5572,8 +5609,9 @@ GameObject:
   - component: {fileID: 987638690}
   - component: {fileID: 987638689}
   - component: {fileID: 987638688}
+  - component: {fileID: 987638692}
   m_Layer: 5
-  m_Name: Stone
+  m_Name: STONE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5644,7 +5682,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 987638690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 987638692}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &987638689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5709,6 +5759,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987638686}
   m_CullTransparentMesh: 1
+--- !u!114 &987638692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987638686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 1
+  amountSelected: {fileID: 1821482085}
+  itemPrice: {fileID: 46863345}
+  goldPrice: 1
+  currentSelectedAmount: 0
 --- !u!1 &1095935880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,8 +5789,9 @@ GameObject:
   - component: {fileID: 1095935884}
   - component: {fileID: 1095935883}
   - component: {fileID: 1095935882}
+  - component: {fileID: 1095935886}
   m_Layer: 5
-  m_Name: IronTool
+  m_Name: IRON_TOOLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5794,7 +5862,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1095935884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701494084}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1095935886}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1095935883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5859,6 +5939,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095935880}
   m_CullTransparentMesh: 1
+--- !u!114 &1095935886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095935880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 7
+  amountSelected: {fileID: 598701926}
+  itemPrice: {fileID: 944192138}
+  goldPrice: 500
+  currentSelectedAmount: 0
 --- !u!1 &1124031339
 GameObject:
   m_ObjectHideFlags: 0
@@ -5955,7 +6052,7 @@ GameObject:
   - component: {fileID: 1148406396}
   - component: {fileID: 1148406395}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: CopperAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6369,7 +6466,7 @@ GameObject:
   - component: {fileID: 1321578361}
   - component: {fileID: 1321578360}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: DiamondAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6469,8 +6566,9 @@ GameObject:
   - component: {fileID: 1372007730}
   - component: {fileID: 1372007729}
   - component: {fileID: 1372007728}
+  - component: {fileID: 1372007732}
   m_Layer: 5
-  m_Name: Diamond
+  m_Name: DIAMOND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6541,7 +6639,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1372007730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1372007732}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1372007729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6606,6 +6716,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372007726}
   m_CullTransparentMesh: 1
+--- !u!114 &1372007732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372007726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 10
+  amountSelected: {fileID: 1321578361}
+  itemPrice: {fileID: 147565836}
+  goldPrice: 100000
+  currentSelectedAmount: 0
 --- !u!1 &1480122496
 GameObject:
   m_ObjectHideFlags: 0
@@ -6695,6 +6822,7 @@ GameObject:
   - component: {fileID: 1521568318}
   - component: {fileID: 1521568320}
   - component: {fileID: 1521568321}
+  - component: {fileID: 1521568322}
   m_Layer: 5
   m_Name: Materials
   m_TagString: Untagged
@@ -6812,6 +6940,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0.5
   m_LayoutPriority: 1
+--- !u!114 &1521568322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521568316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf66a45c5bf55d49ad27fc78e31ffb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 450705656}
 --- !u!1 &1532189218
 GameObject:
   m_ObjectHideFlags: 0
@@ -7028,7 +7169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CopperPrice
+  m_Text: 500 Gold
 --- !u!222 &1569254751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7176,8 +7317,9 @@ GameObject:
   - component: {fileID: 1605731984}
   - component: {fileID: 1605731987}
   - component: {fileID: 1605731988}
+  - component: {fileID: 1605731989}
   m_Layer: 5
-  m_Name: Wood
+  m_Name: WOOD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7312,7 +7454,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605731985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521568322}
+        m_TargetAssemblyTypeName: MarketItems, Assembly-CSharp
+        m_MethodName: SelectedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1605731989}
+          m_ObjectArgumentAssemblyTypeName: MarketResource, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1605731988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7333,6 +7487,23 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1605731989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605731982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b323e45dcc38ec41900325f9a8da492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 0
+  amountSelected: {fileID: 2105183296}
+  itemPrice: {fileID: 2053289373}
+  goldPrice: 1
+  currentSelectedAmount: 0
 --- !u!1 &1609858857
 GameObject:
   m_ObjectHideFlags: 0
@@ -7346,7 +7517,7 @@ GameObject:
   - component: {fileID: 1609858860}
   - component: {fileID: 1609858859}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: IronAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7432,106 +7603,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609858857}
-  m_CullTransparentMesh: 1
---- !u!1 &1650304268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1650304269}
-  - component: {fileID: 1650304272}
-  - component: {fileID: 1650304271}
-  - component: {fileID: 1650304270}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1650304269
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650304268}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 240240416}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1650304270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650304268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
---- !u!114 &1650304271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650304268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: BUY
---- !u!222 &1650304272
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650304268}
   m_CullTransparentMesh: 1
 --- !u!1 &1664917414
 GameObject:
@@ -8068,7 +8139,7 @@ GameObject:
   - component: {fileID: 1821482085}
   - component: {fileID: 1821482084}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: StoneAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8442,7 +8513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IronPrice
+  m_Text: 600 Gold
 --- !u!222 &1859577746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8967,7 +9038,7 @@ GameObject:
   - component: {fileID: 2048772932}
   - component: {fileID: 2048772931}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: CopperToolAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9045,7 +9116,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AmountSelected
+  m_Text: CopperToolAmountSelected
 --- !u!222 &2048772933
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9125,7 +9196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WoodPrice
+  m_Text: 100 Gold
 --- !u!222 &2053289374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9242,7 +9313,7 @@ GameObject:
   - component: {fileID: 2105183296}
   - component: {fileID: 2105183298}
   m_Layer: 5
-  m_Name: AmountSelected
+  m_Name: WoodAmountSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9420,7 +9491,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CharcoalPrice
+  m_Text: 300 Gold
 --- !u!222 &2105319216
 CanvasRenderer:
   m_ObjectHideFlags: 0

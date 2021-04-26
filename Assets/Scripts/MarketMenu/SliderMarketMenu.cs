@@ -1,5 +1,6 @@
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
@@ -11,11 +12,12 @@ public class SliderMarketMenu : MonoBehaviour
 
     public Text minAmount;
 
-    private Slider _sliderControl;
+    public Slider sliderControl;
 
     void Start()
     {
-        _sliderControl = GetComponent<Slider>();
+        Global.Resources.Add(new Item { quantity = 1, type = ItemType.DIAMOND});
+        sliderControl = GetComponent<Slider>();
         SetMinAmount();
         SetMaxAmount();
         AdjustCurrentAmount();
@@ -23,27 +25,27 @@ public class SliderMarketMenu : MonoBehaviour
 
     private void SetMinAmount(int newMinAmount = 0)
     {
-        _sliderControl.minValue = newMinAmount;
+        sliderControl.minValue = newMinAmount;
         minAmount.text = newMinAmount.ToString();
     }
-    private void SetMaxAmount(int newMaxAmount = 100)
+    private void SetMaxAmount(int newMaxAmount = 0)
     {
-        _sliderControl.maxValue = newMaxAmount;
+        sliderControl.maxValue = newMaxAmount;
         maxAmount.text = newMaxAmount.ToString();
     }
 
     public void AdjustCurrentAmount()
     {
-        currentAmount.text = _sliderControl.value.ToString(CultureInfo.InvariantCulture);
+        currentAmount.text = sliderControl.value.ToString();
     }
 
     public void IncrementAmountByOne()
     {
-        _sliderControl.value += 1;
+        sliderControl.value += 1;
     }
     
     public void DecrementAmountByOne()
     {
-        _sliderControl.value -= 1;
+        sliderControl.value -= 1;
     }
 }

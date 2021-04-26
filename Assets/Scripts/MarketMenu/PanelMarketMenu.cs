@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class PanelMarketMenu : MonoBehaviour{
+public class PanelMarketMenu : MonoBehaviour
+{
 
-void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -14,4 +15,5 @@ void Update()
     {
         gameObject.SetActive(false);
     }
+
 }
