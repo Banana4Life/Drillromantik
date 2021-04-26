@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using TileGrid;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -10,6 +11,7 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
+        public GameObject resourcePrefab;
         
         public void TileSelected(TileScript tile)
         {
@@ -39,11 +41,22 @@ namespace UI
                 var rawImage = obj.GetComponent<RawImage>();
                 rawImage.texture = structure.texture;
                 var button = obj.GetComponent<Button>();
+                
                 button.onClick.AddListener(() =>
                 {
                     tile.BuildStructure(structure, gameObject.transform);
                     TileSelected(tile);
                 });
+
+                var eventTrigger = obj.GetComponent<EventTrigger>();
+                var entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerEnter;
+                entry.callback.AddListener(d =>
+                {
+                    var cost = structure.Cost();
+                    tile.floaty(gameObject.transform, cost, true, structure.name); // TODO icons pls
+                });
+                eventTrigger.triggers.Add(entry);
             }
             gameObject.SetActive(true);
         }

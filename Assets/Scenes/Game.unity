@@ -483,6 +483,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7184490643801260213, guid: 8de5d9ad63381d640baa451464451889, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398171089500013794, guid: 8de5d9ad63381d640baa451464451889, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8de5d9ad63381d640baa451464451889, type: 3}
 --- !u!4 &155111566 stripped
@@ -977,6 +985,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2349612192498898762, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487246926803656857, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3524387617733267528, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -997,11 +1013,27 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4366880564621002429, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4490824310961491298, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4777437360929043807, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4830126254015516312, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631263312894216594, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650314349504320084, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -2154,6 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileGridController: {fileID: 7519847040705227513}
   buildingButtonPrefab: {fileID: 3552036615422640668, guid: 2456321b8028ac151af4a73c25c90491, type: 3}
+  resourcePrefab: {fileID: 795944594001426154, guid: e316224d4f4d2ec0792e80f6cd351878, type: 3}
 --- !u!1 &786294267
 GameObject:
   m_ObjectHideFlags: 0
