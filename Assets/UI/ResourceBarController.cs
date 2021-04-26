@@ -10,6 +10,8 @@ namespace UI
         public GameObject resourceStatusPrefab;
         private TechTree _techTree;
 
+        public bool cheats;
+
         private Dictionary<ItemType, ResourceStatus> _statusMap = new Dictionary<ItemType, ResourceStatus>();
         
         private void Start()
@@ -33,11 +35,16 @@ namespace UI
 
         private void Update()
         {
-            Global.Resources.Add(new Item { quantity = 10, type = ItemType.WOOD});
-            Global.Resources.Add(new Item { quantity = 10, type = ItemType.STONE});
-            Global.Resources.Add(new Item { quantity = 10, type = ItemType.COPPER});
-            Global.Resources.Add(new Item { quantity = 10, type = ItemType.COAL});
-            Global.Resources.Add(new Item { quantity = 10, type = ItemType.IRON});
+            if (cheats)
+            {
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.WOOD});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.STONE});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.COPPER});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.COAL});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.CHARCOAL});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.IRON});    
+            }
+            
             foreach (var status in _statusMap)
             {
                 status.Value.UpdateText(Global.Resources.Items.GetOrElse(status.Key));
