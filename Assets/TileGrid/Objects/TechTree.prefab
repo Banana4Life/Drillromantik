@@ -432,6 +432,7 @@ MonoBehaviour:
     buildable: 0
     buildCost:
       items: []
+    limit: {fileID: 0}
   - name: Woods
     type: 1
     prefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
@@ -502,6 +503,7 @@ MonoBehaviour:
     buildable: 0
     buildCost:
       items: []
+    limit: {fileID: 0}
   - name: Lumberjack Hut
     type: 3
     prefab: {fileID: 7588520534324842638, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
@@ -611,6 +613,7 @@ MonoBehaviour:
         quantity: -10
       - type: 1
         quantity: -10
+    limit: {fileID: 3610374044835129072, guid: 4139b3234d657aceeb793e61b52a311d, type: 3}
   - name: Charcoal Burner
     type: 4
     prefab: {fileID: 1163431250783946420, guid: 8de5d9ad63381d640baa451464451889, type: 3}
@@ -722,6 +725,7 @@ MonoBehaviour:
         quantity: -20
       - type: 1
         quantity: -20
+    limit: {fileID: 0}
   - name: Smith
     type: 7
     prefab: {fileID: 2700594142609715560, guid: d3d57fa78332683ecbaeedbf21f11076, type: 3}
@@ -990,6 +994,7 @@ MonoBehaviour:
       items:
       - type: 1
         quantity: -20
+    limit: {fileID: 0}
   - name: Market
     type: 6
     prefab: {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
@@ -1010,6 +1015,7 @@ MonoBehaviour:
         quantity: -500
       - type: 9
         quantity: -10
+    limit: {fileID: 0}
   - name: Wasteland
     type: 2
     prefab: {fileID: 0}
@@ -1024,6 +1030,7 @@ MonoBehaviour:
     buildable: 0
     buildCost:
       items: []
+    limit: {fileID: 0}
   - name: Research Facility
     type: 5
     prefab: {fileID: 6832233711388223767, guid: 2be9f7bc32ea71d64be7c87f28ab1380, type: 3}
@@ -1042,6 +1049,7 @@ MonoBehaviour:
         quantity: -100
       - type: 1
         quantity: -100
+    limit: {fileID: 0}
   Textures:
   - type: 0
     tex: {fileID: 8400000, guid: 993945d05add648f9bae592cea39d313, type: 2}

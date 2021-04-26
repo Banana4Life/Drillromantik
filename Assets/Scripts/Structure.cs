@@ -19,10 +19,8 @@ public class Structure
 
     public bool buildable;
     public ItemList buildCost;
-    
-    private LimitScript _limit;
-    [NonSerialized]
-    private bool _init = false;
+
+    public LimitScript limit;
 
 
     public Resources TickTile(TileGridController controller, CubeCoord pos, Upgrades upgrades, TileScript tile)
@@ -55,15 +53,6 @@ public class Structure
         
         return modified;
     }
-  
-    public void Init()
-    {
-        if (!_init && prefab)
-        {
-            _init = true;
-            _limit = prefab.GetComponent<LimitScript>();
-        }
-    }
 
     public bool CanBuildDeductCost(TileGridController controller, CubeCoord coord)
     {
@@ -71,7 +60,6 @@ public class Structure
         {
             return false;
         }
-        Init();
         if (!IsBuildAllowed(controller, coord)) return false;
 
         var cost = Cost(controller);
@@ -97,9 +85,9 @@ public class Structure
             return false;
         }
         var neighborTiles = controller.GetNeighborTiles(coord);
-        if (_limit)
+        if (limit)
         {
-            if (_limit.BuildLimited(neighborTiles))
+            if (limit.BuildLimited(neighborTiles))
             {
                 return false;
             }

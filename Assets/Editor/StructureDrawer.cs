@@ -33,7 +33,12 @@ namespace Editor
             offsetY += baseHeight;
             rect = new Rect(position.x, offsetY, position.width, baseHeight);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("buildable"), new GUIContent("buildable"));
-        
+            
+            offsetY += baseHeight;
+            rect = new Rect(position.x, offsetY, position.width, baseHeight);
+            EditorGUI.PropertyField(rect, property.FindPropertyRelative("limit"), new GUIContent("limit"));
+            
+            
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
         
