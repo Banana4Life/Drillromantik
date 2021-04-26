@@ -28,8 +28,14 @@ namespace UI
             bool hasClickReward = tile.HasClickReward();
             if (hasClickReward)
             {
-                var rawImage = clickButton.GetComponent<RawImage>();
-                rawImage.texture = tile.Structure.texture;
+                RawImage[] rawImages = clickButton.GetComponentsInChildren<RawImage>();
+                foreach (RawImage rawImage in rawImages)
+                {
+                    if (rawImage.gameObject.transform.parent != transform.parent)
+                    {
+                        rawImage.texture = tile.Structure.texture;
+                    }
+                }
             }
             clickButton.gameObject.SetActive(hasClickReward);
         }
