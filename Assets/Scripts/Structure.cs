@@ -67,6 +67,10 @@ public class Structure
 
     public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)
     {
+        if (!buildable)
+        {
+            return false;
+        }
         var neighborTiles = controller.GetNeighborTiles(coord);
         if (_limit)
         {

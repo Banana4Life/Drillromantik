@@ -474,7 +474,7 @@ MonoBehaviour:
   - name: Market
     type: 6
     prefab: {fileID: 1476409205981876682, guid: 8362705d81d30e0dfa74cbd0dad1cc5a, type: 3}
-    texture: {fileID: 0}
+    texture: {fileID: 8400000, guid: 0b367a2850d766889979fa03cd70e243, type: 2}
     spawnWeight: 0
     buildingUpgrades:
       aquired: 0
