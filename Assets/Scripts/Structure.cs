@@ -18,9 +18,6 @@ public class Structure
     public Upgrades clickUpgrades;
     public Upgrades globalUpgrades;
 
-    private Upgrades clickUpgradesInstance;
-    private Upgrades globalUpgradesInstance;
-
     public bool buildable;
     public ItemList buildCost;
     
@@ -41,15 +38,6 @@ public class Structure
         if (!_init && prefab)
         {
             _init = true;
-            
-            clickUpgradesInstance = new Upgrades();
-            clickUpgradesInstance.upgrades.AddRange(clickUpgrades.upgrades);
-            clickUpgradesInstance.aquired = clickUpgrades.aquired;
-            
-            globalUpgradesInstance = new Upgrades();
-            globalUpgradesInstance.upgrades.AddRange(globalUpgrades.upgrades);
-            globalUpgradesInstance.aquired = globalUpgrades.aquired;
-            
             _limit = prefab.GetComponent<LimitScript>();
         }
     }
@@ -122,27 +110,27 @@ public class Structure
 
     public bool AcquireNextClickUpgrade()
     {
-        return clickUpgradesInstance.AcquireNext();
+        return clickUpgrades.AcquireNext();
     }
 
     public bool AcquireNextGlobalUpgrade()
     {
-        return globalUpgradesInstance.AcquireNext();
+        return globalUpgrades.AcquireNext();
     }
 
     public bool HasClickUpgrades()
     {
-        return clickUpgradesInstance.aquired > 0;
+        return clickUpgrades.aquired > 0;
     }
 
     public Resources CalculateClick()
     {
-        return clickUpgradesInstance.Calculate();
+        return clickUpgrades.Calculate();
     }
 
     public bool CanUpgradeClick()
     {
-        return clickUpgradesInstance.upgrades.Count > clickUpgradesInstance.aquired;
+        return clickUpgrades.upgrades.Count > clickUpgrades.aquired;
 
     }
 }

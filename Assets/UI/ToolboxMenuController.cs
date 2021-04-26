@@ -38,8 +38,8 @@ namespace UI
         {
             if (button == destroyButton)
             {
-                var wasteland = _selectedTile.TechTree.Structures.First(s => s.IsWasteland());
-                _selectedTile.BuildStructure(wasteland, gameObject.transform);
+                var wasteland = Global.TechTree.Structures.First(s => s.IsWasteland());
+                _selectedTile.AssignStructure(wasteland);
                 TileSelected(_selectedTile);
             }
             else if (button == buildingUpgradeButton)

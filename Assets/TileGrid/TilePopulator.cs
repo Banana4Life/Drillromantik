@@ -19,6 +19,8 @@ namespace TileGrid
             {
                 _weights[i] = techTree.Structures[i].spawnWeight;
             }
+
+            Global.TechTree = Instantiate(techTree, transform);
         }
 
         public void Populate(CubeCoord coord, GameObject tileObject)

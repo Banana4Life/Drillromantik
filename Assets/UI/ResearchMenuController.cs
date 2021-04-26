@@ -18,7 +18,7 @@ namespace UI
                 }
                 
                 var upgradableStructures =
-                    tile.TechTree.Structures.Where(s => s.globalUpgrades.upgrades.Count > s.globalUpgrades.aquired).ToList();
+                    Global.TechTree.Structures.Where(s => s.globalUpgrades.upgrades.Count > s.globalUpgrades.aquired).ToList();
 
                 if (upgradableStructures.Count == 0)
                 {

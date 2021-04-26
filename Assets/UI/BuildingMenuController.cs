@@ -24,7 +24,7 @@ namespace UI
                 return;
             }
             var buildableStructures =
-                tile.TechTree.Structures.Where(s => s.texture && s.IsBuildAllowed(tileGridController, tile.pos)).ToList();
+                Global.TechTree.Structures.Where(s => s.texture && s.IsBuildAllowed(tileGridController, tile.pos)).ToList();
 
             if (buildableStructures.Count == 0)
             {

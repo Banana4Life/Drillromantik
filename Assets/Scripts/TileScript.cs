@@ -12,7 +12,6 @@ public class TileScript : MonoBehaviour
     private Upgrades _upgrades = new Upgrades();
     public GameObject currentStructure;
 
-    public TechTree TechTree;
     private TileGridController _controller;
     public CubeCoord pos;
     private static readonly int ColorPropertyId = Shader.PropertyToID("_Color");
