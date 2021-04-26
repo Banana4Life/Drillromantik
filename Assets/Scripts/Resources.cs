@@ -34,6 +34,10 @@ public class Resources
         return this;
     }
 
+    public bool HasResource(ItemType type, BigInteger quantity)
+    {
+        return Items.ContainsKey(type) && Items[type] + quantity >= 0;
+    }
     public bool HasResources(ItemList resources)
     {
         foreach (var toAdd in resources.items)

@@ -16,9 +16,10 @@ namespace UI
             _text = GetComponentInChildren<Text>();
         }
 
-        public void Init(BigInteger n)
+        public void Init(BigInteger n, Color color)
         {
             _text = GetComponentInChildren<Text>();
+            _text.color = color;
             UpdateText(n);
         }
         

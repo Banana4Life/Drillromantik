@@ -42,7 +42,7 @@ public class FloatyScript : MonoBehaviour
             var resObj = Instantiate(resourcePrefab, GetComponentInChildren<VerticalLayoutGroup>().transform);
             
             var status = resObj.GetComponent<ResourceStatus>();
-            status.Init(item.Value);
+            status.Init(item.Value, Color.black);
             foreach (var techTreeTexture in Global.FindTechTree().Textures)
             {
                 if (techTreeTexture.type == item.Key)

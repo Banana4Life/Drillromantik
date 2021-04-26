@@ -119,7 +119,12 @@ public partial class TileScript : MonoBehaviour
             var resObj = Instantiate(resourcePrefab, rect);
             
             var status = resObj.GetComponent<ResourceStatus>();
-            status.Init(item.Value);
+            Color color = Color.black;
+            if (!Global.Resources.HasResource(item.Key, item.Value))
+            {
+                color = Color.red;
+            }
+            status.Init(item.Value, color);
             foreach (var techTreeTexture in _techTree.Textures)
             {
                 if (techTreeTexture.type == item.Key)
