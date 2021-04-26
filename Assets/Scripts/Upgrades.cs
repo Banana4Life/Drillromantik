@@ -16,9 +16,8 @@ public class Upgrades
         return this;
     }
 
-    public Resources Calculate()
+    public Resources Calculate(Resources toAdd)
     {
-        var toAdd = new Resources();
         for (var i = 0; i < aquired; i++)
         {
             var upgrade = upgrades[i];

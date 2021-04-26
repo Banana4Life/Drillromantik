@@ -23,12 +23,12 @@ public class TileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(TileTick), 1f, 1f);
+        InvokeRepeating(nameof(BuildingTick), 1f, 1f);
         _controller = GetComponentInParent<TileGridController>();
         _renderer = GetComponentInChildren<Renderer>();
     }
 
-    private void TileTick()
+    private void BuildingTick()
     {
         _structure?.TickTile(_controller, pos, _upgrades);
     }

@@ -125,7 +125,7 @@ MonoBehaviour:
           - type: 8
             quantity: -10
     clickUpgrades:
-      aquired: 2
+      aquired: 4
       upgrades:
       - name: Base
         chance: 1
@@ -212,7 +212,7 @@ MonoBehaviour:
       aquired: 0
       upgrades: []
     clickUpgrades:
-      aquired: 2
+      aquired: 4
       upgrades:
       - name: Base
         chance: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
         resources:
           items:
           - type: 0
-            quantity: 2
+            quantity: 5
         cost:
           items:
           - type: 5
@@ -318,7 +318,7 @@ MonoBehaviour:
         resources:
           items:
           - type: 0
-            quantity: 2
+            quantity: 4
         cost:
           items:
           - type: 7
@@ -329,7 +329,7 @@ MonoBehaviour:
         resources:
           items:
           - type: 0
-            quantity: 2
+            quantity: 6
         cost:
           items:
           - type: 8
@@ -366,27 +366,49 @@ MonoBehaviour:
             quantity: 1
         cost:
           items: []
+      - name: Improved Efficiency
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 2
+            quantity: 2
+        cost:
+          items:
+          - type: 0
+            quantity: -50
+    clickUpgrades:
+      aquired: 0
+      upgrades:
+      - name: Handmade Charcoal
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 0
+            quantity: -3
+          - type: 2
+            quantity: 1
+        cost:
+          items:
+          - type: 0
+            quantity: -50
+    globalUpgrades:
+      aquired: 0
+      upgrades:
       - name: Improved Burning
         chance: 1
         type: 1
         resources:
           items:
-          - type: 0
-            quantity: 2
           - type: 2
             quantity: 3
+          - type: 0
+            quantity: 2
         cost:
           items:
-          - type: 0
-            quantity: -100
           - type: 2
-            quantity: -50
-    clickUpgrades:
-      aquired: 0
-      upgrades: []
-    globalUpgrades:
-      aquired: 0
-      upgrades: []
+            quantity: -10
     buildable: 1
     buildCost:
       items:
@@ -400,7 +422,7 @@ MonoBehaviour:
     texture: {fileID: 8400000, guid: 38eba72860794424c97313b87be56961, type: 2}
     spawnWeight: 0
     buildingUpgrades:
-      aquired: 1
+      aquired: 0
       upgrades:
       - name: Copper Tools
         chance: 1
@@ -419,7 +441,22 @@ MonoBehaviour:
             quantity: -10
     clickUpgrades:
       aquired: 0
-      upgrades: []
+      upgrades:
+      - name: Handmade Copper Tools
+        chance: 1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: -4
+          - type: 2
+            quantity: -8
+          - type: 5
+            quantity: 1
+        cost:
+          items:
+          - type: 4
+            quantity: -10
     globalUpgrades:
       aquired: 0
       upgrades:

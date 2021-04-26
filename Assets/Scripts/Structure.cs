@@ -30,7 +30,9 @@ public class Structure
     {
         // var neighborTiles = controller.GetNeighborTiles(pos);
         // TODO bonus based on tiles!
-        Global.Resources.Add(upgrades.Calculate());
+        var buildingResources = upgrades.Calculate(new Resources());
+        var modified = globalUpgrades.Calculate(buildingResources);
+        Global.Resources.Add(modified);
     }
   
     public void Init()
@@ -129,7 +131,7 @@ public class Structure
 
     public Resources CalculateClick()
     {
-        return clickUpgrades.Calculate();
+        return clickUpgrades.Calculate(new Resources());
     }
 
     public bool CanUpgradeClick()
