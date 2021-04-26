@@ -472,17 +472,6 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -1
-      - name: Copper Tools
-        chance: 2
-        type: 1
-        resources:
-          items:
-          - type: 0
-            quantity: 2
-        cost:
-          items:
-          - type: 5
-            quantity: -1
       - name: Iron Tools
         chance: 2
         type: 1
@@ -666,6 +655,36 @@ MonoBehaviour:
           items:
           - type: 4
             quantity: -10
+      - name: Copper Tools II
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 4
+          - type: 2
+            quantity: 4
+          - type: 5
+            quantity: 5
+        cost:
+          items:
+          - type: 5
+            quantity: -10
+      - name: Copper Tools II
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 4
+            quantity: 4
+          - type: 2
+            quantity: 4
+          - type: 5
+            quantity: 5
+        cost:
+          items:
+          - type: 5
+            quantity: -10
     clickUpgrades:
       aquired: 0
       upgrades:
@@ -702,18 +721,20 @@ MonoBehaviour:
     globalUpgrades:
       aquired: 0
       upgrades:
-      - name: Copper Tools
+      - name: Improved Copper Tools
         chance: 1
         type: 1
         resources:
           items:
-          - type: 5
+          - type: 4
             quantity: 2
+          - type: 5
+            quantity: 3
         cost:
           items:
           - type: 4
             quantity: -50
-      - name: Iron Tools
+      - name: Improved Iron Tools
         chance: 1
         type: 0
         resources:
@@ -728,7 +749,7 @@ MonoBehaviour:
           items:
           - type: 6
             quantity: -10
-      - name: Steel Tools
+      - name: Improved Steel Tools
         chance: 1
         type: 0
         resources:
