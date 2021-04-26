@@ -87,6 +87,8 @@ namespace UI
                 else
                 {
                     buildingUpgradeText.text = _selectedTile.NextUpgrade().name;
+                    HideCost(button);
+                    ShowCost(button);
                 }
             }
             else if (button == clickUpgradeButton)
@@ -99,6 +101,8 @@ namespace UI
                 else
                 {
                     clickUpgradeText.text = _selectedTile.Structure.clickUpgrades.Next().name;
+                    HideCost(button);
+                    ShowCost(button);
                 }
             }
         }

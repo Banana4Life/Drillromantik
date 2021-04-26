@@ -52,7 +52,7 @@ MonoBehaviour:
     buildingUpgrades:
       aquired: 0
       upgrades:
-      - name: Miner
+      - name: Hire a Miner
         chance: 1
         type: 0
         resources:
@@ -65,7 +65,7 @@ MonoBehaviour:
             quantity: -10
           - type: 1
             quantity: -10
-      - name: 10% Copper
+      - name: Copper Nuggets
         chance: 0.1
         type: 0
         resources:
@@ -78,7 +78,24 @@ MonoBehaviour:
             quantity: -10
           - type: 1
             quantity: -10
-      - name: Assured Copper
+      - name: Hire a second Miner
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 1
+            quantity: 2
+          - type: 4
+            quantity: 2
+          - type: 6
+            quantity: 2
+          - type: 9
+            quantity: 2
+        cost:
+          items:
+          - type: 5
+            quantity: -1
+      - name: Copper Vein
         chance: 1
         type: 0
         resources:
@@ -89,18 +106,24 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -10
-      - name: Copper Mining Efficiency
+      - name: Mining Company
         chance: 1
         type: 1
         resources:
           items:
+          - type: 1
+            quantity: 5
           - type: 4
+            quantity: 5
+          - type: 6
+            quantity: 5
+          - type: 9
             quantity: 5
         cost:
           items:
           - type: 5
-            quantity: -15
-      - name: Iron
+            quantity: -100
+      - name: Iron Vein
         chance: 1
         type: 0
         resources:
@@ -110,8 +133,25 @@ MonoBehaviour:
         cost:
           items:
           - type: 5
+            quantity: -1000
+      - name: Expand Mining Operation
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 1
+            quantity: 5
+          - type: 4
+            quantity: 5
+          - type: 6
+            quantity: 5
+          - type: 9
+            quantity: 5
+        cost:
+          items:
+          - type: 7
             quantity: -100
-      - name: Steel?
+      - name: Coal Vein
         chance: 1
         type: 0
         resources:
@@ -123,18 +163,7 @@ MonoBehaviour:
         cost:
           items:
           - type: 7
-            quantity: -10
-      - name: Diamonds!
-        chance: 1
-        type: 0
-        resources:
-          items:
-          - type: 10
-            quantity: 1
-        cost:
-          items:
-          - type: 8
-            quantity: -10
+            quantity: -200
     clickUpgrades:
       aquired: 1
       upgrades:
@@ -147,7 +176,7 @@ MonoBehaviour:
             quantity: 1
         cost:
           items: []
-      - name: 10% Copper
+      - name: Look for Copper
         chance: 0.1
         type: 0
         resources:
@@ -171,7 +200,7 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -1
-      - name: Copper
+      - name: Copper Vein
         chance: 1
         type: 0
         resources:
@@ -264,6 +293,23 @@ MonoBehaviour:
     globalUpgrades:
       aquired: 0
       upgrades:
+      - name: Drilling speed
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 1
+            quantity: 2
+          - type: 4
+            quantity: 2
+          - type: 6
+            quantity: 2
+          - type: 3
+            quantity: 2
+        cost:
+          items:
+          - type: 5
+            quantity: -1
       - name: Copper Extraction Efficiency
         chance: 1
         type: 1
@@ -275,6 +321,19 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -10
+      - name: Lucky
+        chance: 0.1
+        type: 0
+        resources:
+          items:
+          - type: 9
+            quantity: 1
+          - type: 4
+            quantity: 20
+        cost:
+          items:
+          - type: 5
+            quantity: -50
       - name: Copper Extraction Efficiency II
         chance: 1
         type: 1
@@ -286,6 +345,23 @@ MonoBehaviour:
           items:
           - type: 5
             quantity: -100
+      - name: Drilling speed II
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 1
+            quantity: 2
+          - type: 4
+            quantity: 2
+          - type: 6
+            quantity: 2
+          - type: 3
+            quantity: 2
+        cost:
+          items:
+          - type: 7
+            quantity: -1
       - name: Iron Extraction Efficiency
         chance: 1
         type: 1
@@ -297,6 +373,21 @@ MonoBehaviour:
           items:
           - type: 7
             quantity: -10
+      - name: Lucky II
+        chance: 0.1
+        type: 0
+        resources:
+          items:
+          - type: 4
+            quantity: 30
+          - type: 6
+            quantity: 50
+          - type: 9
+            quantity: 1
+        cost:
+          items:
+          - type: 7
+            quantity: -15
       - name: Iron Extraction Efficiency II
         chance: 1
         type: 1
@@ -308,6 +399,34 @@ MonoBehaviour:
           items:
           - type: 7
             quantity: -100
+      - name: Drilling speed III
+        chance: 1
+        type: 1
+        resources:
+          items:
+          - type: 1
+            quantity: 2
+          - type: 4
+            quantity: 2
+          - type: 6
+            quantity: 2
+          - type: 3
+            quantity: 2
+        cost:
+          items:
+          - type: 8
+            quantity: -1
+      - name: Diamonds?
+        chance: 0.01
+        type: 1
+        resources:
+          items:
+          - type: 10
+            quantity: 1
+        cost:
+          items:
+          - type: 8
+            quantity: -15
     buildable: 0
     buildCost:
       items: []
