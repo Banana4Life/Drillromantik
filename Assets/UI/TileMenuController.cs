@@ -24,7 +24,14 @@ namespace UI
             buildingMenu.TileSelected(tile);
             toolboxMenu.TileSelected(tile);
             researchMenu.TileSelected(tile);
-            clickButton.gameObject.SetActive(tile.HasClickReward());
+            
+            bool hasClickReward = tile.HasClickReward();
+            if (hasClickReward)
+            {
+                var rawImage = clickButton.GetComponent<RawImage>();
+                rawImage.texture = tile.Structure.texture;
+            }
+            clickButton.gameObject.SetActive(hasClickReward);
         }
     }
     
