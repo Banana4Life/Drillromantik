@@ -9,22 +9,31 @@ namespace UI
         public Button destroyButton;
         public Button buildingUpgradeButton;
         public Button clickUpgradeButton;
-        public GameObject resourcePrefab;
+        public Text clickUpgradeText;
+        public Text buildingUpgradeText;
 
         private TileScript _selectedTile;
         
         public void TileSelected(TileScript tile)
         {
             var canDestroy = tile.CanDestroy();
-            var canUpgradeTick = tile.CanUpgradeBuilding();
+            var canUpgradeBuilding = tile.CanUpgradeBuilding();
             var canUpgradeClick = tile.CanUpgradeClick();
 
-            if (canDestroy || canUpgradeTick || canUpgradeClick)
+            if (canDestroy || canUpgradeBuilding || canUpgradeClick)
             {
                 gameObject.SetActive(true);
 
                 destroyButton.gameObject.SetActive(canDestroy);
-                buildingUpgradeButton.gameObject.SetActive(canUpgradeTick);
+                if (canUpgradeBuilding)
+                {
+                    buildingUpgradeText.text = tile.NextUpgrade().name;
+                } 
+                buildingUpgradeButton.gameObject.SetActive(canUpgradeBuilding);
+                if (canUpgradeClick)
+                {
+                    clickUpgradeText.text = tile.Structure.clickUpgrades.Next().name;
+                }
                 clickUpgradeButton.gameObject.SetActive(canUpgradeClick);
 
                 _selectedTile = tile;
@@ -39,17 +48,17 @@ namespace UI
         {
             if (button == destroyButton)
             {
-                _selectedTile.floaty(gameObject.transform, new Resources(), false, "Destroy Building");
+                _selectedTile.displayCost(button.transform, new Resources(),  "Destroy Building");
             }
             else if (button == buildingUpgradeButton)
             {
                 var nextUpgrade = _selectedTile.NextUpgrade();
-                _selectedTile.floaty(gameObject.transform, new Resources().Add(nextUpgrade.cost.items), true, nextUpgrade.name); // TODO icons pls
+                _selectedTile.displayCost(button.transform, new Resources().Add(nextUpgrade.cost.items), nextUpgrade.name);
             }
             else if (button == clickUpgradeButton)
             {
                 var nextUpgrade = _selectedTile.Structure.clickUpgrades.Next();
-                _selectedTile.floaty(gameObject.transform, new Resources().Add(nextUpgrade.cost.items), true, nextUpgrade.name); // TODO icons pls
+                _selectedTile.displayCost(button.transform, new Resources().Add(nextUpgrade.cost.items), nextUpgrade.name);
             }
         }
 
@@ -68,6 +77,10 @@ namespace UI
                 {
                     button.gameObject.SetActive(false);
                 }
+                else
+                {
+                    buildingUpgradeText.text = _selectedTile.NextUpgrade().name;
+                }
             }
             else if (button == clickUpgradeButton)
             {
@@ -75,6 +88,10 @@ namespace UI
                 if (!_selectedTile.CanUpgradeClick())
                 {
                     button.gameObject.SetActive(false);
+                }
+                else
+                {
+                    clickUpgradeText.text = _selectedTile.Structure.clickUpgrades.Next().name;
                 }
             }
         }

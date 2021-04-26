@@ -1,5 +1,6 @@
 using System;
 using TileGrid;
+using UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class TileScript : MonoBehaviour
     private Renderer _renderer;
 
     public GameObject floatyTextPrefab;
-
+    public GameObject resourcePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -190,6 +191,27 @@ public class TileScript : MonoBehaviour
         }
         floaty.transform.position = Input.mousePosition;
         floaty.GetComponent<PlusScript>().ttl = 0.4f;
+    }
+
+    public void displayCost(Transform aTransform, Resources resources, String name)
+    {
+        foreach (var item in resources.Items)
+        {
+            var rect = aTransform.GetComponentInChildren<VerticalLayoutGroup>().transform;
+            var resObj = Instantiate(resourcePrefab, rect);
+            
+            var status = resObj.GetComponent<ResourceStatus>();
+            status.Init(item.Value);
+            foreach (var techTreeTexture in Global.TechTree.Textures)
+            {
+                if (techTreeTexture.type == item.Key)
+                {
+                    status.GetComponentInChildren<RawImage>().texture = techTreeTexture.tex;
+                    break;
+                }
+
+            }
+        }
     }
 
     public void AssignStructure(Structure structure)

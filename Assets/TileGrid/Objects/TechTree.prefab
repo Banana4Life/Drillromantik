@@ -136,7 +136,7 @@ MonoBehaviour:
           - type: 8
             quantity: -10
     clickUpgrades:
-      aquired: 6
+      aquired: 1
       upgrades:
       - name: Base
         chance: 1
@@ -320,7 +320,7 @@ MonoBehaviour:
       aquired: 0
       upgrades: []
     clickUpgrades:
-      aquired: 4
+      aquired: 1
       upgrades:
       - name: Base
         chance: 1

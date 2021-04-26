@@ -48,9 +48,11 @@ namespace UI
                     entry.callback.AddListener(d =>
                     {
                         var globalUpgrade = structure.globalUpgrades.Next();
-                        tile.floaty(gameObject.transform, new Resources().Add(globalUpgrade.cost.items), true, globalUpgrade.name); // TODO icons pls
+                        tile.displayCost(button.transform, new Resources().Add(globalUpgrade.cost.items), globalUpgrade.name);
                     });
                     eventTrigger.triggers.Add(entry);
+                    
+                    button.GetComponentInChildren<Text>().text = structure.globalUpgrades.Next().name;
                 }
                 
                 gameObject.SetActive(true);

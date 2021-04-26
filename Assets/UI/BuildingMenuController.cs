@@ -11,7 +11,6 @@ namespace UI
     {
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
-        public GameObject resourcePrefab;
         
         public void TileSelected(TileScript tile)
         {
@@ -54,9 +53,11 @@ namespace UI
                 entry.callback.AddListener(d =>
                 {
                     var cost = structure.Cost();
-                    tile.floaty(gameObject.transform, cost, true, structure.name); // TODO icons pls
+                    tile.displayCost(button.transform, cost, structure.name);
                 });
                 eventTrigger.triggers.Add(entry);
+
+                button.GetComponentInChildren<Text>().text = structure.name;
             }
             gameObject.SetActive(true);
         }

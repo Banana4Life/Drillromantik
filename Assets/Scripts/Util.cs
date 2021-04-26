@@ -8,7 +8,7 @@ public static class Util
     
     public static string FormatLargeNumber(BigInteger n)
     {
-        var exp = (int) Math.Floor(BigInteger.Log10(n) + Epsilon);
+        var exp = (int) Math.Floor(BigInteger.Log10(BigInteger.Abs(n)) + Epsilon);
         var thousands = exp / 3;
         if (thousands >= UnitSuffixes.Length)
         {
