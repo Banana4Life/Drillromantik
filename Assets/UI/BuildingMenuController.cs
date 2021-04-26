@@ -11,11 +11,6 @@ namespace UI
         public TileGridController tileGridController;
         public GameObject buildingButtonPrefab;
         
-        private void Start()
-        {
-            gameObject.SetActive(false);
-        }
-
         public void TileSelected(TileScript tile)
         {
             for (var i = 0; i < transform.childCount; ++i)

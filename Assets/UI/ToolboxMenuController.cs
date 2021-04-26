@@ -11,15 +11,7 @@ namespace UI
         public Button clickUpgradeButton;
 
         private TileScript _selectedTile;
-
-        private void Start()
-        {
-            gameObject.SetActive(false);
-            buildingUpgradeButton.gameObject.SetActive(false);
-            clickUpgradeButton.gameObject.SetActive(false);
-            destroyButton.gameObject.SetActive(false);
-        }
-
+        
         public void TileSelected(TileScript tile)
         {
             var canDestroy = tile.CanDestroy();

@@ -13,6 +13,9 @@ namespace UI
 
         private void Start()
         {
+            buildingMenu.gameObject.SetActive(false);
+            toolboxMenu.gameObject.SetActive(false);
+            researchMenu.gameObject.SetActive(false);
             clickButton.gameObject.SetActive(false);
         }
 

@@ -8,11 +8,6 @@ namespace UI
     {
         public GameObject buildingButtonPrefab;
         
-        private void Start()
-        {
-            gameObject.SetActive(false);
-        }
-        
         public void TileSelected(TileScript tile)
         {
             if (tile.Structure.IsResearch())
