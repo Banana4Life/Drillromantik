@@ -46,7 +46,7 @@ namespace UI
                 var button = obj.GetComponent<Button>();
                 button.onClick.AddListener(() =>
                 {
-                    tile.BuildStructure(structure);
+                    tile.BuildStructure(structure, gameObject.transform);
                     TileSelected(tile);
                 });
             }

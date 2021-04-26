@@ -66,6 +66,12 @@ public class Structure
         return true; // TODO prevent building?
     }
 
+    public Resources Cost()
+    {
+        var cost = new Resources().Add(_build.costs.items);
+        return cost;
+    }
+
     public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)
     {
         var neighborTiles = controller.GetNeighborTiles(coord);

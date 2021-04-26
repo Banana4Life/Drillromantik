@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStructure: {fileID: 0}
   TechTree: {fileID: -1334303844850417330, guid: 167826a4775f57e5bb3022d4ddb80c4e, type: 3}
+  floatyTextPrefab: {fileID: 839839198047615810, guid: 905dbd72cc73a5112b552e97a997e0a6, type: 3}
 --- !u!114 &1433543504012591028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hexagone: {fileID: 2660130919565360449}
+  currenDuration: 0
 --- !u!1001 &2894626176514703376
 PrefabInstance:
   m_ObjectHideFlags: 0

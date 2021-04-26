@@ -2,6 +2,7 @@ using System;
 using TileGrid;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class TileScript : MonoBehaviour
@@ -16,6 +17,8 @@ public class TileScript : MonoBehaviour
     public CubeCoord pos;
     private static readonly int ColorPropertyId = Shader.PropertyToID("_Color");
     private Renderer _renderer;
+
+    public GameObject floatyTextPrefab;
 
 
     // Start is called before the first frame update
@@ -153,18 +156,36 @@ public class TileScript : MonoBehaviour
         }
     }
 
-    public void BuildStructure(Structure structure)
+    public void BuildStructure(Structure structure, Transform aTransform)
     {
         if (!_controller)
         {
             Debug.Log("Game is not running!");
             return;
         }
+        var cost = structure.Cost();
         if (structure.CanBuildDeductCost(_controller, pos))
         {
             AssignStructure(structure);
+            floaty(aTransform, cost, false);
+        }
+        else
+        {
+            floaty(aTransform, cost, true);
         }
         
+    }
+
+    private void floaty(Transform aTransform, Resources resources, bool failed)
+    {
+        var floaty = Instantiate(floatyTextPrefab, aTransform.parent);
+        floaty.GetComponent<Text>().text = resources.ToString();
+        if (failed)
+        {
+            floaty.GetComponent<Text>().color = Color.red;
+        }
+        floaty.transform.position = Input.mousePosition;
+        floaty.GetComponent<PlusScript>().ttl = 0.4f;
     }
 
     public void AssignStructure(Structure structure)
