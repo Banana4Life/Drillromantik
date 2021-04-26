@@ -181,6 +181,10 @@ public class StructureDrawer : PropertyDrawer
         rect = new Rect(position.x, offsetY, position.width, baseHeight);
         EditorGUI.PropertyField(rect, property.FindPropertyRelative("spawnWeight"), new GUIContent("spawnWeight"));
         
+        offsetY += baseHeight;
+        rect = new Rect(position.x, offsetY, position.width, baseHeight);
+        EditorGUI.PropertyField(rect, property.FindPropertyRelative("buildable"), new GUIContent("buildable"));
+        
         var indent = EditorGUI.indentLevel;
         EditorGUI.indentLevel = 0;
         
