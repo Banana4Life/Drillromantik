@@ -27,4 +27,6 @@ namespace UI
             clickButton.gameObject.SetActive(tile.HasClickReward());
         }
     }
+    
+    
 }

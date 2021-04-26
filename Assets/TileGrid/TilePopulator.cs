@@ -14,18 +14,20 @@ namespace TileGrid
 
         private void Start()
         {
-            _weights = new float[techTree.Structures.Length];
-            for (var i = 0; i < techTree.Structures.Length; i++)
+            Global.TechTree = Instantiate(techTree, transform);
+            techTree = Global.TechTree;
+
+            _weights = new float[Global.TechTree.Structures.Length];
+            for (var i = 0; i < Global.TechTree.Structures.Length; i++)
             {
-                _weights[i] = techTree.Structures[i].spawnWeight;
+                _weights[i] = Global.TechTree.Structures[i].spawnWeight;
             }
 
-            Global.TechTree = Instantiate(techTree, transform);
         }
 
         public void Populate(CubeCoord coord, GameObject tileObject)
         {
-            var structure = Util.chooseWeighted(_weights, techTree.Structures);
+            var structure = Util.chooseWeighted(_weights, Global.TechTree.Structures);
             
             var tileScript = tileObject.GetComponent<TileScript>();
             tileScript.Init(coord);
@@ -34,7 +36,7 @@ namespace TileGrid
         
         public void PopulateOrigin(GameObject tileObject)
         {
-            var structure = techTree.Structures.First(s => s.IsBase());
+            var structure = Global.TechTree.Structures.First(s => s.IsBase());
 
             var tileScript = tileObject.GetComponent<TileScript>();
             tileScript.Init(CubeCoord.ORIGIN);
