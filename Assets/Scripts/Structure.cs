@@ -20,9 +20,11 @@ public class Structure
 
     private Upgrades clickUpgradesInstance;
     private Upgrades globalUpgradesInstance;
+
+    public bool buildable;
+    public ItemList buildCost;
     
     private LimitScript _limit;
-    private BuildScript _build;
     [NonSerialized]
     private bool _init = false;
 
@@ -48,28 +50,31 @@ public class Structure
             globalUpgradesInstance.upgrades.AddRange(globalUpgrades.upgrades);
             globalUpgradesInstance.aquired = globalUpgrades.aquired;
             
-            _build = prefab.GetComponent<BuildScript>();
             _limit = prefab.GetComponent<LimitScript>();
         }
     }
 
     public bool CanBuildDeductCost(TileGridController controller, CubeCoord coord)
     {
+        if (!buildable)
+        {
+            return false;
+        }
         Init();
         if (!IsBuildAllowed(controller, coord)) return false;
-        if (_build)
-        {
-            return _build.CanBuildDeductCost();
-        }
 
-        Debug.Log("Build deny bypassed for " + name);
-        return true; // TODO prevent building?
+        var cost = Cost();
+        if (Global.Resources.HasResources(cost))
+        {
+            Global.Resources.AddNoCheck(cost);
+            return true;
+        }
+        return false;
     }
 
     public Resources Cost()
     {
-        var cost = new Resources().Add(_build.costs.items);
-        return cost;
+        return new Resources().Add(buildCost.items);
     }
 
     public bool IsBuildAllowed(TileGridController controller, CubeCoord coord)
@@ -196,6 +201,12 @@ public class StructureDrawer : PropertyDrawer
         height = UpgradesDrawer.UpgradesHeight(upgradeProp) * baseHeight;
         rect = new Rect(position.x, offsetY, position.width, height);
         EditorGUI.PropertyField(rect, upgradeProp, true);
+        
+        offsetY += height;
+        upgradeProp = property.FindPropertyRelative("buildCost");
+        height = (upgradeProp.FindPropertyRelative("items").arraySize + 2) * baseHeight;
+        rect = new Rect(position.x, offsetY, position.width, height);
+        EditorGUI.PropertyField(rect, upgradeProp, true);
             
         // Set indent back to what it was
         EditorGUI.indentLevel = indent;
@@ -209,8 +220,9 @@ public class StructureDrawer : PropertyDrawer
         var bU = property.FindPropertyRelative("buildingUpgrades");
         var cU = property.FindPropertyRelative("clickUpgrades");
         var gU = property.FindPropertyRelative("globalUpgrades");
+        var bC = property.FindPropertyRelative("buildCost").FindPropertyRelative("items");
         var uH = UpgradesDrawer.UpgradesHeight(bU) + UpgradesDrawer.UpgradesHeight(cU) + UpgradesDrawer.UpgradesHeight(gU);
-        return (5.5f + uH) * baseHeight;
+        return (5.5f + uH+5 + bC.arraySize) * baseHeight;
     }
 
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6491469711193961584}
   - component: {fileID: 3610374044835129072}
-  - component: {fileID: 1244743580125952737}
   m_Layer: 0
   m_Name: lumberjackhut
   m_TagString: Untagged
@@ -46,24 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forestPrefab: {fileID: 4572134430706394734, guid: c43e4314c5db081e69c0cfb7adc022f2, type: 3}
---- !u!114 &1244743580125952737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7588520534324842638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274d41f4a346e9af1bc6e9635dfed00f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  costs:
-    items:
-    - type: 0
-      quantity: -10
-    - type: 1
-      quantity: -10
 --- !u!1001 &2043154269391687982
 PrefabInstance:
   m_ObjectHideFlags: 0
