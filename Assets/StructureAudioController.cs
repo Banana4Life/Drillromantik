@@ -22,7 +22,7 @@ public class StructureAudioController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
             _source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
         }
     }
