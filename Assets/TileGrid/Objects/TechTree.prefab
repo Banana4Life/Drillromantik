@@ -47,7 +47,7 @@ MonoBehaviour:
   - name: Base
     type: 0
     prefab: {fileID: 3993110081773359978, guid: 6f38631924faea2f78fa956c1d0d2c98, type: 3}
-    texture: {fileID: 0}
+    texture: {fileID: 8400000, guid: de1b6e1cd0cd7caee8b859759bebe6ae, type: 2}
     spawnWeight: 0
     buildingUpgrades:
       aquired: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
           - type: 8
             quantity: -10
     clickUpgrades:
-      aquired: 1
+      aquired: 2
       upgrades:
       - name: Base
         chance: 1
@@ -212,7 +212,7 @@ MonoBehaviour:
       aquired: 0
       upgrades: []
     clickUpgrades:
-      aquired: 1
+      aquired: 2
       upgrades:
       - name: Base
         chance: 1
