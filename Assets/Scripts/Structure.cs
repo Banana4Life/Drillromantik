@@ -31,10 +31,14 @@ public class Structure
         // TODO bonus based on tiles!
         var buildingResources = upgrades.Calculate(new Resources());
         var modified = globalUpgrades.Calculate(buildingResources);
-        if (Global.Resources.Add(modified))
+        if (modified.Items.Count > 0)
         {
-            var floaty = tile.floaty(controller.worldUi.transform, modified, true, "");
-            floaty.transform.position = Camera.main.WorldToScreenPoint(tile.transform.position);
+            if (Global.Resources.Add(modified))
+            {
+            
+                var floaty = tile.floaty(controller.worldUi.transform, modified, true, "");
+                floaty.transform.position = Camera.main.WorldToScreenPoint(tile.transform.position);
+            }    
         }
         
         return modified;

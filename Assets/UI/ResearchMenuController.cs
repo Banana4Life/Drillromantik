@@ -31,7 +31,7 @@ namespace UI
                 foreach (var structure in upgradableStructures)
                 {
                     var obj = Instantiate(buildingButtonPrefab, transform);
-                    obj.name = structure.name;
+                    obj.name = "Upgrade " + structure.name;
                     var rawImage = obj.GetComponent<RawImage>();
                     rawImage.texture = structure.texture;
                     var button = obj.GetComponent<Button>();
