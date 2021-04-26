@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PanSpeed: 0.6
   minZoomLevel: 10
-  maxZoomLevel: 30
+  maxZoomLevel: 40
   startZoomLevel: 20
   zoomSpeed: 60
   PostProcessVolume: {fileID: 1217165787}
