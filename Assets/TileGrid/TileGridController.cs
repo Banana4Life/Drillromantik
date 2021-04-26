@@ -16,6 +16,7 @@ namespace TileGrid
         private Dictionary<CubeCoord, GameObject> _knownTiles = new Dictionary<CubeCoord, GameObject>();
 
         private Coroutine spawnRoutine = null;
+        public GameObject worldUi;
     
         void Start()
         {

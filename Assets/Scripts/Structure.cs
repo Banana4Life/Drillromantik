@@ -25,13 +25,19 @@ public class Structure
     private bool _init = false;
 
 
-    public void TickTile(TileGridController controller, CubeCoord pos, Upgrades upgrades)
+    public Resources TickTile(TileGridController controller, CubeCoord pos, Upgrades upgrades, TileScript tile)
     {
         // var neighborTiles = controller.GetNeighborTiles(pos);
         // TODO bonus based on tiles!
         var buildingResources = upgrades.Calculate(new Resources());
         var modified = globalUpgrades.Calculate(buildingResources);
-        Global.Resources.Add(modified);
+        if (Global.Resources.Add(modified))
+        {
+            var floaty = tile.floaty(controller.worldUi.transform, modified, true, "");
+            floaty.transform.position = Camera.main.WorldToScreenPoint(tile.transform.position);
+        }
+        
+        return modified;
     }
   
     public void Init()
