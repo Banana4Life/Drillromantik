@@ -9,6 +9,7 @@ namespace UI
         public BuildingMenuController buildingMenu;
         public ToolboxMenuController toolboxMenu;
         public ResearchMenuController researchMenu;
+        public PanelMarketMenu marketMenu;
         public Button clickButton;
 
         private void Start()
@@ -24,6 +25,11 @@ namespace UI
             buildingMenu.TileSelected(tile);
             toolboxMenu.TileSelected(tile);
             researchMenu.TileSelected(tile);
+            if (tile.Structure.type == StructureType.MARKETPLACE)
+            {
+                marketMenu.gameObject.SetActive(true);
+            } 
+            
             
             bool hasClickReward = tile.HasClickReward();
             if (hasClickReward)
