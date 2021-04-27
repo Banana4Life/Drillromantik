@@ -37,7 +37,7 @@ public class Structure
         if (tile.Structure.type == StructureType.CHARCOAL_BURNER)
         {
             var neighborTiles = controller.GetNeighborTiles(pos);
-            var cnt = neighborTiles.Count(t => t.GetComponent<TileScript>().Structure.type == StructureType.CHARCOAL_BURNER);
+            var cnt = neighborTiles.Count(t => t.GetComponent<TileScript>().Structure.type == StructureType.CHARCOAL_BURNER) + 1;
             modified.Mul(ItemType.CHARCOAL, cnt);
         }
         
