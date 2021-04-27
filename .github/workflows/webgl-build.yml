@@ -1,0 +1,15 @@
+name: Build WebGL Version
+on: [ push ]
+jobs:
+  build-game:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: WebGL
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
