@@ -10,6 +10,7 @@ namespace UI
         public ToolboxMenuController toolboxMenu;
         public ResearchMenuController researchMenu;
         public Button clickButton;
+        public RawImage clickButtonImage;
 
         private void Start()
         {
@@ -28,14 +29,7 @@ namespace UI
             bool hasClickReward = tile.HasClickReward();
             if (hasClickReward)
             {
-                RawImage[] rawImages = clickButton.GetComponentsInChildren<RawImage>();
-                foreach (RawImage rawImage in rawImages)
-                {
-                    if (rawImage.gameObject.transform.parent != transform.parent)
-                    {
-                        rawImage.texture = tile.Structure.texture;
-                    }
-                }
+                clickButtonImage.texture = tile.Structure.texture;
             }
             clickButton.gameObject.SetActive(hasClickReward);
         }

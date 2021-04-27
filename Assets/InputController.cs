@@ -74,5 +74,10 @@ public class InputController : MonoBehaviour
     {
         clickSource.Play();
         tileSelected.ClickTile(tileMenuController.clickButton.transform);
+        var text = tileMenuController.clickButton.GetComponentInChildren<Text>();
+        if (text)
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 }
