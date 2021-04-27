@@ -420,7 +420,7 @@ MonoBehaviour:
               quantity: -1
         - name: Diamonds?
           chance: 0.01
-          type: 1
+          type: 0
           resources:
             items:
             - type: 10
