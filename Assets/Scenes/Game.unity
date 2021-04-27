@@ -2172,6 +2172,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &729235092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6143602363500870137, guid: c6249f91b45c2df8f8c5119f847e276d, type: 3}
+  m_PrefabInstance: {fileID: 2134736085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5fbcba5e01225458ccea53d9780963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &915064803
 GameObject:
   m_ObjectHideFlags: 0
@@ -6253,7 +6264,6 @@ MonoBehaviour:
   buildingMenu: {fileID: 900739781428164908}
   toolboxMenu: {fileID: 900739781487794739}
   researchMenu: {fileID: 900739781383363208}
-  marketMenu: {fileID: 0}
   clickButton: {fileID: 1684286107}
 --- !u!222 &900739781785463781
 CanvasRenderer:
@@ -6695,6 +6705,10 @@ PrefabInstance:
       propertyPath: worldUi
       value: 
       objectReference: {fileID: 2030360481}
+    - target: {fileID: 7519847041953692406, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
+      propertyPath: MarketMenu
+      value: 
+      objectReference: {fileID: 729235092}
     - target: {fileID: 7519847041953692406, guid: 9f5002b1a97d8f49f9c337791a11c0a8, type: 3}
       propertyPath: initialRings
       value: 3

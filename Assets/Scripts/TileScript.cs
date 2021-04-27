@@ -72,11 +72,21 @@ public partial class TileScript : MonoBehaviour
 
     public bool HasClickReward()
     {
+        if (_structure.type == StructureType.MARKETPLACE)
+        {
+            return true;
+        }
+
         return _structure.HasClickUpgrades();
     }
     
     public void ClickTile(Transform tr)
     {
+        if (_structure.type == StructureType.MARKETPLACE)
+        {
+            _controller.OpenMarket();
+        }
+        
         var calculated = _structure.CalculateClick();
 
         floaty(tr, calculated, Global.Resources.Add(calculated), "");

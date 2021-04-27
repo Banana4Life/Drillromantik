@@ -17,6 +17,7 @@ namespace TileGrid
 
         private Coroutine spawnRoutine = null;
         public GameObject worldUi;
+        public PanelMarketMenu MarketMenu;
 
         private Dictionary<StructureType, int> _typeCount = new Dictionary<StructureType, int>();
     
@@ -114,6 +115,11 @@ namespace TileGrid
         {
             var cnt = _typeCount.ContainsKey(structureType) ? _typeCount[structureType] : 0;
             _typeCount[structureType] = cnt + p1;
+        }
+
+        public void OpenMarket()
+        {
+            MarketMenu.gameObject.SetActive(true);
         }
     }
 }

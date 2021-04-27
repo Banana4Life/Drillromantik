@@ -41,6 +41,7 @@ namespace UI
                 Global.Resources.Add(new Item { quantity = 10, type = ItemType.STONE});
                 Global.Resources.Add(new Item { quantity = 10, type = ItemType.COPPER});
                 Global.Resources.Add(new Item { quantity = 10, type = ItemType.COAL});
+                Global.Resources.Add(new Item { quantity = 10, type = ItemType.GOLD});
                 Global.Resources.Add(new Item { quantity = 10, type = ItemType.CHARCOAL});
                 Global.Resources.Add(new Item { quantity = 10, type = ItemType.IRON});    
             }
