@@ -16,7 +16,6 @@ public class SliderMarketMenu : MonoBehaviour
 
     void Start()
     {
-        Global.Resources.Add(new Item { quantity = 1, type = ItemType.DIAMOND});
         sliderControl = GetComponent<Slider>();
         SetMinAmount();
         SetMaxAmount();
