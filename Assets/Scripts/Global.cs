@@ -7,7 +7,7 @@ public static class Global
     private static TechTree _techTree;
     public static TechTree FindTechTree()
     {
-        if (_techTree == null)
+        if (!_techTree)
         {
             _techTree = GameObject.Find("TechTree").GetComponent<TechTree>();
         }
