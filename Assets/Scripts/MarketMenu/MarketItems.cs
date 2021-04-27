@@ -18,6 +18,19 @@ public class MarketItems : MonoBehaviour
 
     void Start()
     {
+            foreach (var resource in gameObject.GetComponentsInChildren<MarketResource>())
+            {
+                RawImage image = resource.gameObject.GetComponentInChildren<RawImage>();
+                
+                foreach (var itemTypeTexture in Global.FindTechTree().Textures)
+                {
+                    if (itemTypeTexture.type == resource.item)
+                    {
+                        image.texture = itemTypeTexture.tex;
+                        break;
+                    }
+                }
+            }
     }
 
     void Update()
