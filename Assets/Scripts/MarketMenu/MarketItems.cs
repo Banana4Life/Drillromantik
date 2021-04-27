@@ -15,6 +15,9 @@ public class MarketItems : MonoBehaviour
 
     public SliderMarketMenu slider;
 
+    public AudioSource tradeSound;
+    public AudioSource tradeSelectSound;
+
 
     void Start()
     {
@@ -49,6 +52,10 @@ public class MarketItems : MonoBehaviour
 
     public void SelectedItem(MarketResource newItem)
     {
+        if (newItem != selectedItem)
+        {
+            tradeSelectSound.Play();
+        }
         selectedItem = newItem;
         slider.sliderControl.minValue = Global.Resources.Items.ContainsKey(newItem.item) ? (int) -Global.Resources.Items[newItem.item] : 0;
         slider.minAmount.text = Util.FormatLargeNumber(BigInteger.One * (int) slider.sliderControl.minValue);
@@ -94,6 +101,7 @@ public class MarketItems : MonoBehaviour
                 resource.currentSelectedAmount = 0;
             }
             SelectedItem(selectedItem);
+            tradeSound.Play();
         }
     }
 }
