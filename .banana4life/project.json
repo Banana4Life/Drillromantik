@@ -8,7 +8,13 @@
     "site": "https://ldjam.com/events/ludum-dare/48/drillromantik",
     "comments": []
   },
-  "web": "https://github.com/Banana4Life/Drillromantik/releases//latest",
-  "authors": []
+  "web": "https://github.com/Banana4Life/Drillromantik/releases/latest",
+  "authors": [
+    "Katze, Cube Island",
+    "CaracalNoir, Cube Island",
+    "BaumpflanzerGnom, Cube Island",
+    "Nuckel_80, Cube Island",
+    "Kijargo, Cube Island"
+  ]
 }
 
